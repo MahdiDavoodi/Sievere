@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    ------------------------ Default Theme ------------------------
+    // Theme.
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_dark">#FF3700B3</color>
+    <color name="primary_light">#FFBB86FC</color>
+    <color name="accent">#7C4DFF</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+    // Text Views.
+    <color name="primary_text">#0C0C0C</color>
+    <color name="secondary_text">#605A5A</color>
+
+    ------------------------ Default Theme ------------------------
+</resources>

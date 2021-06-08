@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Text Views.
+    <dimen name="big_text">70sp</dimen>
+    <dimen name="big_text_min">30sp</dimen>
+    <dimen name="big_text_max">90sp</dimen>
+    <dimen name="big_text_padding">1dp</dimen>
+
+    <dimen name="common_text">18sp</dimen>
+    <dimen name="common_text_min">10sp</dimen>
+    <dimen name="common_text_max">26sp</dimen>
+    <dimen name="common_text_padding">5dp</dimen>
+
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="small_text_min">8sp</dimen>
+    <dimen name="small_text_max">18sp</dimen>
+    <dimen name="small_text_padding">2dp</dimen>
+</resources>

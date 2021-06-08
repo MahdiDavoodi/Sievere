@@ -1,0 +1,10 @@
+<resources>
+    // App.
+    <string name="app_name">Sievere</string>
+    <string name="app_category">Music</string>
+    <string name="app_description">Life is better when you play music.</string>
+    <string name="app_developer">Mahdi Davoodi</string>
+
+    // Widgets Descriptions.
+    <string name="image">Image</string>
+</resources>
