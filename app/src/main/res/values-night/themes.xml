@@ -1,16 +1,56 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Sievere" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    ------------------------ Dark Theme ------------------------
+
+    <style name="Theme.Sievere" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimary">@color/dark_primary</item>
         <item name="colorPrimaryVariant">@android:color/transparent</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@android:color/transparent</item>
-        <item name="colorSecondaryVariant">@android:color/transparent</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/dark_primary_light</item>
+        <item name="colorSecondaryVariant">@color/dark_accent</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Default widgets styles and ... -->
+        <item name="android:textViewStyle">@style/common_text</item>
+    </style>
+
+    ------------------------ Dark styles ------------------------
+
+    ---> Text Views.
+
+    <style name="big_text" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/archive</item>
+        <item name="android:padding">@dimen/big_text_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/dark_primary_text</item>
+        <item name="android:textSize">@dimen/big_text</item>
+        <item name="autoSizeMaxTextSize">@dimen/big_text_max</item>
+        <item name="autoSizeMinTextSize">@dimen/big_text_min</item>
+    </style>
+
+    <style name="common_text" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/way_regular</item>
+        <item name="android:padding">@dimen/common_text_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/dark_secondary_text</item>
+        <item name="android:textSize">@dimen/common_text</item>
+        <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
+        <item name="autoSizeMinTextSize">@dimen/common_text_min</item>
+    </style>
+
+    <style name="small_text" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/way_regular</item>
+        <item name="android:padding">@dimen/small_text_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/dark_secondary_text</item>
+        <item name="android:textSize">@dimen/small_text</item>
+        <item name="autoSizeMaxTextSize">@dimen/small_text_max</item>
+        <item name="autoSizeMinTextSize">@dimen/small_text_min</item>
     </style>
 </resources>

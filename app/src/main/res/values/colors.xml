@@ -4,7 +4,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    ------------------------ Default Theme ------------------------
+    ------------------------ Light Theme ------------------------
     // Theme.
     <color name="primary">#FF6200EE</color>
     <color name="primary_dark">#FF3700B3</color>
@@ -15,7 +15,18 @@
 
     // Text Views.
     <color name="primary_text">#0C0C0C</color>
-    <color name="secondary_text">#605A5A</color>
+    <color name="secondary_text">#817A7A</color>
 
-    ------------------------ Default Theme ------------------------
+    ------------------------ Dark Theme ------------------------
+    // Theme.
+    <color name="dark_primary">#0E0E0E</color>
+    <color name="dark_primary_dark">#000000</color>
+    <color name="dark_primary_light">#252525</color>
+    <color name="dark_accent">#5C5868</color>
+    <color name="dark_icons">#9F9E9E</color>
+    <color name="dark_divider">#817B7B</color>
+
+    // Text Views.
+    <color name="dark_primary_text">#2F6C95</color>
+    <color name="dark_secondary_text">#8C8888</color>
 </resources>

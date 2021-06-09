@@ -1,5 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
+    ------------------------ Light Theme ------------------------
+
     <style name="Theme.Sievere" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
@@ -15,7 +17,9 @@
         <item name="android:textViewStyle">@style/common_text</item>
     </style>
 
-    // Text Views.
+    ------------------------ Light styles ------------------------
+
+    ---> Text Views.
 
     <style name="big_text" parent="Widget.MaterialComponents.TextView">
         <item name="fontFamily">@font/archive</item>
@@ -50,7 +54,10 @@
         <item name="autoSizeMinTextSize">@dimen/small_text_min</item>
     </style>
 
-    // Images and Icons.
+
+    ------------------------ Same styles in all Themes ------------------------
+
+    ---> Images and Icons.
 
     <style name="images">
         <item name="android:scaleType">fitCenter</item>
