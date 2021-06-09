@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ma_nav_graph"
+    app:startDestination="@id/tracksFragment">
+
+    <fragment
+        android:id="@+id/tracksFragment"
+        android:name="davoodi.mahdi.sievere.fragments.TracksFragment"
+        android:label="fragment_tracks"
+        tools:layout="@layout/fragment_tracks" />
+    <fragment
+        android:id="@+id/playlistsFragment"
+        android:name="davoodi.mahdi.sievere.fragments.PlaylistsFragment"
+        android:label="fragment_playlists"
+        tools:layout="@layout/fragment_playlists" />
+    <fragment
+        android:id="@+id/forYouFragment"
+        android:name="davoodi.mahdi.sievere.fragments.ForYouFragment"
+        android:label="fragment_for_you"
+        tools:layout="@layout/fragment_for_you" />
+</navigation>
