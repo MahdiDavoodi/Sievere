@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ma_nav_tracks"
+        android:icon="@drawable/ic_tracks_solid"
+        android:title="@string/ma_nav_tracks" />
+    <item
+        android:id="@+id/ma_nav_playlists"
+        android:icon="@drawable/ic_playlists_solid"
+        android:title="@string/ma_nav_playlists" />
+    <item
+        android:id="@+id/ma_nav_for_you"
+        android:icon="@drawable/ic_for_you_solid"
+        android:title="@string/ma_nav_for_you" />
+
+</menu>

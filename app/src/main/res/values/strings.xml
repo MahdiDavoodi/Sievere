@@ -5,6 +5,12 @@
     <string name="app_description">Life is better when you play music.</string>
     <string name="app_developer">Mahdi Davoodi</string>
 
+    // Main Activity.
+    <string name="ma_nav_tracks">Tracks</string>
+    <string name="ma_nav_playlists">Playlists</string>
+    <string name="ma_nav_for_you">For You</string>
+
+
     // Widgets Descriptions.
     <string name="image">Image</string>
 </resources>

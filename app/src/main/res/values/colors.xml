@@ -19,7 +19,7 @@
 
     ------------------------ Dark Theme ------------------------
     // Theme.
-    <color name="dark_primary">#0E0E0E</color>
+    <color name="dark_primary">#2F6C95</color>
     <color name="dark_primary_dark">#000000</color>
     <color name="dark_primary_light">#252525</color>
     <color name="dark_accent">#5C5868</color>
