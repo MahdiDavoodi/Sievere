@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/ma_nav_tracks"
+        android:id="@+id/tracksFragment"
         android:icon="@drawable/ic_tracks_solid"
         android:title="@string/ma_nav_tracks" />
     <item
-        android:id="@+id/ma_nav_playlists"
+        android:id="@+id/playlistsFragment"
         android:icon="@drawable/ic_playlists_solid"
         android:title="@string/ma_nav_playlists" />
     <item
-        android:id="@+id/ma_nav_for_you"
+        android:id="@+id/forYouFragment"
         android:icon="@drawable/ic_for_you_solid"
         android:title="@string/ma_nav_for_you" />
 

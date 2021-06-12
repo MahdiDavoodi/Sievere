@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/tracksFragment"
         android:name="davoodi.mahdi.sievere.fragments.TracksFragment"
-        android:label="fragment_tracks"
+        android:label="@string/ma_nav_tracks"
         tools:layout="@layout/fragment_tracks" />
     <fragment
         android:id="@+id/playlistsFragment"
         android:name="davoodi.mahdi.sievere.fragments.PlaylistsFragment"
-        android:label="fragment_playlists"
+        android:label="@string/ma_nav_playlists"
         tools:layout="@layout/fragment_playlists" />
     <fragment
         android:id="@+id/forYouFragment"
         android:name="davoodi.mahdi.sievere.fragments.ForYouFragment"
-        android:label="fragment_for_you"
+        android:label="@string/ma_nav_for_you"
         tools:layout="@layout/fragment_for_you" />
 </navigation>
