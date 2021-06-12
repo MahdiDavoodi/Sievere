@@ -25,6 +25,7 @@ public class IntroActivity extends AppCompatActivity {
             e.printStackTrace();
         } finally {
             startActivity(new Intent(IntroActivity.this, MainActivity.class));
+            finish();
         }
     }
 }
