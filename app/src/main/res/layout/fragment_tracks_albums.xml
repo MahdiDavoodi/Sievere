@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.TracksFragment">
+    tools:context=".fragments.tracks.TracksAlbumsFragment">
 
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/tf_view_pager"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:text="Hello Albums" />
+
 </FrameLayout>
