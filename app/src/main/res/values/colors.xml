@@ -11,7 +11,7 @@
     <color name="primary_light">#FFBB86FC</color>
     <color name="accent">#7C4DFF</color>
     <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
+    <color name="divider">#FF6200EE</color>
 
     // Text Views.
     <color name="primary_text">#0C0C0C</color>
@@ -24,7 +24,7 @@
     <color name="dark_primary_light">#252525</color>
     <color name="dark_accent">#5C5868</color>
     <color name="dark_icons">#9F9E9E</color>
-    <color name="dark_divider">#817B7B</color>
+    <color name="dark_divider">#737272</color>
 
     // Text Views.
     <color name="dark_primary_text">#2F6C95</color>

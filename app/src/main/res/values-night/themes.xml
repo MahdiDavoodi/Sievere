@@ -18,6 +18,27 @@
     </style>
 
     ------------------------ Dark styles ------------------------
+
+    ---> Line.
+
+    <style name="main_divider_view">
+        <item name="android:background">@color/dark_divider</item>
+    </style>
+
+    ---> Toolbar.
+
+    <style name="main_toolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="iconTint">@color/dark_accent</item>
+    </style>
+
+    <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/archive</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/dark_primary</item>
+        <item name="android:textSize">@dimen/common_text</item>
+        <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
+        <item name="autoSizeMinTextSize">@dimen/common_text_min</item>
+    </style>
     ---> Layouts.
 
     <style name="layout_primary_bg">
