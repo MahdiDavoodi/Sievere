@@ -18,7 +18,15 @@
     </style>
 
     ------------------------ Dark styles ------------------------
+    ---> Layouts.
 
+    <style name="layout_primary_bg">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="up_rounded_layout">
+        <item name="android:background">@drawable/bg_up_rounded_dark</item>
+    </style>
     ---> Text Views.
 
     <style name="big_text" parent="Widget.MaterialComponents.TextView">

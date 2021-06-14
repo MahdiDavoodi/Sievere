@@ -24,7 +24,6 @@ public class TracksFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tracks, container, false);
 
-        // Pass the fragments tu adapter.
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new TracksAllFragment());
         fragments.add(new TracksAlbumsFragment());
