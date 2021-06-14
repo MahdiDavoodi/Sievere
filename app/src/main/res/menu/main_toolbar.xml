@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ma_toolbar_search"
+        android:icon="@drawable/ic_search_solid"
+        android:title="@string/ma_toolbar_search" />
+
+    <item
+        android:id="@+id/ma_toolbar_more"
+        android:icon="@drawable/ic_more_solid"
+        android:title="@string/ma_toolbar_more" />
+</menu>

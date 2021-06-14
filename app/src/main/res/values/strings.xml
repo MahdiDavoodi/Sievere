@@ -9,6 +9,8 @@
     <string name="ma_nav_tracks">Tracks</string>
     <string name="ma_nav_playlists">Playlists</string>
     <string name="ma_nav_for_you">For You</string>
+    <string name="ma_toolbar_search">Search</string>
+    <string name="ma_toolbar_more">More</string>
 
     // Widgets Descriptions.
     <string name="image">Image</string>
