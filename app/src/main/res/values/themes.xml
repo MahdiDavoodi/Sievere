@@ -12,7 +12,7 @@
         <item name="colorSecondaryVariant">@color/accent</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Default widgets styles and ... -->
         <item name="android:textViewStyle">@style/common_text</item>
     </style>
@@ -49,8 +49,12 @@
         <item name="android:background">@color/primary</item>
     </style>
 
-    <style name="up_rounded_layout">
+    <style name="up_rounded_layout_bg">
         <item name="android:background">@drawable/bg_up_rounded_light</item>
+    </style>
+
+    <style name="down_rounded_layout_bg">
+        <item name="android:background">@drawable/bg_down_rounded_light</item>
     </style>
 
     ---> Text Views.

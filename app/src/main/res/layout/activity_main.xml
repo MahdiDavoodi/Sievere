@@ -63,7 +63,7 @@
         app:menu="@menu/main_nav_view" />
 
     <LinearLayout
-        style="@style/up_rounded_layout"
+        style="@style/up_rounded_layout_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"

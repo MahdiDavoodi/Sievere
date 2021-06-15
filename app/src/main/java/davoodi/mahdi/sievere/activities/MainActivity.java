@@ -1,11 +1,14 @@
 package davoodi.mahdi.sievere.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,5 +33,28 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*/
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.ma_toolbar_search) {
+            /*Search*/
+            return true;
+        } else if (item.getItemId() == R.id.ma_toolbar_info) {
+            openInfoActivity();
+            return true;
+        } else if (item.getItemId() == R.id.ma_toolbar_settings) {
+            /*Settings*/
+            return true;
+        } else if (item.getItemId() == R.id.ma_toolbar_rate) {
+            /*Rate*/
+            return true;
+        } else
+            return super.onOptionsItemSelected(item);
+    }
+
+    private void openInfoActivity() {
+        startActivity(new Intent(MainActivity.this, InfoActivity.class));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }

@@ -1,11 +1,11 @@
 <resources>
-    // App.
+    <!--App-->
     <string name="app_name">Sievere\u0020</string>
     <string name="app_category">Music\u0020</string>
     <string name="app_description">Life is better when you play music.\u0020</string>
     <string name="app_developer">Mahdi Davoodi\u0020</string>
 
-    // Main Activity.
+    <!--Main Activity-->
     <string name="ma_nav_tracks">Tracks\u0020</string>
     <string name="ma_nav_playlists">Playlists\u0020</string>
     <string name="ma_nav_for_you">For You\u0020</string>
@@ -14,6 +14,14 @@
     <string name="ma_toolbar_info">Info\u0020</string>
     <string name="ma_toolbar_rate">Rate the App!\u0020</string>
 
-    // Widgets Descriptions.
+    <!--Info Activity-->
+    <string name="ia_title_text">Hello, Friend!\u0020</string>
+    <string name="ia_main_text_1">It\'s me, the developer. I\'m so glad that you are reading this now. Currently, I am learning Android development and I am getting better day by day. I will try to implement every new and useful thing that I learn. If I want to make this short, Sievere is an app for you, by you! It means you can say what you want to see in future updates so I will start working on it. \u0020</string>
+    <string name="ia_main_text_2">It\'s open-source and you can see how it works. Also, It has a channel on Telegram which posts and suggests some good music for you.\u0020</string>
+    <string name="ia_main_text_3">Don\'t forget to be happy!\u0020</string>
+    <string name="ia_main_text_4">- Mahdi Davoodi\u0020</string>
+
+
+    <!--Widgets Descriptions-->
     <string name="image">Image</string>
 </resources>

@@ -49,8 +49,12 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="up_rounded_layout">
+    <style name="up_rounded_layout_bg">
         <item name="android:background">@drawable/bg_up_rounded_dark</item>
+    </style>
+
+    <style name="down_rounded_layout_bg">
+        <item name="android:background">@drawable/bg_down_rounded_dark</item>
     </style>
     ---> Text Views.
 

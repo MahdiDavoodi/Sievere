@@ -8,7 +8,7 @@
     // Theme.
     <color name="primary">#FF6200EE</color>
     <color name="primary_dark">#FF3700B3</color>
-    <color name="primary_light">#FFBB86FC</color>
+    <color name="primary_light">#8DFBFBFB</color>
     <color name="accent">#7C4DFF</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#FF6200EE</color>
