@@ -65,11 +65,11 @@
             app:itemRippleColor="@android:color/transparent"
             app:menu="@menu/main_nav_view" />
 
-        <View
+        <!--<View
             style="@style/main_divider_view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_margin="4dp" />
+            android:layout_margin="4dp" />-->
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/ma_nav_host"

@@ -30,7 +30,7 @@ public class TracksFragment extends Fragment {
         fragments.add(new TracksArtistsFragment());
 
         TracksViewPagerAdapter adapter = new TracksViewPagerAdapter(fragments,
-                requireActivity().getSupportFragmentManager(),
+                getChildFragmentManager(),
                 getLifecycle());
 
         ViewPager2 viewPager = view.findViewById(R.id.tf_view_pager);

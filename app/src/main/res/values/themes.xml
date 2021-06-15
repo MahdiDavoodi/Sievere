@@ -22,9 +22,9 @@
 
     ---> Line.
 
-    <style name="main_divider_view">
+    <!--<style name="main_divider_view">
         <item name="android:background">@color/divider</item>
-    </style>
+    </style>-->
 
     ---> Toolbar.
 
