@@ -28,8 +28,9 @@
 
     ---> Toolbar.
 
-    <style name="main_toolbar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+    <style name="main_toolbar">
         <item name="iconTint">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
     </style>
 
     <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">
