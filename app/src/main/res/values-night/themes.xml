@@ -19,7 +19,7 @@
 
     ------------------------ Dark styles ------------------------
 
-    ---> Views.
+    <!--Views-->
 
     <style name="main_nav_view_style">
         <item name="itemIconTint">@color/main_nav_view_dark</item>
@@ -30,11 +30,13 @@
         <item name="android:background">@color/dark_divider</item>
     </style>-->
 
-    ---> Toolbar.
+    <!--Toolbar-->
 
-    <style name="main_toolbar">
-        <item name="iconTint">@color/dark_accent</item>
-        <item name="android:textColorSecondary">@color/dark_accent</item>
+    <style name="main_toolbar_icon" parent="images">
+        <item name="android:tint">@color/dark_accent</item>
+        <item name="android:background">?attr/actionBarItemBackground</item>
+        <item name="android:height">30dp</item>
+        <item name="android:width">30dp</item>
     </style>
 
     <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">
@@ -43,7 +45,7 @@
         <item name="android:textColor">@color/dark_primary</item>
         <item name="android:textSize">@dimen/common_text</item>
     </style>
-    ---> Layouts.
+    <!--Layouts-->
 
     <style name="layout_primary_bg">
         <item name="android:background">@android:color/transparent</item>
@@ -56,7 +58,7 @@
     <style name="down_rounded_layout_bg">
         <item name="android:background">@drawable/bg_down_rounded_dark</item>
     </style>
-    ---> Text Views.
+    <!--Text Views-->
 
     <style name="big_text" parent="Widget.MaterialComponents.TextView">
         <item name="fontFamily">@font/archive</item>

@@ -25,8 +25,8 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/app_name"
                 android:textSize="@dimen/common_text_max"
-                app:layout_constraintStart_toStartOf="@id/ma_toolbar"
-                app:layout_constraintTop_toTopOf="@id/ma_toolbar" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/ma_toolbar_subtitle"
@@ -37,16 +37,30 @@
                 app:layout_constraintBottom_toBottomOf="@+id/ma_toolbar_title"
                 app:layout_constraintStart_toEndOf="@+id/ma_toolbar_title" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/ma_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/main_toolbar"
+            <ImageButton
+                android:id="@+id/ma_toolbar_search"
+                style="@style/main_toolbar_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/image"
+                app:layout_constraintBottom_toBottomOf="@+id/ma_toolbar_more"
+                app:layout_constraintEnd_toStartOf="@+id/ma_toolbar_more"
+                app:layout_constraintTop_toTopOf="@+id/ma_toolbar_more"
+                app:srcCompat="@drawable/ic_search_solid" />
+
+            <ImageButton
+                android:id="@+id/ma_toolbar_more"
+                style="@style/main_toolbar_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/image"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:menu="@menu/main_toolbar" />
+                app:srcCompat="@drawable/ic_more_solid" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -68,12 +82,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:orientation="vertical">
-
-        <!--<View
-            style="@style/main_divider_view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_margin="4dp" />-->
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/ma_nav_host"
