@@ -5,11 +5,17 @@
         android:id="@+id/ma_toolbar_search"
         android:icon="@drawable/ic_search_solid"
         android:title="@string/ma_toolbar_search"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/ma_toolbar_more"
-        android:icon="@drawable/ic_more_solid"
-        android:title="@string/ma_toolbar_more"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/ma_toolbar_info"
+        android:icon="@drawable/ic_info_solid"
+        android:title="@string/ma_toolbar_info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ma_toolbar_settings"
+        android:icon="@drawable/ic_settings_solid"
+        android:title="@string/ma_toolbar_settings"
+        app:showAsAction="never" />
 </menu>
