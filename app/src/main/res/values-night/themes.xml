@@ -21,6 +21,11 @@
 
     ---> Views.
 
+    <style name="main_nav_view_style">
+        <item name="itemIconTint">@color/main_nav_view_dark</item>
+        <item name="itemTextColor">@color/main_nav_view_dark</item>
+    </style>
+
     <!--<style name="main_divider_view">
         <item name="android:background">@color/dark_divider</item>
     </style>-->

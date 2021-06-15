@@ -9,13 +9,16 @@
 
     <item
         android:id="@+id/ma_toolbar_info"
-        android:icon="@drawable/ic_info_solid"
         android:title="@string/ma_toolbar_info"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/ma_toolbar_settings"
-        android:icon="@drawable/ic_settings_solid"
         android:title="@string/ma_toolbar_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/ma_toolbar_rate"
+        android:title="@string/ma_toolbar_rate"
         app:showAsAction="never" />
 </menu>
