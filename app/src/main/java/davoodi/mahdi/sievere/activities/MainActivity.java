@@ -8,12 +8,15 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import davoodi.mahdi.sievere.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,29 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
 
+
+    /*Toolbar Menu*/
+    public void toolbarMenu(View view) {
+        PopupMenu menu = new PopupMenu(this, view);
+        menu.inflate(R.menu.main_toolbar);
+        menu.setOnMenuItemClickListener(this);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        if (item.getItemId() == R.id.ma_toolbar_info) {
+            openInfoActivity();
+            return true;
+        } else if (item.getItemId() == R.id.ma_toolbar_settings) {
+            /*Setting*/
+            return true;
+        } else if (item.getItemId() == R.id.ma_toolbar_rate) {
+            /*Rate*/
+            return true;
+        } else return false;
+    }
+
+    /*Actions*/
     private void openInfoActivity() {
         startActivity(new Intent(MainActivity.this, InfoActivity.class));
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
