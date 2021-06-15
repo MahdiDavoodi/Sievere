@@ -4,16 +4,13 @@
 
     <item
         android:id="@+id/ma_toolbar_info"
-        android:title="@string/ma_toolbar_info"
-        app:showAsAction="never" />
+        android:title="@string/ma_toolbar_info" />
 
     <item
         android:id="@+id/ma_toolbar_settings"
-        android:title="@string/ma_toolbar_settings"
-        app:showAsAction="never" />
+        android:title="@string/ma_toolbar_settings" />
 
     <item
         android:id="@+id/ma_toolbar_rate"
-        android:title="@string/ma_toolbar_rate"
-        app:showAsAction="never" />
+        android:title="@string/ma_toolbar_rate"/>
 </menu>
