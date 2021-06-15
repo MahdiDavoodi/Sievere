@@ -19,7 +19,7 @@
 
     ------------------------ Dark styles ------------------------
 
-    ---> Line.
+    ---> Views.
 
     <!--<style name="main_divider_view">
         <item name="android:background">@color/dark_divider</item>
@@ -37,8 +37,6 @@
         <item name="autoSizeTextType">uniform</item>
         <item name="android:textColor">@color/dark_primary</item>
         <item name="android:textSize">@dimen/common_text</item>
-        <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
-        <item name="autoSizeMinTextSize">@dimen/common_text_min</item>
     </style>
     ---> Layouts.
 
@@ -69,6 +67,7 @@
         <item name="autoSizeTextType">uniform</item>
         <item name="android:textColor">@color/dark_secondary_text</item>
         <item name="android:textSize">@dimen/common_text</item>
+        <item name="android:textStyle">bold|italic</item>
         <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
         <item name="autoSizeMinTextSize">@dimen/common_text_min</item>
     </style>

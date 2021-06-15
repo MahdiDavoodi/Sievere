@@ -24,7 +24,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/app_name"
-                android:textSize="30sp"
+                android:textSize="@dimen/common_text_max"
                 app:layout_constraintStart_toStartOf="@id/ma_toolbar"
                 app:layout_constraintTop_toTopOf="@id/ma_toolbar" />
 
@@ -63,6 +63,8 @@
             android:background="@android:color/transparent"
             app:elevation="0dp"
             app:itemRippleColor="@android:color/transparent"
+            app:itemTextAppearanceActive="@style/main_nav_view_text"
+            app:itemTextAppearanceInactive="@style/main_nav_view_text"
             app:menu="@menu/main_nav_view" />
 
         <!--<View

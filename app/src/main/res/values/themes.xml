@@ -19,8 +19,7 @@
 
     ------------------------ Light styles ------------------------
 
-
-    ---> Line.
+    ---> Views.
 
     <!--<style name="main_divider_view">
         <item name="android:background">@color/divider</item>
@@ -38,8 +37,6 @@
         <item name="autoSizeTextType">uniform</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/common_text</item>
-        <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
-        <item name="autoSizeMinTextSize">@dimen/common_text_min</item>
     </style>
     ---> Layouts.
 
@@ -69,6 +66,7 @@
         <item name="android:padding">@dimen/common_text_padding</item>
         <item name="android:textAlignment">center</item>
         <item name="autoSizeTextType">uniform</item>
+        <item name="android:textStyle">bold|italic</item>
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">@dimen/common_text</item>
         <item name="autoSizeMaxTextSize">@dimen/common_text_max</item>
@@ -96,4 +94,11 @@
         <item name="contentDescription">@string/image</item>
         <item name="background">@android:color/transparent</item>
     </style>
+
+    ---> Views.
+
+    <style name="main_nav_view_text">
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
 </resources>

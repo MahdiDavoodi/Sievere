@@ -1,20 +1,18 @@
 <resources>
     // App.
-    <string name="app_name">Sievere</string>
-    <string name="app_category">Music</string>
-    <string name="app_description">Life is better when you play music.</string>
-    <string name="app_developer">Mahdi Davoodi</string>
+    <string name="app_name">Sievere\u0020</string>
+    <string name="app_category">Music\u0020</string>
+    <string name="app_description">Life is better when you play music.\u0020</string>
+    <string name="app_developer">Mahdi Davoodi\u0020</string>
 
     // Main Activity.
-    <string name="ma_nav_tracks">Tracks</string>
-    <string name="ma_nav_playlists">Playlists</string>
-    <string name="ma_nav_for_you">For You</string>
-    <string name="ma_toolbar_search">Search</string>
-    <string name="ma_toolbar_settings">Settings</string>
-    <string name="ma_toolbar_info">Info</string>
+    <string name="ma_nav_tracks">Tracks\u0020</string>
+    <string name="ma_nav_playlists">Playlists\u0020</string>
+    <string name="ma_nav_for_you">For You\u0020</string>
+    <string name="ma_toolbar_search">Search\u0020</string>
+    <string name="ma_toolbar_settings">Settings\u0020</string>
+    <string name="ma_toolbar_info">Info\u0020</string>
 
     // Widgets Descriptions.
     <string name="image">Image</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
