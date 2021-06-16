@@ -15,9 +15,15 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Default widgets styles and ... -->
         <item name="android:textViewStyle">@style/common_text</item>
+        <item name="android:popupMenuStyle">@style/popup_menu_main_style</item>
     </style>
 
     ------------------------ Light styles ------------------------
+
+    <!--popupMenu-->
+    <style name="popup_menu_main_style" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/bg_rounded_light</item>
+    </style>
 
     <!--Views-->
 

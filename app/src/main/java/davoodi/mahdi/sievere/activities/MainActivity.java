@@ -1,6 +1,7 @@
 package davoodi.mahdi.sievere.activities;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -8,9 +9,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     /*Toolbar Menu*/
     public void toolbarMenu(View view) {
-        PopupMenu menu = new PopupMenu(getApplicationContext(), view);
+        PopupMenu menu = new PopupMenu(this, view);
         menu.inflate(R.menu.main_toolbar);
         menu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.ma_toolbar_info) {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             } else return false;
         });
+        menu.show();
     }
 
     /*Actions*/
