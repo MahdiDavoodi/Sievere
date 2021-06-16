@@ -34,6 +34,7 @@
     <!--popupMenu-->
     <style name="popup_menu_main_style" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/bg_rounded_dark</item>
+        <item name="android:popupElevation">20dp</item>
     </style>
 
     <!--Views-->
