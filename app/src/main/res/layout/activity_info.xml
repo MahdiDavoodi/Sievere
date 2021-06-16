@@ -10,61 +10,131 @@
 
     <TextView
         style="@style/big_text_style_1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        style="@style/rounded_layout_bg"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="75dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            style="@style/big_text"
+        <LinearLayout
+            style="@style/rounded_layout_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/ia_title_text"
-            android:textSize="@dimen/big_text_min" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/ia_main_text_1"
-            android:textStyle="bold" />
+            <TextView
+                style="@style/big_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/ia_title_text"
+                android:textSize="@dimen/big_text_min" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/ia_main_text_2"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/ia_main_text_1"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/ia_main_text_3"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/ia_main_text_2"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/ia_main_text_4"
-            android:textAlignment="textEnd" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/ia_main_text_3"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/ia_main_text_4"
+                android:textAlignment="textEnd" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:minHeight="50dp">
+
+                <ImageButton
+                    android:id="@+id/ia_telegram_button"
+                    style="@style/info_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/image"
+                    android:maxWidth="60dp"
+                    android:maxHeight="60dp"
+                    android:minWidth="30dp"
+                    android:minHeight="30dp"
+                    android:onClick="infoTelegram"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_telegram_solid" />
+
+                <ImageButton
+                    android:id="@+id/ia_github_button"
+                    style="@style/info_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/image"
+                    android:maxWidth="60dp"
+                    android:maxHeight="60dp"
+                    android:minWidth="30dp"
+                    android:minHeight="30dp"
+                    android:onClick="infoGithub"
+                    app:layout_constraintBottom_toBottomOf="@+id/ia_telegram_button"
+                    app:layout_constraintEnd_toStartOf="@+id/ia_telegram_button"
+                    app:layout_constraintTop_toTopOf="@+id/ia_telegram_button"
+                    app:srcCompat="@drawable/ic_github_solid" />
+
+                <TextView
+                    android:id="@+id/ia_version_text"
+                    style="@style/small_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_version"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/ia_update_text"
+                    style="@style/small_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_lastUpdate"
+                    app:layout_constraintBottom_toTopOf="@+id/ia_version_text"
+                    app:layout_constraintEnd_toEndOf="@+id/ia_version_text"
+                    app:layout_constraintStart_toStartOf="@+id/ia_version_text" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

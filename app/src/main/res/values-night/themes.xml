@@ -20,6 +20,17 @@
 
     ------------------------ Dark styles ------------------------
 
+    <!--icon-->
+    <style name="main_toolbar_icon" parent="images">
+        <item name="android:tint">@color/dark_accent</item>
+        <item name="android:background">?attr/actionBarItemBackground</item>
+    </style>
+
+    <style name="info_icon" parent="images">
+        <item name="android:tint">@color/dark_primary</item>
+        <item name="android:background">?attr/actionBarItemBackground</item>
+    </style>
+
     <!--popupMenu-->
     <style name="popup_menu_main_style" parent="Widget.AppCompat.PopupMenu.Overflow">
         <item name="android:popupBackground">@drawable/bg_rounded_dark</item>
@@ -32,25 +43,6 @@
         <item name="itemTextColor">@color/main_nav_view_dark</item>
     </style>
 
-    <!--<style name="main_divider_view">
-        <item name="android:background">@color/dark_divider</item>
-    </style>-->
-
-    <!--Toolbar-->
-
-    <style name="main_toolbar_icon" parent="images">
-        <item name="android:tint">@color/dark_accent</item>
-        <item name="android:background">?attr/actionBarItemBackground</item>
-        <item name="android:height">30dp</item>
-        <item name="android:width">30dp</item>
-    </style>
-
-    <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">
-        <item name="fontFamily">@font/archive</item>
-        <item name="autoSizeTextType">uniform</item>
-        <item name="android:textColor">@color/dark_primary</item>
-        <item name="android:textSize">@dimen/common_text</item>
-    </style>
     <!--Layouts-->
 
     <style name="layout_primary_bg">
@@ -113,5 +105,12 @@
         <item name="android:textSize">@dimen/small_text</item>
         <item name="autoSizeMaxTextSize">@dimen/small_text_max</item>
         <item name="autoSizeMinTextSize">@dimen/small_text_min</item>
+    </style>
+
+    <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/archive</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/dark_primary</item>
+        <item name="android:textSize">@dimen/common_text</item>
     </style>
 </resources>
