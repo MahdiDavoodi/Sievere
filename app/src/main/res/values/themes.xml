@@ -61,6 +61,10 @@
         <item name="android:background">@drawable/bg_up_rounded_light</item>
     </style>
 
+    <style name="rounded_layout_bg">
+        <item name="android:background">@drawable/bg_rounded_light</item>
+    </style>
+
     <style name="down_rounded_layout_bg">
         <item name="android:background">@drawable/bg_down_rounded_light</item>
     </style>
@@ -73,6 +77,17 @@
         <item name="android:textAlignment">center</item>
         <item name="autoSizeTextType">uniform</item>
         <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/big_text</item>
+        <item name="autoSizeMaxTextSize">@dimen/big_text_max</item>
+        <item name="autoSizeMinTextSize">@dimen/big_text_min</item>
+    </style>
+
+    <style name="big_text_style_1" parent="Widget.MaterialComponents.TextView">
+        <item name="fontFamily">@font/archive</item>
+        <item name="android:padding">@dimen/big_text_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/big_text</item>
         <item name="autoSizeMaxTextSize">@dimen/big_text_max</item>
         <item name="autoSizeMinTextSize">@dimen/big_text_min</item>
