@@ -6,9 +6,9 @@ public class Track {
     public static final String KEY_PATH = "path";
     public static final String KEY_TITLE = "title";
     public static final String KEY_ALBUM_ID = "albumId";
-    public static final String KEY_ALBUM = "album";
+    public static final String KEY_ALBUM = "albumName";
     public static final String KEY_ARTIST_ID = "artistId";
-    public static final String KEY_ARTIST = "artist";
+    public static final String KEY_ARTIST = "artistName";
     public static final String KEY_LENGTH = "length";
     public static final String KEY_NUMBER = "trackNumber";
     public static final String KEY_BITRATE = "bitrate";
