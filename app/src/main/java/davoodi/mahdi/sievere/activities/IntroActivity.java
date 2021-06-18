@@ -9,7 +9,7 @@ import davoodi.mahdi.sievere.R;
 
 public class IntroActivity extends AppCompatActivity {
 
-    protected static final int DELAY = 800;
+    protected static final int DELAY = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
