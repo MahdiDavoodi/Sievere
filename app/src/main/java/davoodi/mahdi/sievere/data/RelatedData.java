@@ -1,4 +1,4 @@
-package davoodi.mahdi.sievere.database;
+package davoodi.mahdi.sievere.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
