@@ -28,4 +28,5 @@
 
     <!--Toasts-->
     <string name="denied_read_data_permission_toast">We need your permission to find your audio files.</string>
+    <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤</string>
 </resources>

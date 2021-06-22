@@ -1,26 +1,34 @@
 package davoodi.mahdi.sievere.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import org.jetbrains.annotations.NotNull;
 
 import davoodi.mahdi.sievere.R;
-import davoodi.mahdi.sievere.permission.Permissions;
 
 public class IntroActivity extends AppCompatActivity {
 
     protected static final int DELAY = 500;
+    public static final int PERMISSION_READ_STORAGE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        if (Permissions.checkReadStoragePermission(this))
-            new Thread(this::nextActivity).start();
+        if (checkReadStoragePermission())
+            new Thread(this::startTheApp).start();
     }
 
-    private void nextActivity() {
+    private void startTheApp() {
         try {
             Thread.sleep(DELAY);
         } catch (InterruptedException e) {
@@ -28,6 +36,33 @@ public class IntroActivity extends AppCompatActivity {
         } finally {
             startActivity(new Intent(IntroActivity.this, MainActivity.class));
             finish();
+        }
+    }
+
+    public boolean checkReadStoragePermission() {
+        int READ_PERMISSION = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if ((READ_PERMISSION != PackageManager.PERMISSION_GRANTED)) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_READ_STORAGE);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_READ_STORAGE) {
+            if (grantResults.length > 0 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                String toast;
+                if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    toast = getResources().getString(R.string.denied_read_data_permission_toast);
+                } else {
+                    new Thread(this::startTheApp).start();
+                    toast = getResources().getString(R.string.accepted_read_data_permission_toast);
+                }
+                Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
+            }
         }
     }
 }
