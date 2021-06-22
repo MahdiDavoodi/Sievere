@@ -1,9 +1,11 @@
 package davoodi.mahdi.sievere.components;
 
+import android.net.Uri;
+
 public class Track {
 
     public static final String KEY_ID = "id";
-    public static final String KEY_PATH = "path";
+    public static final String KEY_URI = "uri";
     public static final String KEY_TITLE = "title";
     public static final String KEY_ALBUM_ID = "albumId";
     public static final String KEY_ALBUM = "albumName";
@@ -17,29 +19,51 @@ public class Track {
     public static final String KEY_PLAYED = "playedCount";
 
 
-    private final int albumId,
+    private long id;
+
+    private int albumId,
             artistId,
-            id,
-            length,
             trackNumber,
             bitrate,
             year,
             playedCount;
 
-    private final String path,
-            title,
+    private String title,
             albumName,
             artistName,
+            length,
             genre;
 
-    public Track(int id,
-                 String path,
+    private Uri uri;
+
+    public Track(long id,
+                 Uri uri,
+                 String title,
+                 String artistName,
+                 String albumName,
+                 String length,
+                 int bitrate,
+                 int year,
+                 String genre) {
+        this.id = id;
+        this.bitrate = bitrate;
+        this.year = year;
+        this.title = title;
+        this.albumName = albumName;
+        this.artistName = artistName;
+        this.length = length;
+        this.genre = genre;
+        this.uri = uri;
+    }
+
+    public Track(long id,
+                 Uri uri,
                  String title,
                  int albumId,
                  String albumName,
                  int artistId,
                  String artistName,
-                 int length,
+                 String length,
                  int trackNumber,
                  int bitrate,
                  int year,
@@ -53,11 +77,63 @@ public class Track {
         this.bitrate = bitrate;
         this.year = year;
         this.playedCount = playedCount;
-        this.path = path;
+        this.uri = uri;
         this.title = title;
         this.albumName = albumName;
         this.artistName = artistName;
         this.genre = genre;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setAlbumId(int albumId) {
+        this.albumId = albumId;
+    }
+
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
+    }
+
+    public void setTrackNumber(int trackNumber) {
+        this.trackNumber = trackNumber;
+    }
+
+    public void setBitrate(int bitrate) {
+        this.bitrate = bitrate;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setPlayedCount(int playedCount) {
+        this.playedCount = playedCount;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
+    }
+
+    public void setLength(String length) {
+        this.length = length;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
     }
 
     public int getAlbumId() {
@@ -68,11 +144,15 @@ public class Track {
         return artistId;
     }
 
-    public int getId() {
+    public Uri getUri() {
+        return uri;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public int getLength() {
+    public String getLength() {
         return length;
     }
 
@@ -90,10 +170,6 @@ public class Track {
 
     public int getPlayedCount() {
         return playedCount;
-    }
-
-    public String getPath() {
-        return path;
     }
 
     public String getTitle() {

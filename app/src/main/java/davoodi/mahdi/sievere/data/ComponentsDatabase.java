@@ -39,7 +39,7 @@ public class ComponentsDatabase extends SQLiteOpenHelper {
     private static final String CMD_CREATE_TRACKS = "CREATE TABLE IF NOT EXISTS '" +
             TABLE_TRACKS + "' " + "( '"
             + Track.KEY_ID + "' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, '"
-            + Track.KEY_PATH + "' TEXT, '"
+            + Track.KEY_URI + "' TEXT, '"
             + Track.KEY_TITLE + "' TEXT, '"
             + Track.KEY_ALBUM_ID + "' INTEGER, '"
             + Track.KEY_ALBUM + "' TEXT, '"

@@ -1,6 +1,6 @@
 package davoodi.mahdi.sievere.data;
 
-import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -23,22 +23,23 @@ public class DataLoader {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-
+                long id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID));
+                Uri songUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
                 String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
                 String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                String duration = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
-                String url = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
-                ModelAudio modelAudio = new ModelAudio();
-                modelAudio.setaudioTitle(title);
-                modelAudio.setaudioArtist(artist);
-                modelAudio.setaudioUri(Uri.parse(url));
-                modelAudio.setaudioDuration(duration);
-                audioArrayList.add(modelAudio);
+                String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
+                String length = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
+                int bitrate = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.BITRATE));
+                int year = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.YEAR));
+                String genre = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.GENRE));
+
+                Track track = new Track(id, songUri, title, artist, album, length, bitrate, year, genre);
+                tracks.add(track);
 
             } while (cursor.moveToNext());
         }
         assert cursor != null;
         cursor.close();
-
+        return tracks;
     }
 }

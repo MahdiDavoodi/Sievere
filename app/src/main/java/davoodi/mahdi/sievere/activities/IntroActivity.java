@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.permission.Permissions;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -15,7 +16,8 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        new Thread(this::nextActivity).start();
+        if (Permissions.checkReadStoragePermission(this))
+            new Thread(this::nextActivity).start();
     }
 
     private void nextActivity() {

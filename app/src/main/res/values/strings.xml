@@ -25,4 +25,7 @@
 
     <!--Widgets Descriptions-->
     <string name="image">Image</string>
+
+    <!--Toasts-->
+    <string name="denied_read_data_permission_toast">We need your permission to find your audio files.</string>
 </resources>
