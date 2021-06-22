@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import davoodi.mahdi.sievere.components.TracksInPlaylists;
 
-public class RelatedData extends SQLiteOpenHelper {
+public class RelatedDatabase extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "si-related-db";
 
@@ -20,7 +20,7 @@ public class RelatedData extends SQLiteOpenHelper {
             + TracksInPlaylists.KEY_PLAYLIST + "' INTEGER"
             + ")";
 
-    public RelatedData(@Nullable Context context) {
+    public RelatedDatabase(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

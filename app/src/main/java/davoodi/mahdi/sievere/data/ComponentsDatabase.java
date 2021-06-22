@@ -11,7 +11,7 @@ import davoodi.mahdi.sievere.components.Artist;
 import davoodi.mahdi.sievere.components.Playlist;
 import davoodi.mahdi.sievere.components.Track;
 
-public class ComponentsData extends SQLiteOpenHelper {
+public class ComponentsDatabase extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "si-components-db";
 
@@ -61,7 +61,7 @@ public class ComponentsData extends SQLiteOpenHelper {
             + Playlist.KEY_TRACKS + "' INTEGER"
             + ")";
 
-    public ComponentsData(@Nullable Context context) {
+    public ComponentsDatabase(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
