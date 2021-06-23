@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="@+id/tf_song_title"
         app:layout_constraintTop_toBottomOf="@+id/tf_song_title" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/tf_song_more_option"
         style="@style/common_icon"
         android:layout_width="wrap_content"
