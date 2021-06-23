@@ -45,7 +45,7 @@ public class ComponentsDatabase extends SQLiteOpenHelper {
             + Track.KEY_ALBUM + "' TEXT, '"
             + Track.KEY_ARTIST_ID + "' INTEGER, '"
             + Track.KEY_ARTIST + "' TEXT, '"
-            + Track.KEY_LENGTH + "' INTEGER, '"
+            + Track.KEY_LENGTH + "' TEXT, '"
             + Track.KEY_NUMBER + "' INTEGER, '"
             + Track.KEY_BITRATE + "' INTEGER, '"
             + Track.KEY_YEAR + "' INTEGER, '"
