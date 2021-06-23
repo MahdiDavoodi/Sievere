@@ -27,6 +27,10 @@
     <string name="image">Image</string>
 
     <!--Toasts-->
-    <string name="denied_read_data_permission_toast">We need your permission to find your audio files.</string>
-    <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤</string>
+    <string name="denied_read_data_permission_toast">We need your permission to find your audio files.\u0020</string>
+    <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤\u0020</string>
+
+    <!--Common text-->
+    <string name="title">Title\u0020</string>
+    <string name="artist">Artist\u0020</string>
 </resources>

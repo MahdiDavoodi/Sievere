@@ -1,50 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/tf_song_status_image"
+        style="@style/images"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:contentDescription="@string/image"
+        android:maxWidth="70dp"
+        android:maxHeight="70dp"
+        android:minWidth="40dp"
+        android:minHeight="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tf_song_artist"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/tf_song_title"
         app:srcCompat="@drawable/ic_play_solid" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tf_song_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:text="TextView"
+        android:padding="@dimen/small_text_padding"
+        android:text="@string/title"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tf_song_status_image"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="71dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tf_song_artist"
+        style="@style/small_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:layout_marginBottom="10dp"
+        android:text="@string/artist"
+        android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="@+id/tf_song_title"
+        app:layout_constraintTop_toBottomOf="@+id/tf_song_title" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/tf_song_more_option"
+        style="@style/common_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
+        android:contentDescription="@string/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_play_solid" />
+        app:srcCompat="@drawable/ic_more_solid" />
 </androidx.constraintlayout.widget.ConstraintLayout>

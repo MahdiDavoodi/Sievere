@@ -125,6 +125,10 @@
         <item name="android:contentDescription">@string/image</item>
     </style>
 
+    <style name="common_icon" parent="images">
+        <item name="android:background">?attr/actionBarItemBackground</item>
+    </style>
+
     <!--Views-->
 
     <style name="main_nav_view_text">
