@@ -31,6 +31,8 @@
     <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤\u0020</string>
 
     <!--Common text-->
-    <string name="title">Title\u0020</string>
-    <string name="artist">Artist\u0020</string>
+
+
+    <!--ItalicText-->
+    <string name="italicText">%1$s\u0020</string>
 </resources>

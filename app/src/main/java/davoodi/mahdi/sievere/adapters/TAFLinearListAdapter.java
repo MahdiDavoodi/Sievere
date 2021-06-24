@@ -43,8 +43,8 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Track track = tracks.get(position);
 
-        holder.title.setText(track.getTitle());
-        holder.artist.setText(track.getArtistName());
+        holder.title.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
+        holder.artist.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
     }
 
     @Override
