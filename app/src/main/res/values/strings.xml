@@ -33,6 +33,11 @@
     <!--Common text-->
 
 
-    <!--ItalicText-->
+    <!--Italic Text-->
     <string name="italicText">%1$s\u0020</string>
+
+    <!--Common Text-->
+    <string name="unknown">Unknown</string>
+    <string name="single">Single</string>
+    <string name="blank">\u0020</string>
 </resources>

@@ -34,17 +34,26 @@ public class DataLoader {
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE));
                 String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST));
                 String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM));
-                String length = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION));
+                long length = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION));
                 int bitrate = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.BITRATE));
                 int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR));
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
                 long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
 
-                int artistId = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST_ID));
-                Log.i("DataLoader", title + artistId);
-                Track track = new Track(id, songUri, fileName, title, artist, album, length, bitrate, year, genre, added);
+                Log.i("DataLoader", length + "");
+                Track track = new Track(context,
+                        id,
+                        songUri,
+                        fileName,
+                        title,
+                        artist,
+                        album,
+                        length,
+                        bitrate,
+                        year,
+                        genre,
+                        added);
                 all.add(track);
-
             } while (cursor.moveToNext());
         }
         assert cursor != null;

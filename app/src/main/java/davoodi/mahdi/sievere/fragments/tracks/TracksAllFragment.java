@@ -29,11 +29,8 @@ public class TracksAllFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracks_all, container, false);
         list = view.findViewById(R.id.tf_all_list);
         instance = this;
-       /*new Thread(() -> DataLoader.startAllTracksList(getActivity(),
-                null, null, null, null)).start();*/
-        showTheList();
-        DataLoader.startAllTracksList(getActivity(),
-                null, null, null, null);
+        new Thread(() -> DataLoader.startAllTracksList(getActivity(),
+                null, null, null, null)).start();
         return view;
     }
 

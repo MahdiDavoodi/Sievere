@@ -1,6 +1,9 @@
 package davoodi.mahdi.sievere.components;
 
+import android.content.Context;
 import android.net.Uri;
+
+import davoodi.mahdi.sievere.R;
 
 public class Track {
 
@@ -19,7 +22,8 @@ public class Track {
     public static final String KEY_PLAYED = "playedCount";
 
 
-    private long id, dateAdded;
+    Context context;
+    private long id, dateAdded, length;
 
     private int albumId,
             artistId,
@@ -32,22 +36,23 @@ public class Track {
             title,
             albumName,
             artistName,
-            length,
             genre;
 
     private Uri uri;
 
-    public Track(long id,
+    public Track(Context context,
+                 long id,
                  Uri uri,
                  String fileName,
                  String title,
                  String artistName,
                  String albumName,
-                 String length,
+                 long length,
                  int bitrate,
                  int year,
                  String genre
             , long dateAdded) {
+        this.context = context;
         this.id = id;
         this.bitrate = bitrate;
         this.year = year;
@@ -60,6 +65,7 @@ public class Track {
         this.uri = uri;
         this.dateAdded = dateAdded;
     }
+
 
     public String getFileName() {
         return fileName;
@@ -117,7 +123,7 @@ public class Track {
         this.artistName = artistName;
     }
 
-    public void setLength(String length) {
+    public void setLength(long length) {
         this.length = length;
     }
 
@@ -145,7 +151,7 @@ public class Track {
         return id;
     }
 
-    public String getLength() {
+    public long getLength() {
         return length;
     }
 
@@ -166,21 +172,26 @@ public class Track {
     }
 
     public String getTitle() {
-        if (title == null) {
-
-        }
-        return title;
+        if (title == null)
+            return fileName;
+        else return title;
     }
 
     public String getAlbumName() {
-        return albumName;
+        if (albumName == null)
+            return context.getResources().getString(R.string.single);
+        else return albumName;
     }
 
     public String getArtistName() {
-        return artistName;
+        if (artistName == null)
+            return context.getResources().getString(R.string.unknown);
+        else return artistName;
     }
 
     public String getGenre() {
-        return genre;
+        if (genre == null)
+            return context.getResources().getString(R.string.blank);
+        else return genre;
     }
 }
