@@ -35,8 +35,8 @@ public class TracksAllFragment extends Fragment {
     public void showTheList() {
         if (DataLoader.initialDataReady) {
             ArrayList<Track> tracks = DataLoader.tracks;
-            list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks));
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
+            list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks));
             list.setHasFixedSize(true);
         }
     }

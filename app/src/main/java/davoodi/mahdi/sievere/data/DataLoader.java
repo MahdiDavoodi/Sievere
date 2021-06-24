@@ -27,15 +27,15 @@ public class DataLoader {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media._ID));
+                long id = Long.parseLong(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID)));
                 Uri songUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
-                String title = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
-                String artist = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                String album = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM));
-                String length = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
-                int bitrate = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.BITRATE));
-                int year = cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.YEAR));
-                String genre = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.GENRE));
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE));
+                String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
+                String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM));
+                String length = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
+                int bitrate = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.BITRATE)));
+                int year = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR)));
+                String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE));
 
                 Track track = new Track(id, songUri, title, artist, album, length, bitrate, year, genre);
                 all.add(track);
