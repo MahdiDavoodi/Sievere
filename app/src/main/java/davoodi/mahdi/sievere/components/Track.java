@@ -28,7 +28,8 @@ public class Track {
             year,
             playedCount;
 
-    private String title,
+    private String fileName,
+            title,
             albumName,
             artistName,
             length,
@@ -38,6 +39,7 @@ public class Track {
 
     public Track(long id,
                  Uri uri,
+                 String fileName,
                  String title,
                  String artistName,
                  String albumName,
@@ -49,6 +51,7 @@ public class Track {
         this.id = id;
         this.bitrate = bitrate;
         this.year = year;
+        this.fileName = fileName;
         this.title = title;
         this.albumName = albumName;
         this.artistName = artistName;
@@ -56,6 +59,14 @@ public class Track {
         this.genre = genre;
         this.uri = uri;
         this.dateAdded = dateAdded;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public long getDateAdded() {
@@ -155,6 +166,9 @@ public class Track {
     }
 
     public String getTitle() {
+        if (title == null) {
+
+        }
         return title;
     }
 

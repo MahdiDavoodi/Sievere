@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
-import davoodi.mahdi.sievere.activities.MainActivity;
 import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
@@ -30,10 +29,10 @@ public class TracksAllFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracks_all, container, false);
         list = view.findViewById(R.id.tf_all_list);
         instance = this;
-       /*new Thread(() -> DataLoader.tfAllListStart(getActivity(),
+       /*new Thread(() -> DataLoader.startAllTracksList(getActivity(),
                 null, null, null, null)).start();*/
         showTheList();
-        DataLoader.tfAllListStart(getActivity(),
+        DataLoader.startAllTracksList(getActivity(),
                 null, null, null, null);
         return view;
     }

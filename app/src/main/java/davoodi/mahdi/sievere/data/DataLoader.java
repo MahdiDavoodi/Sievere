@@ -7,8 +7,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import androidx.fragment.app.FragmentManager;
-
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.components.Track;
@@ -29,8 +27,10 @@ public class DataLoader {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
+                /*Track metadata*/
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns._ID));
                 Uri songUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
+                String fileName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME)).split("\\.")[0];
                 String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE));
                 String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST));
                 String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM));
@@ -39,7 +39,10 @@ public class DataLoader {
                 int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR));
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
                 long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
-                Track track = new Track(id, songUri, title, artist, album, length, bitrate, year, genre, added);
+
+                int artistId = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST_ID));
+                Log.i("DataLoader", title + artistId);
+                Track track = new Track(id, songUri, fileName, title, artist, album, length, bitrate, year, genre, added);
                 all.add(track);
 
             } while (cursor.moveToNext());
@@ -50,13 +53,12 @@ public class DataLoader {
         return all;
     }
 
-    public static void tfAllListStart(Context context, String[] projection,
-                                      String selection,
-                                      String[] selectionArgs,
-                                      String sortOrder) {
+    public static void startAllTracksList(Context context, String[] projection,
+                                          String selection,
+                                          String[] selectionArgs,
+                                          String sortOrder) {
         getTracks(context, projection, selection, selectionArgs, sortOrder);
-        if (tracks != null) {
+        if (tracks != null)
             TracksAllFragment.getInstance().showTheList();
-        }
     }
 }
