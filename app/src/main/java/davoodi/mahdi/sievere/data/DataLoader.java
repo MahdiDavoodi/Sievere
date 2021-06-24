@@ -4,6 +4,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -67,7 +68,13 @@ public class DataLoader {
                                           String[] selectionArgs,
                                           String sortOrder) {
         getTracks(context, projection, selection, selectionArgs, sortOrder);
-        if (tracks != null)
-            TracksAllFragment.getInstance().showTheList();
+
+        /*Must be in UI(Main) Thread*/
+        Handler handler = new Handler(context.getMainLooper());
+        Runnable runnable = () -> {
+            if (tracks != null)
+                TracksAllFragment.getInstance().showTheList();
+        };
+        handler.post(runnable);
     }
 }
