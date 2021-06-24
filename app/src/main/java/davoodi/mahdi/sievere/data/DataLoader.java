@@ -9,14 +9,18 @@ import android.provider.MediaStore;
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.components.Track;
+import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment;
 
 public class DataLoader {
 
-    public ArrayList<Track> getTracks(Context context, String[] projection,
-                                      String selection,
-                                      String[] selectionArgs,
-                                      String sortOrder) {
-        ArrayList<Track> tracks = new ArrayList<>();
+    public static ArrayList<Track> tracks;
+    public static boolean initialDataReady = false;
+
+    public static ArrayList<Track> getTracks(Context context, String[] projection,
+                                             String selection,
+                                             String[] selectionArgs,
+                                             String sortOrder) {
+        ArrayList<Track> all = new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
         Cursor cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
@@ -34,12 +38,25 @@ public class DataLoader {
                 String genre = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.GENRE));
 
                 Track track = new Track(id, songUri, title, artist, album, length, bitrate, year, genre);
-                tracks.add(track);
+                all.add(track);
 
             } while (cursor.moveToNext());
         }
         assert cursor != null;
         cursor.close();
-        return tracks;
+        tracks = all;
+        return all;
+    }
+
+    public static void tfAllListStart(Context context, String[] projection,
+                                      String selection,
+                                      String[] selectionArgs,
+                                      String sortOrder) {
+        getTracks(context, projection, selection, selectionArgs, sortOrder);
+        if (tracks != null) {
+            initialDataReady = true;
+            TracksAllFragment fragment = new TracksAllFragment();
+            fragment.showTheList();
+        }
     }
 }
