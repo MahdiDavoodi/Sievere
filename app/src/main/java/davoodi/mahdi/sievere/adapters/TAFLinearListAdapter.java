@@ -44,7 +44,7 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
         Track track = tracks.get(position);
 
         holder.title.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
-        holder.artist.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
+        holder.artist.setText(context.getResources().getString(R.string.italicText, track.getArtistName()));
     }
 
     @Override

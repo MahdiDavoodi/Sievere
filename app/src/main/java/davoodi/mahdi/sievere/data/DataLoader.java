@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -16,7 +17,6 @@ import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment;
 public class DataLoader {
 
     public static ArrayList<Track> tracks = new ArrayList<>();
-    public static boolean initialDataReady = false;
 
     public static ArrayList<Track> getTracks(Context context, String[] projection,
                                              String selection,
@@ -29,17 +29,17 @@ public class DataLoader {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media._ID));
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns._ID));
                 Uri songUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE));
-                String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST));
-                String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM));
-                String length = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION));
-                /*int bitrate = Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.BITRATE)));*/
-                int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.YEAR));
-                /*String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.GENRE));*/
-
-                Track track = new Track(id, songUri, title, artist, album, length, 0, year, "genre");
+                String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE));
+                String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST));
+                String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM));
+                String length = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION));
+                int bitrate = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.BITRATE));
+                int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR));
+                String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
+                long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
+                Track track = new Track(id, songUri, title, artist, album, length, bitrate, year, genre, added);
                 all.add(track);
 
             } while (cursor.moveToNext());
@@ -56,7 +56,6 @@ public class DataLoader {
                                       String sortOrder) {
         getTracks(context, projection, selection, selectionArgs, sortOrder);
         if (tracks != null) {
-            initialDataReady = true;
             TracksAllFragment.getInstance().showTheList();
         }
     }

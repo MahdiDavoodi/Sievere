@@ -19,7 +19,7 @@ public class Track {
     public static final String KEY_PLAYED = "playedCount";
 
 
-    private long id;
+    private long id, dateAdded;
 
     private int albumId,
             artistId,
@@ -44,7 +44,8 @@ public class Track {
                  String length,
                  int bitrate,
                  int year,
-                 String genre) {
+                 String genre
+            , long dateAdded) {
         this.id = id;
         this.bitrate = bitrate;
         this.year = year;
@@ -54,34 +55,15 @@ public class Track {
         this.length = length;
         this.genre = genre;
         this.uri = uri;
+        this.dateAdded = dateAdded;
     }
 
-    public Track(long id,
-                 Uri uri,
-                 String title,
-                 int albumId,
-                 String albumName,
-                 int artistId,
-                 String artistName,
-                 String length,
-                 int trackNumber,
-                 int bitrate,
-                 int year,
-                 String genre,
-                 int playedCount) {
-        this.albumId = albumId;
-        this.artistId = artistId;
-        this.id = id;
-        this.length = length;
-        this.trackNumber = trackNumber;
-        this.bitrate = bitrate;
-        this.year = year;
-        this.playedCount = playedCount;
-        this.uri = uri;
-        this.title = title;
-        this.albumName = albumName;
-        this.artistName = artistName;
-        this.genre = genre;
+    public long getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(long dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public void setId(long id) {
