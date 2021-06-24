@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.activities.MainActivity;
 import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
@@ -21,19 +22,28 @@ import davoodi.mahdi.sievere.data.DataLoader;
 public class TracksAllFragment extends Fragment {
 
     static RecyclerView list;
+    private static TracksAllFragment instance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tracks_all, container, false);
         list = view.findViewById(R.id.tf_all_list);
-        new Thread(() -> DataLoader.tfAllListStart(getActivity(),
-                null, null, null, null)).start();
+        instance = this;
+       /*new Thread(() -> DataLoader.tfAllListStart(getActivity(),
+                null, null, null, null)).start();*/
+        showTheList();
+        DataLoader.tfAllListStart(getActivity(),
+                null, null, null, null);
         return view;
     }
 
+    public static TracksAllFragment getInstance() {
+        return instance;
+    }
+
     public void showTheList() {
-        if (DataLoader.initialDataReady) {
+        if (getActivity() != null) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
             list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks));
