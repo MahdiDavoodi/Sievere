@@ -89,6 +89,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             app:defaultNavHost="true"
             app:navGraph="@navigation/ma_nav_graph" />
     </LinearLayout>

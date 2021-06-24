@@ -11,16 +11,12 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="All Tracks" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tf_all_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:overScrollMode="never"
             android:scrollbars="none" />
 
     </LinearLayout>

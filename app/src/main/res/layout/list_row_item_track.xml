@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="60dp">
 
     <ImageView
         android:id="@+id/tf_song_status_image"
@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:contentDescription="@string/image"
-        android:maxWidth="70dp"
-        android:maxHeight="70dp"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
         android:minWidth="40dp"
         android:minHeight="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/tf_song_artist"
