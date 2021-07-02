@@ -14,6 +14,7 @@
     <string name="ma_toolbar_settings">Settings\u0020</string>
     <string name="ma_toolbar_info">Info\u0020</string>
     <string name="ma_toolbar_rate">Rate the App!\u0020</string>
+    <string name="ma_toolbar_scan">Scan the library\u0020</string>
 
     <!--Info Activity-->
     <string name="ia_title_text">Hello, Friend!\u0020</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/ma_toolbar_info"
@@ -12,5 +11,9 @@
 
     <item
         android:id="@+id/ma_toolbar_rate"
-        android:title="@string/ma_toolbar_rate"/>
+        android:title="@string/ma_toolbar_rate" />
+
+    <item
+        android:id="@+id/ma_toolbar_scan"
+        android:title="@string/ma_toolbar_scan" />
 </menu>
