@@ -19,6 +19,16 @@
     </style>
 
     ------------------------ Dark styles ------------------------
+    <!--indicators-->
+    <style name="default_indicator">
+        <item name="dotsColor">@color/dark_accent</item>
+        <item name="selectedDotColor">@color/dark_primary</item>
+        <item name="dotsSize">14dp</item>
+        <item name="dotsCornerRadius">8dp</item>
+        <item name="dotsSpacing">4dp</item>
+        <item name="dotsWidthFactor">2.5</item>
+        <item name="progressMode">true</item>
+    </style>
 
     <!--icon-->
     <style name="main_toolbar_icon" parent="images">

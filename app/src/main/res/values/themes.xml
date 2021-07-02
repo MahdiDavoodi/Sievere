@@ -19,6 +19,16 @@
     </style>
 
     ------------------------ Light styles ------------------------
+    <!--indicators-->
+    <style name="default_indicator">
+        <item name="dotsColor">@color/accent</item>
+        <item name="selectedDotColor">@color/primary</item>
+        <item name="dotsSize">14dp</item>
+        <item name="dotsCornerRadius">8dp</item>
+        <item name="dotsSpacing">4dp</item>
+        <item name="dotsWidthFactor">2.5</item>
+        <item name="progressMode">true</item>
+    </style>
 
     <!--icon-->
     <style name="main_toolbar_icon" parent="images">

@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
@@ -32,9 +34,10 @@ public class TracksFragment extends Fragment {
         TracksViewPagerAdapter adapter = new TracksViewPagerAdapter(fragments,
                 getChildFragmentManager(),
                 getLifecycle());
-
+        DotsIndicator indicator = view.findViewById(R.id.tf_indicator);
         ViewPager2 viewPager = view.findViewById(R.id.tf_view_pager);
         viewPager.setAdapter(adapter);
+        indicator.setViewPager2(viewPager);
 
         return view;
     }
