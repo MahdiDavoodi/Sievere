@@ -29,8 +29,14 @@ public class TracksAllFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tracks_all, container, false);
         list = view.findViewById(R.id.tf_all_list);
         instance = this;
-        new Thread(() -> DataLoader.startAllTracksList(getActivity(),
-                null, null, null, null)).start();
+
+        // Get the data ready for list and pass to it.
+        if (DataLoader.isAllReady)
+            showTheList();
+        else
+            new Thread(() -> DataLoader.allTracksList(getActivity(),
+                    null, null, null, null)).start();
+        //
         return view;
     }
 
@@ -39,7 +45,7 @@ public class TracksAllFragment extends Fragment {
     }
 
     public void showTheList() {
-        if (getActivity() != null) {
+        if (getActivity() != null && DataLoader.tracks.size() != 0) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
             list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks));

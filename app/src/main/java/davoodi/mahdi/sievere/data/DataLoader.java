@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -15,6 +14,7 @@ import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment;
 
 public class DataLoader {
 
+    public static boolean isAllReady = false;
     public static ArrayList<Track> tracks = new ArrayList<>();
 
     public static ArrayList<Track> getTracks(Context context, String[] projection,
@@ -41,7 +41,6 @@ public class DataLoader {
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
                 long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
 
-                Log.i("DataLoader", length + "");
                 Track track = new Track(context,
                         id,
                         songUri,
@@ -59,21 +58,22 @@ public class DataLoader {
         }
         assert cursor != null;
         cursor.close();
-        tracks = all;
         return all;
     }
 
-    public static void startAllTracksList(Context context, String[] projection,
-                                          String selection,
-                                          String[] selectionArgs,
-                                          String sortOrder) {
-        getTracks(context, projection, selection, selectionArgs, sortOrder);
+    public static void allTracksList(Context context, String[] projection,
+                                     String selection,
+                                     String[] selectionArgs,
+                                     String sortOrder) {
+        tracks = getTracks(context, projection, selection, selectionArgs, sortOrder);
 
         /*Must be in UI(Main) Thread*/
         Handler handler = new Handler(context.getMainLooper());
         Runnable runnable = () -> {
-            if (tracks != null)
+            if (tracks != null) {
+                isAllReady = true;
                 TracksAllFragment.getInstance().showTheList();
+            }
         };
         handler.post(runnable);
     }
