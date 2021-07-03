@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.NowPlayingActivity">
+
+    <com.masoudss.lib.WaveformSeekBar
+        android:id="@+id/waveformSeekBar"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:wave_background_color="@color/accent"
+        app:wave_corner_radius="2dp"
+        app:wave_gap="2dp"
+        app:wave_gravity="center"
+        app:wave_max_progress="100"
+        app:wave_min_height="5dp"
+        app:wave_progress="33"
+        app:wave_progress_color="@color/primary"
+        app:wave_width="5dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
