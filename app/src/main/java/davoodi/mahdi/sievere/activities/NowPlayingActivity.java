@@ -22,9 +22,9 @@ public class NowPlayingActivity extends AppCompatActivity {
         waveformSeekBar.setProgress(33);
         waveformSeekBar.setMaxProgress(100);
         waveformSeekBar.setWaveGravity(WaveGravity.CENTER);
-        waveformSeekBar.setWaveBackgroundColor(ContextCompat.getColor(this, R.color.dark_accent));
-        waveformSeekBar.setWaveProgressColor(ContextCompat.getColor(this, R.color.dark_primary));
-        int[] array = {0, 0, 0, 0, 2, 5, 3, 6, 6, 4, 7, 1, 0, 0, 0};
+        waveformSeekBar.setWaveBackgroundColor(ContextCompat.getColor(this, R.color.dark_secondary_text));
+        waveformSeekBar.setWaveProgressColor(ContextCompat.getColor(this, R.color.primary));
+        int[] array = {0, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 0, 8, 4, 6, 3, 2, 3, 5, 8, 0, 0, 0, 2, 5, 3, 6, 6, 4, 7, 1, 0, 0, 0};
         waveformSeekBar.setSampleFrom(array);
     }
 }
