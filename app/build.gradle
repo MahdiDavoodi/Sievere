@@ -42,11 +42,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    // Indicators
+    /*UI Indicators*/
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
-    // Seekbars
+    /*Seekbars*/
     implementation 'com.github.massoudss:waveformSeekBar:3.0.0'
     implementation 'com.github.lincollincol:Amplituda:1.7'
-
 }

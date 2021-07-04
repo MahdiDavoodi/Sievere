@@ -3,15 +3,20 @@ package davoodi.mahdi.sievere.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.masoudss.lib.WaveformSeekBar;
 
 import davoodi.mahdi.sievere.R;
-import davoodi.mahdi.sievere.data.DataLoader;
-import linc.com.amplituda.Amplituda;
 
 public class NowPlayingActivity extends AppCompatActivity {
+
+    // Sample final array for seekbar waves pattern. I have to change it in the future.
+    // TODO: Create wave pattern with audio files.(Already have the dependency)
+    private final int[] WAVE_PATTERN = {0, 1, 1, 0, 1, 1, 2, 3, 4, 2,
+            1, 0, 1, 5, 4, 6, 1, 2, 8, 6, 4, 3, 1, 1, 1, 1, 2, 3, 1, 5
+            , 4, 5, 2, 8, 4, 1, 1, 2, 1, 5, 6, 4, 5, 6, 8, 9, 1, 2,
+            5, 4, 5, 6, 1, 2, 1, 4, 5, 5, 6, 5, 4, 6, 8, 9, 8, 7, 5,
+            9, 8, 7, 6, 4, 0, 5, 1, 9, 6, 4, 5, 9, 8, 4, 2, 3, 1, 1, 1, 0, 0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +24,6 @@ public class NowPlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_now_playing);
 
         WaveformSeekBar waveformSeekBar = findViewById(R.id.npa_seekbar);
-        int[] array = {0, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 0, 8, 4, 6, 3, 2, 3, 5, 8, 0, 0, 0, 2, 5, 3, 6, 6, 4, 7, 1, 0, 0, 0};
-        //waveformSeekBar.setSampleFrom(array);
-
-        Amplituda amplituda = new Amplituda(this);
-
-        amplituda.fromPath(DataLoader.tracks.get(0).getUri().getPath()).amplitudesAsList(list -> {
-            int[] tmp = new int[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                tmp[i] = list.get(i);
-            }
-            Log.i("TestTT", tmp.length + "");
-            waveformSeekBar.setSampleFrom(tmp);
-        });
-
+        new Thread(() -> waveformSeekBar.setSampleFrom(WAVE_PATTERN)).start();
     }
-
 }
