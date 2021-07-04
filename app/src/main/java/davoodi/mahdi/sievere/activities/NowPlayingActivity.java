@@ -27,6 +27,13 @@ public class NowPlayingActivity extends AppCompatActivity {
         int[] array = {0, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 1, 2, 3, 4, 5, 6, 2, 3, 8, 2, 3, 4, 6, 0, 8, 4, 6, 3, 2, 3, 5, 8, 0, 0, 0, 2, 5, 3, 6, 6, 4, 7, 1, 0, 0, 0};
         new Thread(() -> this.test(waveformSeekBar)).start();
         //waveformSeekBar.setSampleFrom(array);
+        try {
+            waveformSeekBar.setSampleFrom(new File(DataLoader.tracks.get(0).getUri().getPath()));
+            Log.i("MM", "LL" + DataLoader.tracks.get(0).getUri().getPath());
+        } catch (AmplitudaNotFoundException e) {
+            e.printStackTrace();
+            Log.i("MM", "LL");
+        }
     }
 
     private void test(WaveformSeekBar waveformSeekBar) {

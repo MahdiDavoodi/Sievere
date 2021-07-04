@@ -18,7 +18,7 @@ import davoodi.mahdi.sievere.R;
 public class IntroActivity extends AppCompatActivity {
 
     protected static final int DELAY = 500;
-    public static final int PERMISSION_READ_STORAGE = 0;
+    public static final int PERMISSION_STORAGE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,12 @@ public class IntroActivity extends AppCompatActivity {
 
     public boolean checkReadStoragePermission() {
         int READ_PERMISSION = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if ((READ_PERMISSION != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    PERMISSION_READ_STORAGE);
+        int WRITE_PERMISSION = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if ((READ_PERMISSION + WRITE_PERMISSION != PackageManager.PERMISSION_GRANTED)) {
+            String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            ActivityCompat.requestPermissions(this, permissions,
+                    PERMISSION_STORAGE);
             return false;
         }
         return true;
@@ -52,10 +55,11 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull @NotNull String[] permissions, @NonNull @NotNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_READ_STORAGE) {
-            if (grantResults.length > 0 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if (requestCode == PERMISSION_STORAGE) {
+            if (grantResults.length > 1 && permissions[0].equals(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    && permissions[1].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 String toast;
-                if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                if (grantResults[0] == PackageManager.PERMISSION_DENIED || grantResults[1] == PackageManager.PERMISSION_DENIED) {
                     toast = getResources().getString(R.string.denied_read_data_permission_toast);
                 } else {
                     new Thread(this::startTheApp).start();
