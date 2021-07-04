@@ -7,25 +7,23 @@
     tools:context=".activities.NowPlayingActivity">
 
     <com.masoudss.lib.WaveformSeekBar
-        android:id="@+id/waveformSeekBar"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:foregroundGravity="right"
-        android:rotation="270"
+        android:id="@+id/npa_seekbar"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        app:wave_background_color="@color/accent"
-        app:wave_corner_radius="6dp"
-        app:wave_gap="4dp"
+        app:layout_constraintVertical_bias="0.7"
+        app:wave_background_color="@color/dark_secondary_text"
+        app:wave_corner_radius="10dp"
+        app:wave_gap="2dp"
         app:wave_gravity="center"
         app:wave_max_progress="100"
-        app:wave_min_height="5dp"
-        app:wave_progress="33"
+        app:wave_min_height="4dp"
+        app:wave_progress="0"
         app:wave_progress_color="@color/primary"
-        app:wave_width="5dp" />
+        app:wave_width="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
