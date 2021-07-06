@@ -6,6 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".activities.NowPlayingActivity">
 
+    <ImageButton
+        android:id="@+id/ia_github_button"
+        style="@style/info_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/image"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_solid" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="100dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp"
+        app:cardMaxElevation="40dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/npa_album_art"
+            style="@style/images"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image"
+            app:srcCompat="@drawable/pic_sample_music_art" />
+    </androidx.cardview.widget.CardView>
+
     <com.masoudss.lib.WaveformSeekBar
         android:id="@+id/npa_seekbar"
         android:layout_width="350dp"
@@ -24,19 +62,7 @@
         app:wave_min_height="4dp"
         app:wave_progress="0"
         app:wave_progress_color="@color/primary"
-        app:wave_width="2dp" />
+        app:wave_width="3dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        style="@style/images"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="76dp"
-        android:contentDescription="@string/image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pic_sample_music_art" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

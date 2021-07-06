@@ -31,14 +31,12 @@
     </style>
 
     <!--icon-->
-    <style name="main_toolbar_icon" parent="images">
+    <style name="main_toolbar_icon" parent="common_icon">
         <item name="android:tint">@color/white</item>
-        <item name="android:background">?attr/actionBarItemBackground</item>
     </style>
 
-    <style name="info_icon" parent="images">
+    <style name="info_icon" parent="common_icon">
         <item name="android:tint">@color/primary</item>
-        <item name="android:background">?attr/actionBarItemBackground</item>
     </style>
 
     <!--popupMenu-->
