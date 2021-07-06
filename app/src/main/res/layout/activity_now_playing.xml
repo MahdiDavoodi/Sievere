@@ -26,4 +26,17 @@
         app:wave_progress_color="@color/primary"
         app:wave_width="2dp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/images"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="76dp"
+        android:contentDescription="@string/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pic_sample_music_art" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

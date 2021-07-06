@@ -24,7 +24,7 @@
     <color name="dark_primary_light">#252525</color>
     <color name="dark_accent">#5C5B60</color>
     <color name="dark_icons">#9F9E9E</color>
-    <color name="dark_divider">#737272</color>
+    <color name="dark_divider">#989595</color>
 
     // Text Views.
     <color name="dark_primary_text">#2F6C95</color>
