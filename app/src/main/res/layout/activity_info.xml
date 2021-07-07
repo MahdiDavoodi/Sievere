@@ -79,7 +79,7 @@
 
                 <ImageButton
                     android:id="@+id/ia_telegram_button"
-                    style="@style/info_icon"
+                    style="@style/common_icon_style_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/image"
@@ -98,7 +98,7 @@
 
                 <ImageButton
                     android:id="@+id/ia_github_button"
-                    style="@style/info_icon"
+                    style="@style/common_icon_style_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/image"

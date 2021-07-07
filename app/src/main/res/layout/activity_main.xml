@@ -39,7 +39,7 @@
 
             <ImageButton
                 android:id="@+id/ma_toolbar_search"
-                style="@style/main_toolbar_icon"
+                style="@style/common_icon_style_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -51,7 +51,7 @@
 
             <ImageButton
                 android:id="@+id/ma_toolbar_more"
-                style="@style/main_toolbar_icon"
+                style="@style/common_icon_style_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
