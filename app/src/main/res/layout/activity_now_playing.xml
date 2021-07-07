@@ -7,6 +7,22 @@
     tools:context=".activities.NowPlayingActivity">
 
     <ImageButton
+        android:id="@+id/npa_exit"
+        style="@style/common_icon_style_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/icons_page_sides"
+        android:layout_marginTop="@dimen/icons_page_sides"
+        android:contentDescription="@string/image"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:minWidth="@dimen/common_icons_size_1"
+        android:minHeight="@dimen/common_icons_size_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_solid" />
+
+    <ImageButton
         android:id="@+id/npa_options"
         style="@style/common_icon"
         android:layout_width="wrap_content"
@@ -115,6 +131,7 @@
 
     <com.masoudss.lib.WaveformSeekBar
         android:id="@+id/npa_seekbar"
+        style="@style/seekbar_style_1"
         android:layout_width="350dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toTopOf="@+id/npa_play"
@@ -122,15 +139,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.8"
-        app:wave_background_color="@color/dark_secondary_text"
-        app:wave_corner_radius="10dp"
-        app:wave_gap="2dp"
-        app:wave_gravity="center"
         app:wave_max_progress="100"
-        app:wave_min_height="4dp"
-        app:wave_progress="0"
-        app:wave_progress_color="@color/primary"
-        app:wave_width="3dp" />
+        app:wave_progress="0" />
 
     <ImageButton
         android:id="@+id/npa_shuffle"

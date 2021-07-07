@@ -19,6 +19,17 @@
     </style>
 
     ------------------------ Light styles ------------------------
+    <!--Seekbars-->
+    <style name="seekbar_style_1">
+        <item name="wave_progress_color">@color/primary</item>
+        <item name="wave_width">3dp</item>
+        <item name="wave_min_height">4dp</item>
+        <item name="wave_background_color">@color/icons</item>
+        <item name="wave_corner_radius">10dp</item>
+        <item name="wave_gap">2dp</item>
+        <item name="wave_gravity">center</item>
+    </style>
+
     <!--indicators-->
     <style name="default_indicator">
         <item name="dotsColor">@color/accent</item>
