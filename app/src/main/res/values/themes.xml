@@ -13,6 +13,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Default widgets styles and ... -->
         <item name="android:textViewStyle">@style/common_text</item>
         <item name="android:popupMenuStyle">@style/popup_menu_main_style</item>
@@ -68,6 +69,10 @@
     </style>
 
     <!--Layouts-->
+
+    <style name="layout_common_bg">
+        <item name="android:background">@color/white</item>
+    </style>
 
     <style name="layout_primary_bg">
         <item name="android:background">@color/primary</item>

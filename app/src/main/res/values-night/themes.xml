@@ -70,6 +70,10 @@
 
     <!--Layouts-->
 
+    <style name="layout_common_bg">
+        <item name="android:background">@color/dark_primary_light</item>
+    </style>
+
     <style name="layout_primary_bg">
         <item name="android:background">@android:color/transparent</item>
     </style>
