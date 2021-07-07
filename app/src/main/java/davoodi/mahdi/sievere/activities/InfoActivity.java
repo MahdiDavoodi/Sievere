@@ -33,4 +33,8 @@ public class InfoActivity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
+
+    public void exit(View view) {
+        onBackPressed();
+    }
 }

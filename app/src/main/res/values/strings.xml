@@ -12,6 +12,7 @@
     <string name="ma_nav_for_you">For You\u0020</string>
     <string name="ma_toolbar_search">Search\u0020</string>
     <string name="ma_toolbar_settings">Settings\u0020</string>
+    <string name="ma_toolbar_now_playing">Now Playing\u0020</string>
     <string name="ma_toolbar_info">Info\u0020</string>
     <string name="ma_toolbar_rate">Rate the App!\u0020</string>
     <string name="ma_toolbar_scan">Scan the library\u0020</string>

@@ -8,6 +8,23 @@
     tools:context=".activities.InfoActivity">
 
 
+    <ImageButton
+        android:id="@+id/ia_exit"
+        style="@style/common_icon_style_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/icons_page_sides"
+        android:layout_marginTop="@dimen/icons_page_sides"
+        android:contentDescription="@string/image"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:minWidth="@dimen/common_icons_size_1"
+        android:minHeight="@dimen/common_icons_size_1"
+        android:onClick="exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_solid" />
+
     <TextView
         style="@style/big_text_style_1"
         android:layout_width="wrap_content"

@@ -3,6 +3,7 @@ package davoodi.mahdi.sievere.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.masoudss.lib.WaveformSeekBar;
 
@@ -25,5 +26,15 @@ public class NowPlayingActivity extends AppCompatActivity {
 
         WaveformSeekBar waveformSeekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> waveformSeekBar.setSampleFrom(WAVE_PATTERN)).start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    public void exit(View view) {
+        onBackPressed();
     }
 }

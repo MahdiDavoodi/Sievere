@@ -48,7 +48,7 @@
     </style>
 
     <style name="common_icon_style_1" parent="common_icon">
-        <item name="android:tint">@color/dark_accent</item>
+        <item name="android:tint">@color/dark_icons</item>
     </style>
 
     <style name="common_icon_style_2" parent="common_icon">

@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.ma_toolbar_scan) {
                 /*Scan*/
                 return true;
+            } else if (item.getItemId() == R.id.ma_toolbar_now_playing) {
+                openNPActivity();
+                return true;
             } else return false;
         });
         menu.show();
@@ -61,8 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     /*Actions*/
     private void openInfoActivity() {
-        // Testing for now playing!!
+        startActivity(new Intent(MainActivity.this, InfoActivity.class));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
 
+    private void openNPActivity() {
         startActivity(new Intent(MainActivity.this, NowPlayingActivity.class));
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
