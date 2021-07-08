@@ -14,9 +14,14 @@ import android.view.WindowManager;
 import com.masoudss.lib.WaveformSeekBar;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.components.Track;
+import davoodi.mahdi.sievere.data.SiQueue;
+import davoodi.mahdi.sievere.players.SiPlayer;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
+    SiPlayer player;
+    Track nowPlaying;
     // Sample final array for seekbar waves pattern. I have to change it in the future.
     // TODO: Create wave pattern with audio files.(Already have the dependency)
     private final int[] WAVE_PATTERN = {0, 1, 1, 0, 1, 1, 2, 3, 4, 2,
@@ -29,9 +34,17 @@ public class NowPlayingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
-
+        player = new SiPlayer();
         WaveformSeekBar waveformSeekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> waveformSeekBar.setSampleFrom(WAVE_PATTERN)).start();
+
+        playTrack();
+    }
+
+    private void playTrack() {
+        if (SiQueue.isQueueReady()) {
+            nowPlaying = SiQueue.getTrackToPlay();
+        }
     }
 
     @Override

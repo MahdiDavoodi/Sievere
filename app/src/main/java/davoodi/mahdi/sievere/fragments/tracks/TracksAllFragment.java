@@ -18,6 +18,7 @@ import davoodi.mahdi.sievere.activities.NowPlayingActivity;
 import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
+import davoodi.mahdi.sievere.data.SiQueue;
 
 
 public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.OnTrackListener {
@@ -57,9 +58,10 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
 
     @Override
     public void onTrackClick(int position) {
-        Track nowPlaying;
-        if (DataLoader.tracks != null && DataLoader.tracks.size() > 0)
-            nowPlaying = DataLoader.tracks.get(position);
-        startActivity(new Intent(getActivity(), NowPlayingActivity.class));
+        if (DataLoader.tracks != null && DataLoader.tracks.size() > 0) {
+            SiQueue.POSITION = position;
+            SiQueue.queue = DataLoader.tracks;
+            startActivity(new Intent(getActivity(), NowPlayingActivity.class));
+        }
     }
 }
