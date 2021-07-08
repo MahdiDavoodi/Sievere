@@ -155,7 +155,6 @@
 
     <style name="common_icon_transparent" parent="common_icon">
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:padding">5dp</item>
     </style>
 
     <!--Views-->

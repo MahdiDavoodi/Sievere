@@ -14,9 +14,8 @@ import android.widget.PopupMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import davoodi.mahdi.sievere.R;
-import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 
-public class MainActivity extends AppCompatActivity implements TAFLinearListAdapter.OnTrackListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +71,5 @@ public class MainActivity extends AppCompatActivity implements TAFLinearListAdap
     private void openNPActivity() {
         startActivity(new Intent(MainActivity.this, NowPlayingActivity.class));
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-    }
-
-    // Track list onclick.
-    @Override
-    public void onTrackClick(int position) {
-
     }
 }

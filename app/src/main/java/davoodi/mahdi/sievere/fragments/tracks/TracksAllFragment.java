@@ -1,5 +1,6 @@
 package davoodi.mahdi.sievere.fragments.tracks;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,12 +14,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.activities.NowPlayingActivity;
 import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
 
 
-public class TracksAllFragment extends Fragment {
+public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.OnTrackListener {
 
     static RecyclerView list;
     private static TracksAllFragment instance;
@@ -48,8 +50,16 @@ public class TracksAllFragment extends Fragment {
         if (getActivity() != null && DataLoader.tracks.size() != 0) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
-            list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks));
+            list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks, this));
             list.setHasFixedSize(true);
         }
+    }
+
+    @Override
+    public void onTrackClick(int position) {
+        Track nowPlaying;
+        if (DataLoader.tracks != null && DataLoader.tracks.size() > 0)
+            nowPlaying = DataLoader.tracks.get(position);
+        startActivity(new Intent(getActivity(), NowPlayingActivity.class));
     }
 }

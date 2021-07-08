@@ -24,10 +24,12 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
     Context context;
     LayoutInflater inflater;
     ArrayList<Track> tracks;
+    OnTrackListener listener;
 
-    public TAFLinearListAdapter(Context context, ArrayList<Track> tracks) {
+    public TAFLinearListAdapter(Context context, ArrayList<Track> tracks, OnTrackListener listener) {
         this.context = context;
         this.tracks = tracks;
+        this.listener = listener;
         inflater = LayoutInflater.from(context);
     }
 
@@ -36,7 +38,7 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.list_row_item_track, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, listener);
     }
 
     @Override
@@ -52,18 +54,26 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
         return tracks.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title, artist;
         ImageView status;
         ImageButton options;
+        OnTrackListener listener;
 
-        public ViewHolder(@NonNull @NotNull View itemView) {
+        public ViewHolder(@NonNull @NotNull View itemView, OnTrackListener listener) {
             super(itemView);
             title = itemView.findViewById(R.id.tf_song_title);
             artist = itemView.findViewById(R.id.tf_song_artist);
             status = itemView.findViewById(R.id.tf_song_status_image);
             options = itemView.findViewById(R.id.tf_song_more_option);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onTrackClick(getAdapterPosition());
         }
     }
 
