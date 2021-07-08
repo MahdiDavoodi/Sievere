@@ -26,14 +26,14 @@
 ## For Developers.
 
 #### First of all,
-	- The way I implemented things is not efficient, good, or may not even correct and that's because I'm a beginner.
-	- I don't know anything about design patterns and structures yet, so this repo is a piece of shit and It may be hard to contribute. I'm sorry for that.
-	- Consider helping me to fix my problems instead of shiting on me or my app.
+*--> The way I implemented things is not efficient, good, or may not even correct and that's because I'm a beginner.*
+*--> I don't know anything about design patterns and structures yet, so this repo is a piece of shit and It may be hard to contribute. I'm sorry for that.*
+*--> Consider helping me to fix my problems instead of shiting on me or my app.*
 
 #### If you want to help or contribute,
-	- Thank you :).
-	- Please don't do anything about the TODO list. I want to work on new features by myself to improve my skills.
-	- Feel free to create an issue.
+*--> Thank you :).*
+*--> Please don't do anything about the TODO list. I want to work on new features by myself to improve my skills.*
+*--> Feel free to create an issue.*
 
 ##### Libraries that I used in my project:
 
