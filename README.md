@@ -1,6 +1,6 @@
 
-###### Sievere | Android music player.
-
+# Sievere | Android music player.
+![](media/Sievere.png)
 #### Hello friend!
 
 *It's me, the developer. I'm so glad that you are reading this now. Currently, I am learning Android development and I am getting better day by day. I will try to implement every new and useful thing that I learn. If I want to make this short, Sievere is an app for you, by you! It means you can say what you want (with creating issues) to see in future updates so I will start working on it.*
