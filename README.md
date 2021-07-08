@@ -46,8 +46,8 @@
     implementation 'com.github.lincollincol:Amplituda:1.7'
 ```
 
-[Amplituda](https://github.com/lincollincol/Amplituda)
+---> [Amplituda](https://github.com/lincollincol/Amplituda)
 
-[WaveformSeekBar](https://github.com/massoudss/waveformSeekBar)
+---> [WaveformSeekBar](https://github.com/massoudss/waveformSeekBar)
 
-[Dots Indicator](https://github.com/tommybuonomo/dotsindicator)
+---> [Dots Indicator](https://github.com/tommybuonomo/dotsindicator)
