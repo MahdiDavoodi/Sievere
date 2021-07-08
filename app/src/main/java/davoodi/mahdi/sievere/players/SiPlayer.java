@@ -3,7 +3,9 @@ package davoodi.mahdi.sievere.players;
 import android.media.MediaPlayer;
 
 public class SiPlayer extends MediaPlayer {
-
+    public SiPlayer() {
+        super();
+    }
 
     public void pause() {
         if (isPlaying())
@@ -15,7 +17,7 @@ public class SiPlayer extends MediaPlayer {
             super.start();
     }
 
-    private String convertTime(long value) {
+    public String convertTime(long value) {
         String audioTime;
         int dur = (int) value;
         int hrs = (dur / 3600000);
@@ -29,5 +31,4 @@ public class SiPlayer extends MediaPlayer {
         }
         return audioTime;
     }
-
 }

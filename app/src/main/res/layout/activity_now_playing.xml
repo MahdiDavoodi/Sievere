@@ -251,5 +251,25 @@
         app:layout_constraintStart_toStartOf="@+id/npa_title"
         app:layout_constraintTop_toBottomOf="@+id/npa_title" />
 
+    <TextView
+        android:id="@+id/npa_total_duration"
+        style="@style/small_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blank"
+        android:textSize="@dimen/common_text_min"
+        app:layout_constraintEnd_toEndOf="@+id/npa_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+
+    <TextView
+        android:id="@+id/npa_current_position"
+        style="@style/small_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blank"
+        android:textSize="@dimen/common_text_min"
+        app:layout_constraintStart_toStartOf="@+id/npa_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
