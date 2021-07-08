@@ -66,4 +66,8 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
             options = itemView.findViewById(R.id.tf_song_more_option);
         }
     }
+
+    public interface OnTrackListener {
+        void onTrackClick(int position);
+    }
 }
