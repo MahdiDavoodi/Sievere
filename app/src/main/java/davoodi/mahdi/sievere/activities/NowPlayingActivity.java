@@ -52,7 +52,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         album_art = findViewById(R.id.npa_album_art);
 
         setUp();
-        start();
+        configMusic();
     }
 
     private void setUp() {
@@ -72,13 +72,13 @@ public class NowPlayingActivity extends AppCompatActivity {
                 pause();
             } else if (!SiQueue.isOnRepeatOne) {
                 SiQueue.updatePosition(1);
-                start();
+                configMusic();
             } else
-                start();
+                configMusic();
         });
     }
 
-    private void start() {
+    private void configMusic() {
         if (SiQueue.isQueueReady()) {
             track = SiQueue.getTrackToPlay();
 
@@ -154,5 +154,29 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     public void exit(View view) {
         onBackPressed();
+    }
+
+    public void changeVolume(View view) {
+    }
+
+    public void playPause(View view) {
+
+    }
+
+    public void next(View view) {
+        SiQueue.updatePosition(1);
+        configMusic();
+    }
+
+    public void previous(View view) {
+        SiQueue.updatePosition(-1);
+        configMusic();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (siPlayer != null)
+            siPlayer.release();
     }
 }
