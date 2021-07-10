@@ -1,5 +1,5 @@
 
-# Sievere | Android music player.
+# Sievere | Android music player
 ![](media/Sievere.jpg)
 ## Hello friend!
 
