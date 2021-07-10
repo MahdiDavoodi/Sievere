@@ -45,23 +45,24 @@ public class NowPlayingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
+
+        setUp();
+
+        start();
+
+    }
+
+    private void setUp() {
         player = new SiPlayer();
         seekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
 
-        // Find UI elements
         artist = findViewById(R.id.npa_artist);
         title = findViewById(R.id.npa_title);
         duration = findViewById(R.id.npa_total_duration);
         duration_passed = findViewById(R.id.npa_current_position);
         picture = findViewById(R.id.npa_album_art);
 
-        setListeners();
-        start();
-
-    }
-
-    private void setListeners() {
         seekBar.setOnProgressChanged(new SeekBarOnProgressChanged() {
             @Override
             public void onProgressChanged(@NotNull WaveformSeekBar waveformSeekBar, float v, boolean b) {
@@ -76,8 +77,8 @@ public class NowPlayingActivity extends AppCompatActivity {
                 // when completed.
             }
         });
-
     }
+
 
     private void start() {
         setNowPlaying();
@@ -89,6 +90,12 @@ public class NowPlayingActivity extends AppCompatActivity {
         if (SiQueue.isQueueReady())
             nowPlaying = SiQueue.getTrackToPlay();
 
+    }
+
+    private void refreshUI() {
+        if (nowPlaying != null){
+
+        }
     }
 
     private void playTrack() {
