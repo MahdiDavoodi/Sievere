@@ -6,21 +6,14 @@ import androidx.core.content.res.ResourcesCompat;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.masoudss.lib.SeekBarOnProgressChanged;
 import com.masoudss.lib.WaveformSeekBar;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Track;
@@ -30,12 +23,12 @@ import davoodi.mahdi.sievere.players.SiPlayer;
 public class NowPlayingActivity extends AppCompatActivity {
 
     // UI
-    TextView artist, title, duration, duration_passed;
-    ImageView picture;
+    TextView artist, title, seekbar_duration, seekbar_position;
+    ImageView album_art;
 
     // Components
-    SiPlayer player;
-    Track nowPlaying;
+    SiPlayer siPlayer;
+    Track track;
     WaveformSeekBar seekBar;
     double current_position, total_duration;
 
@@ -52,29 +45,28 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
 
-        setUp();
+        artist = findViewById(R.id.npa_artist);
+        title = findViewById(R.id.npa_title);
+        seekbar_duration = findViewById(R.id.npa_total_duration);
+        seekbar_position = findViewById(R.id.npa_current_position);
+        album_art = findViewById(R.id.npa_album_art);
 
+        setUp();
         start();
     }
 
     private void setUp() {
-        player = new SiPlayer(this);
+        siPlayer = new SiPlayer(this);
         seekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
-
-        artist = findViewById(R.id.npa_artist);
-        title = findViewById(R.id.npa_title);
-        duration = findViewById(R.id.npa_total_duration);
-        duration_passed = findViewById(R.id.npa_current_position);
-        picture = findViewById(R.id.npa_album_art);
 
         seekBar.setOnProgressChanged((waveformSeekBar, v, fromUser) -> {
             current_position = waveformSeekBar.getProgress();
             if (fromUser)
-                player.seekTo((int) current_position);
+                siPlayer.seekTo((int) current_position);
         });
 
-        player.setOnCompletionListener(mediaPlayer -> {
+        siPlayer.setOnCompletionListener(mediaPlayer -> {
             if (SiQueue.position == SiQueue.queue.size() - 1 && !SiQueue.isOnRepeat) {
                 // Queue finished.
                 pause();
@@ -83,40 +75,62 @@ public class NowPlayingActivity extends AppCompatActivity {
                 start();
             } else
                 start();
-
         });
     }
 
-
-    private void pause() {
-        if (player != null)
-            player.pause();
-    }
-
     private void start() {
-        setNowPlaying();
-        player.playTrack(nowPlaying);
-        setTrackProgress();
-        refreshUI();
+        if (SiQueue.isQueueReady()) {
+            track = SiQueue.getTrackToPlay();
+
+            siPlayer.playTrack(track);
+            buildUI();
+        }
     }
 
-    private void setNowPlaying() {
-        if (SiQueue.isQueueReady())
-            nowPlaying = SiQueue.getTrackToPlay();
-    }
-
-    private void refreshUI() {
-        if (nowPlaying != null) {
-            title.setText(nowPlaying.getTitle());
-            artist.setText(nowPlaying.getArtistName());
+    private void buildUI() {
+        if (track != null) {
+            title.setText(track.getTitle());
+            artist.setText(track.getArtistName());
 
             // Set album art.
-            if (getAlbumArt(nowPlaying.getUri()) != null)
-                picture.setImageBitmap(getAlbumArt(nowPlaying.getUri()));
+            if (getAlbumArt(track.getUri()) != null)
+                album_art.setImageBitmap(getAlbumArt(track.getUri()));
             else
-                picture.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.pic_sample_music_art, getTheme()));
+                album_art.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.pic_sample_music_art, getTheme()));
 
+            current_position = siPlayer.getCurrentPosition();
+            total_duration = siPlayer.getDuration();
+
+            seekbar_duration.setText(getTimes((long) total_duration));
+            seekbar_position.setText(getTimes((long) current_position));
+            seekBar.setMaxProgress((int) total_duration);
+
+            Handler handler = new Handler();
+            NowPlayingActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        current_position = siPlayer.getCurrentPosition();
+                        seekbar_position.setText(getTimes((long) current_position));
+                        seekBar.setProgress((int) current_position);
+                        handler.postDelayed(this, 500);
+                    } catch (IllegalStateException ed) {
+                        ed.printStackTrace();
+                    }
+                }
+            });
         }
+    }
+
+    private String getTimes(long value) {
+        int[] times = siPlayer.convertTime(value);
+        String result;
+        if (times[0] > 0) {
+            result = getResources().getString(R.string.track_time_hour, times[0], times[1], times[2]);
+        } else {
+            result = getResources().getString(R.string.track_time_minutes, times[1], times[2]);
+        }
+        return result;
     }
 
     private Bitmap getAlbumArt(Uri uri) {
@@ -127,29 +141,9 @@ public class NowPlayingActivity extends AppCompatActivity {
         return null;
     }
 
-
-    private void setTrackProgress() {
-        current_position = player.getCurrentPosition();
-        total_duration = player.getDuration();
-
-        duration.setText(player.convertTime((long) total_duration));
-        duration_passed.setText(player.convertTime((long) current_position));
-        seekBar.setMaxProgress((int) total_duration);
-
-        Handler handler = new Handler();
-        NowPlayingActivity.this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    current_position = player.getCurrentPosition();
-                    duration_passed.setText(player.convertTime((long) current_position));
-                    seekBar.setProgress((int) current_position);
-                    handler.postDelayed(this, 500);
-                } catch (IllegalStateException ed) {
-                    ed.printStackTrace();
-                }
-            }
-        });
+    private void pause() {
+        if (siPlayer != null)
+            siPlayer.pause();
     }
 
     @Override

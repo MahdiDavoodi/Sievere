@@ -24,6 +24,10 @@
     <string name="ia_main_text_3">Don\'t forget to be happy!\u0020</string>
     <string name="ia_main_text_4">- Mahdi Davoodi\u0020</string>
 
+    <!--Now Playing-->%1$d
+    <string name="track_time_hour">%1$02d:%2$02d:%3$02d\u0020</string>
+    <string name="track_time_minutes">%1$02d:%2$02d\u0020</string>
+
 
     <!--Widgets Descriptions-->
     <string name="image">Image</string>
