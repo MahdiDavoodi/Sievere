@@ -89,8 +89,8 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private void buildUI() {
         if (track != null) {
-            title.setText(track.getTitle());
-            artist.setText(track.getArtistName());
+            title.setText(getResources().getString(R.string.italicText, track.getTitle()));
+            artist.setText(getResources().getString(R.string.italicText, track.getArtistName()));
 
             // Set album art.
             if (getAlbumArt(track.getUri()) != null)
