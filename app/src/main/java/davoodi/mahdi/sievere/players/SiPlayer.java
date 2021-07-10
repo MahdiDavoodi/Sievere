@@ -1,20 +1,31 @@
 package davoodi.mahdi.sievere.players;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 
+import java.io.IOException;
+
+import davoodi.mahdi.sievere.components.Track;
+
 public class SiPlayer extends MediaPlayer {
-    public SiPlayer() {
+    Context context;
+
+    public SiPlayer(Context context) {
         super();
+        this.context = context;
     }
 
-    public void pause() {
-        if (isPlaying())
-            super.pause();
-    }
-
-    public void play() {
-        if (isPlaying())
-            super.start();
+    public void playTrack(Track track) {
+        try {
+            if (track != null) {
+                reset();
+                setDataSource(context, track.getUri());
+                prepare();
+                start();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String convertTime(long value) {
