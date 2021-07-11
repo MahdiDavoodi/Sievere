@@ -90,6 +90,10 @@
         <item name="android:background">@drawable/bg_down_rounded_light</item>
     </style>
 
+    <style name="layout_np_card_bg">
+        <item name="android:background">@color/primary</item>
+    </style>
+
     <!--Text Views-->
 
     <style name="big_text" parent="Widget.MaterialComponents.TextView">
