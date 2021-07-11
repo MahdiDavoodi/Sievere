@@ -70,18 +70,23 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     private void setUp(boolean play) {
+        // Find the player.
         siPlayer = SiPlayer.getInstance();
-        if (siPlayer != null){
-
-        }else {
+        if (siPlayer == null)
             siPlayer = new SiPlayer();
+
+        // Set the track.
+        setTrack();
+
+        if (track != null) {
+            if (play) {
+                // Play
+                configMusic();
+            } else {
+                // Show
+                buildUI();
+            }
         }
-
-
-            // Show.
-
-            // Play.
-
 
         seekBar.setOnProgressChanged((waveformSeekBar, v, fromUser) -> {
             current_position = waveformSeekBar.getProgress();
@@ -102,18 +107,20 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     private void configMusic() {
-        if (SiQueue.isQueueReady()) {
-            track = SiQueue.getTrackToPlay();
+        setTrack();
+        siPlayer.playTrack(this, track);
+        buildUI();
+    }
 
-            siPlayer.playTrack(this, track);
-            buildUI();
-        }
+    private void setTrack() {
+        if (SiQueue.isQueueReady())
+            track = SiQueue.getTrackToPlay();
     }
 
     private void buildUI() {
         if (track != null) {
             title.setText(getResources().getString(R.string.italicText, track.getTitle()));
-            artist.setText(getResources().getString(R.string.italicText, track.getArtistName()));
+            artist.setText(getResources().getString(R.string.italicText, track.getArtistName(this)));
 
             // Set album art.
             if (getAlbumArt(track.getUri()) != null)

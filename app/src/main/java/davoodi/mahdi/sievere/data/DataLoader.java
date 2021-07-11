@@ -41,8 +41,7 @@ public class DataLoader {
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
                 long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
 
-                Track track = new Track(context,
-                        id,
+                Track track = new Track(id,
                         songUri,
                         fileName,
                         title,

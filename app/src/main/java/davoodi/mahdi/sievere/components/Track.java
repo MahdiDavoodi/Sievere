@@ -22,7 +22,6 @@ public class Track {
     public static final String KEY_PLAYED = "playedCount";
 
 
-    Context context;
     private long id, dateAdded, length;
 
     private int albumId,
@@ -40,8 +39,7 @@ public class Track {
 
     private Uri uri;
 
-    public Track(Context context,
-                 long id,
+    public Track(long id,
                  Uri uri,
                  String fileName,
                  String title,
@@ -52,7 +50,6 @@ public class Track {
                  int year,
                  String genre
             , long dateAdded) {
-        this.context = context;
         this.id = id;
         this.bitrate = bitrate;
         this.year = year;
@@ -177,19 +174,19 @@ public class Track {
         else return title;
     }
 
-    public String getAlbumName() {
+    public String getAlbumName(Context context) {
         if (albumName == null)
             return context.getResources().getString(R.string.single);
         else return albumName;
     }
 
-    public String getArtistName() {
+    public String getArtistName(Context context) {
         if (artistName == null)
             return context.getResources().getString(R.string.unknown);
         else return artistName;
     }
 
-    public String getGenre() {
+    public String getGenre(Context context) {
         if (genre == null)
             return context.getResources().getString(R.string.blank);
         else return genre;
