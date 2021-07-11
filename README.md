@@ -3,7 +3,7 @@
 ![](media/Sievere.jpg)
 ## Hello friend!
 
-*It's me, the developer. I'm so glad that you are reading this now. Currently, I am learning Android development and I am getting better day by day. I will try to implement every new and useful thing that I learn. If I want to make this short, Sievere is an app for you, by you! It means you can say what you want (with creating issues) to see in future updates so I will start working on it.*
+*I'm so glad that you are reading this now. Currently, I am learning Android development and I am getting better day by day. I will try to implement every new and useful thing that I learn. If I want to make this short, Sievere is an app for you, by you! It means you can say what you want (with creating issues) to see in future updates so I will start working on it.*
 
 *You can see my [TODO list](https://trello.com/b/L6bRU2oF/android-music-player) down below to know what you probably see in the next version!*
 
