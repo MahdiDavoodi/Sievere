@@ -12,7 +12,6 @@ import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -49,8 +48,13 @@ public class NowPlayingActivity extends AppCompatActivity {
             9, 8, 7, 6, 4, 0, 5, 1, 9, 6, 4, 5, 9, 8, 4, 2, 3, 1, 1, 1, 0, 0};
 
     // Change icons
-    Drawable ic_rep_once = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_one_solid, getTheme()),
-            ic_play = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_solid, getTheme());
+    Drawable ic_repeat_one_primary_color,
+            ic_play_solid,
+            ic_pause_solid,
+            ic_shuffle_solid,
+            ic_shuffle_primary_color,
+            ic_repeat_primary_color,
+            ic_repeat_solid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,15 @@ public class NowPlayingActivity extends AppCompatActivity {
         } else {
             play_song = (boolean) savedInstanceState.getSerializable(Finals.PLAY);
         }
+
+        ic_repeat_one_primary_color = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_one_primary_color, getTheme());
+        ic_play_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_solid, getTheme());
+        ic_pause_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_pause_solid, getTheme());
+        ic_shuffle_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_shuffle_solid, getTheme());
+        ic_shuffle_primary_color = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_shuffle_primary_color, getTheme());
+        ic_repeat_primary_color = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_primary_color, getTheme());
+        ic_repeat_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_solid, getTheme());
+
 
         artist = findViewById(R.id.npa_artist);
         title = findViewById(R.id.npa_title);
@@ -99,6 +112,7 @@ public class NowPlayingActivity extends AppCompatActivity {
             } else {
                 // Show
                 buildUI();
+                configIcons();
             }
         }
 
@@ -124,6 +138,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         setTrack();
         siPlayer.playTrack(this, track);
         buildUI();
+        configIcons();
     }
 
     private void setTrack() {
@@ -133,10 +148,21 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private void configIcons() {
         if (siPlayer != null) {
+            // Play pause.
             if (!siPlayer.isPlaying())
-                play_pause.setImageDrawable(ic_play);
+                play_pause.setImageDrawable(ic_play_solid);
+            else
+                play_pause.setImageDrawable(ic_pause_solid);
+            // Shuffle
             if (SiQueue.isOnShuffle)
-
+                shuffle.setImageDrawable(ic_shuffle_primary_color);
+            else shuffle.setImageDrawable(ic_shuffle_solid);
+            // Repeat
+            if (SiQueue.isOnRepeatOne)
+                repeat.setImageDrawable(ic_repeat_one_primary_color);
+            else if (SiQueue.isOnRepeat)
+                repeat.setImageDrawable(ic_repeat_primary_color);
+            else repeat.setImageDrawable(ic_repeat_solid);
         }
     }
 
@@ -216,6 +242,7 @@ public class NowPlayingActivity extends AppCompatActivity {
                 siPlayer.pause();
             else
                 siPlayer.start();
+            configIcons();
         }
     }
 
@@ -232,12 +259,15 @@ public class NowPlayingActivity extends AppCompatActivity {
     public void shuffle(View view) {
         if (SiQueue.isOnShuffle) {
             SiQueue.unShuffle();
+            SiQueue.isOnShuffle = false;
             // Change icon.
         } else {
             SiQueue.shuffle();
+            SiQueue.isOnShuffle = true;
             // Change icon.
         }
         SiQueue.position = SiQueue.findTrackPosition(track);
+        configIcons();
     }
 
     public void repeat(View view) {
@@ -249,6 +279,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         } else {
             SiQueue.isOnRepeat = true;
         }
+        configIcons();
     }
 
     public void favorite(View view) {
