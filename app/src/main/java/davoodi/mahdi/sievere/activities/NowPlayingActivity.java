@@ -209,4 +209,21 @@ public class NowPlayingActivity extends AppCompatActivity {
         SiQueue.updatePosition(-1);
         configMusic();
     }
+
+    public void shuffle(View view) {
+        if (SiQueue.isOnShuffle) {
+            SiQueue.unShuffle();
+            // Change icon.
+        } else {
+            SiQueue.shuffle();
+            // Change icon.
+        }
+        SiQueue.position = SiQueue.findTrackPosition(track);
+    }
+
+    public void repeat(View view) {
+    }
+
+    public void favorite(View view) {
+    }
 }

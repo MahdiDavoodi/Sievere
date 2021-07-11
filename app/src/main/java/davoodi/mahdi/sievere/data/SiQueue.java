@@ -7,32 +7,37 @@ import davoodi.mahdi.sievere.components.Track;
 
 public class SiQueue {
     public static int position = 0;
-    public static ArrayList<Track> queue;
-    public static boolean isOnRepeat = false;
-    public static boolean isOnRepeatOne = false;
+    public static ArrayList<Track> queue, initialQueue;
+    public static boolean isOnRepeat = false, isOnRepeatOne = false, isOnShuffle = false;
 
     public static void setQueue(ArrayList<Track> input) {
         queue = new ArrayList<>(input);
+        initialQueue = new ArrayList<>(input);
     }
 
     public static void shuffle() {
-        if (queue != null)
+        if (isQueueReady())
             Collections.shuffle(queue);
-        position = 0;
+        isOnShuffle = true;
+    }
+
+    public static void unShuffle() {
+        if (isQueueReady() && isOnShuffle)
+            queue = new ArrayList<>(initialQueue);
     }
 
     public static Track getTrackToPlay() {
-        if (queue != null)
+        if (isQueueReady())
             return queue.get(position);
         else return null;
     }
 
     public static boolean isQueueReady() {
-        return SiQueue.queue != null && SiQueue.position > -1;
+        return queue != null && initialQueue != null;
     }
 
     public static void updatePosition(int input) {
-        if (queue != null)
+        if (isQueueReady())
             if (input == 1) {
                 if (position == queue.size() - 1)
                     position = 0;
@@ -44,5 +49,9 @@ public class SiQueue {
                 else
                     position = position + input;
             }
+    }
+
+    public static int findTrackPosition(Track track) {
+        return queue.indexOf(track);
     }
 }

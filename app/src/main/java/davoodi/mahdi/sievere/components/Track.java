@@ -3,6 +3,8 @@ package davoodi.mahdi.sievere.components;
 import android.content.Context;
 import android.net.Uri;
 
+import java.util.Objects;
+
 import davoodi.mahdi.sievere.R;
 
 public class Track {
@@ -63,6 +65,19 @@ public class Track {
         this.dateAdded = dateAdded;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Track track = (Track) o;
+        return id == track.id &&
+                Objects.equals(uri, track.uri);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, uri);
+    }
 
     public String getFileName() {
         return fileName;
