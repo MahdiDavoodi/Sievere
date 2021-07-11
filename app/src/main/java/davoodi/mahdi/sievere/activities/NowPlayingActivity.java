@@ -27,27 +27,22 @@ import davoodi.mahdi.sievere.preferences.Finals;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
-    // UI
     TextView artist, title, seekbar_duration, seekbar_position;
     ImageView album_art;
     ImageButton play_pause, shuffle, repeat;
 
-    // Components
     SiPlayer siPlayer;
     Track track;
     WaveformSeekBar seekBar;
     double current_position, total_duration;
     boolean play_song;
 
-    // Sample final array for seekbar waves pattern. I have to change it in the future.
-    // TODO: Create wave pattern with audio files.(Already have the dependency)
     private final int[] WAVE_PATTERN = {0, 1, 1, 0, 1, 1, 2, 3, 4, 2,
             1, 0, 1, 5, 4, 6, 1, 2, 8, 6, 4, 3, 1, 1, 1, 1, 2, 3, 1, 5
             , 4, 5, 2, 8, 4, 1, 1, 2, 1, 5, 6, 4, 5, 6, 8, 9, 1, 2,
             5, 4, 5, 6, 1, 2, 1, 4, 5, 5, 6, 5, 4, 6, 8, 9, 8, 7, 5,
             9, 8, 7, 6, 4, 0, 5, 1, 9, 6, 4, 5, 9, 8, 4, 2, 3, 1, 1, 1, 0, 0};
 
-    // Change icons
     Drawable ic_repeat_one_primary_color,
             ic_play_solid,
             ic_pause_solid,
@@ -72,6 +67,13 @@ public class NowPlayingActivity extends AppCompatActivity {
             play_song = (boolean) savedInstanceState.getSerializable(Finals.PLAY);
         }
 
+        setUpUI();
+
+        if (SiQueue.isQueueReady())
+            setUpActivity(play_song);
+    }
+
+    private void setUpUI() {
         ic_repeat_one_primary_color = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_one_primary_color, getTheme());
         ic_play_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_solid, getTheme());
         ic_pause_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_pause_solid, getTheme());
@@ -91,26 +93,19 @@ public class NowPlayingActivity extends AppCompatActivity {
         shuffle = findViewById(R.id.npa_shuffle);
         repeat = findViewById(R.id.npa_repeat);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
-
-        if (SiQueue.isQueueReady())
-            setUp(play_song);
     }
 
-    private void setUp(boolean play) {
-        // Find the player.
+    private void setUpActivity(boolean play) {
         siPlayer = SiPlayer.getInstance();
         if (siPlayer == null)
             siPlayer = new SiPlayer();
 
-        // Set the track.
         setTrack();
 
         if (track != null) {
             if (play) {
-                // Play
                 configMusic();
             } else {
-                // Show
                 buildUI();
                 configIcons();
             }
@@ -148,16 +143,13 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private void configIcons() {
         if (siPlayer != null) {
-            // Play pause.
             if (!siPlayer.isPlaying())
                 play_pause.setImageDrawable(ic_play_solid);
             else
                 play_pause.setImageDrawable(ic_pause_solid);
-            // Shuffle
             if (SiQueue.isOnShuffle)
                 shuffle.setImageDrawable(ic_shuffle_primary_color);
             else shuffle.setImageDrawable(ic_shuffle_solid);
-            // Repeat
             if (SiQueue.isOnRepeatOne)
                 repeat.setImageDrawable(ic_repeat_one_primary_color);
             else if (SiQueue.isOnRepeat)
@@ -171,7 +163,6 @@ public class NowPlayingActivity extends AppCompatActivity {
             title.setText(getResources().getString(R.string.italicText, track.getTitle()));
             artist.setText(getResources().getString(R.string.italicText, track.getArtistName(this)));
 
-            // Set album art.
             if (getAlbumArt(track.getUri()) != null)
                 album_art.setImageBitmap(getAlbumArt(track.getUri()));
             else
@@ -260,11 +251,9 @@ public class NowPlayingActivity extends AppCompatActivity {
         if (SiQueue.isOnShuffle) {
             SiQueue.unShuffle();
             SiQueue.isOnShuffle = false;
-            // Change icon.
         } else {
             SiQueue.shuffle();
             SiQueue.isOnShuffle = true;
-            // Change icon.
         }
         SiQueue.position = SiQueue.findTrackPosition(track);
         configIcons();
