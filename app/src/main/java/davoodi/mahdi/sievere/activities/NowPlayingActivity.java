@@ -19,6 +19,7 @@ import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.SiQueue;
 import davoodi.mahdi.sievere.players.SiPlayer;
+import davoodi.mahdi.sievere.preferences.Finals;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     Track track;
     WaveformSeekBar seekBar;
     double current_position, total_duration;
+    boolean play_song;
 
     // Sample final array for seekbar waves pattern. I have to change it in the future.
     // TODO: Create wave pattern with audio files.(Already have the dependency)
@@ -45,20 +47,41 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
 
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                play_song = false;
+            } else {
+                play_song = extras.getBoolean(Finals.PLAY);
+            }
+        } else {
+            play_song = (boolean) savedInstanceState.getSerializable(Finals.PLAY);
+        }
+
         artist = findViewById(R.id.npa_artist);
         title = findViewById(R.id.npa_title);
         seekbar_duration = findViewById(R.id.npa_total_duration);
         seekbar_position = findViewById(R.id.npa_current_position);
         album_art = findViewById(R.id.npa_album_art);
-
-        setUp();
-        configMusic();
-    }
-
-    private void setUp() {
-        siPlayer = new SiPlayer(this);
         seekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
+
+        setUp(play_song);
+    }
+
+    private void setUp(boolean play) {
+        siPlayer = SiPlayer.getInstance();
+        if (siPlayer != null){
+
+        }else {
+            siPlayer = new SiPlayer();
+        }
+
+
+            // Show.
+
+            // Play.
+
 
         seekBar.setOnProgressChanged((waveformSeekBar, v, fromUser) -> {
             current_position = waveformSeekBar.getProgress();
@@ -82,7 +105,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         if (SiQueue.isQueueReady()) {
             track = SiQueue.getTrackToPlay();
 
-            siPlayer.playTrack(track);
+            siPlayer.playTrack(this, track);
             buildUI();
         }
     }
@@ -173,10 +196,10 @@ public class NowPlayingActivity extends AppCompatActivity {
         configMusic();
     }
 
-    @Override
+   /* @Override
     protected void onDestroy() {
         super.onDestroy();
         if (siPlayer != null)
             siPlayer.release();
-    }
+    }*/
 }

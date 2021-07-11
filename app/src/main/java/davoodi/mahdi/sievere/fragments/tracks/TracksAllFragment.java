@@ -19,6 +19,7 @@ import davoodi.mahdi.sievere.adapters.TAFLinearListAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
 import davoodi.mahdi.sievere.data.SiQueue;
+import davoodi.mahdi.sievere.preferences.Finals;
 
 
 public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.OnTrackListener {
@@ -61,7 +62,8 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
         if (DataLoader.tracks != null && DataLoader.tracks.size() > 0) {
             SiQueue.position = position;
             SiQueue.setQueue(DataLoader.tracks);
-            startActivity(new Intent(getActivity(), NowPlayingActivity.class));
+            startActivity(new Intent(getActivity(), NowPlayingActivity.class)
+                    .putExtra(Finals.PLAY, true));
         }
     }
 }

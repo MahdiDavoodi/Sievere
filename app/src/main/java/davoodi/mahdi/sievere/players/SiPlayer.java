@@ -8,14 +8,18 @@ import java.io.IOException;
 import davoodi.mahdi.sievere.components.Track;
 
 public class SiPlayer extends MediaPlayer {
-    Context context;
+    public static SiPlayer instance;
 
-    public SiPlayer(Context context) {
+    public SiPlayer() {
         super();
-        this.context = context;
+        instance = this;
     }
 
-    public void playTrack(Track track) {
+    public static SiPlayer getInstance() {
+        return instance;
+    }
+
+    public void playTrack(Context context, Track track) {
         try {
             if (track != null) {
                 reset();

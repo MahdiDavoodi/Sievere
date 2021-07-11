@@ -14,6 +14,7 @@ import android.widget.PopupMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.preferences.Finals;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openNPActivity() {
-        startActivity(new Intent(MainActivity.this, NowPlayingActivity.class));
+        startActivity(new Intent(MainActivity.this, NowPlayingActivity.class)
+                .putExtra(Finals.PLAY, false));
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }
