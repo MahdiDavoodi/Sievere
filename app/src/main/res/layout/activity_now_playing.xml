@@ -51,7 +51,7 @@
         android:maxHeight="60dp"
         android:minWidth="@dimen/common_icons"
         android:minHeight="@dimen/common_icons"
-        android:onClick="changeVolume"
+        android:onClick="showSystemVolume"
         app:layout_constraintBottom_toBottomOf="@+id/npa_options"
         app:layout_constraintEnd_toStartOf="@+id/npa_options"
         app:layout_constraintTop_toTopOf="@+id/npa_options"

@@ -3,12 +3,15 @@ package davoodi.mahdi.sievere.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,7 +69,8 @@ public class NowPlayingActivity extends AppCompatActivity {
         seekBar = findViewById(R.id.npa_seekbar);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
 
-        setUp(play_song);
+        if (SiQueue.isQueueReady())
+            setUp(play_song);
     }
 
     private void setUp(boolean play) {
@@ -186,7 +190,10 @@ public class NowPlayingActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    public void changeVolume(View view) {
+    public void showSystemVolume(View view) {
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume, AudioManager.FLAG_SHOW_UI);
     }
 
     public void playPause(View view) {
@@ -202,11 +209,4 @@ public class NowPlayingActivity extends AppCompatActivity {
         SiQueue.updatePosition(-1);
         configMusic();
     }
-
-   /* @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (siPlayer != null)
-            siPlayer.release();
-    }*/
 }
