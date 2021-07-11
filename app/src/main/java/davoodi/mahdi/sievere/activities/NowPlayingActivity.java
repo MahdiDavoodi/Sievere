@@ -6,6 +6,7 @@ import androidx.core.content.res.ResourcesCompat;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +31,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     // UI
     TextView artist, title, seekbar_duration, seekbar_position;
     ImageView album_art;
+    ImageButton play_pause, shuffle, repeat;
 
     // Components
     SiPlayer siPlayer;
@@ -44,6 +47,10 @@ public class NowPlayingActivity extends AppCompatActivity {
             , 4, 5, 2, 8, 4, 1, 1, 2, 1, 5, 6, 4, 5, 6, 8, 9, 1, 2,
             5, 4, 5, 6, 1, 2, 1, 4, 5, 5, 6, 5, 4, 6, 8, 9, 8, 7, 5,
             9, 8, 7, 6, 4, 0, 5, 1, 9, 6, 4, 5, 9, 8, 4, 2, 3, 1, 1, 1, 0, 0};
+
+    // Change icons
+    Drawable ic_rep_once = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_one_solid, getTheme()),
+            ic_play = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_play_solid, getTheme());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +74,9 @@ public class NowPlayingActivity extends AppCompatActivity {
         seekbar_position = findViewById(R.id.npa_current_position);
         album_art = findViewById(R.id.npa_album_art);
         seekBar = findViewById(R.id.npa_seekbar);
+        play_pause = findViewById(R.id.npa_play);
+        shuffle = findViewById(R.id.npa_shuffle);
+        repeat = findViewById(R.id.npa_repeat);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
 
         if (SiQueue.isQueueReady())
@@ -101,7 +111,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         siPlayer.setOnCompletionListener(mediaPlayer -> {
             if (SiQueue.position == SiQueue.queue.size() - 1 && !SiQueue.isOnRepeat) {
                 // Queue finished.
-                pause();
+                mediaPlayer.pause();
             } else if (!SiQueue.isOnRepeatOne) {
                 SiQueue.updatePosition(1);
                 configMusic();
@@ -119,6 +129,15 @@ public class NowPlayingActivity extends AppCompatActivity {
     private void setTrack() {
         if (SiQueue.isQueueReady())
             track = SiQueue.getTrackToPlay();
+    }
+
+    private void configIcons() {
+        if (siPlayer != null) {
+            if (!siPlayer.isPlaying())
+                play_pause.setImageDrawable(ic_play);
+            if (SiQueue.isOnShuffle)
+
+        }
     }
 
     private void buildUI() {
@@ -175,11 +194,6 @@ public class NowPlayingActivity extends AppCompatActivity {
         return null;
     }
 
-    private void pause() {
-        if (siPlayer != null)
-            siPlayer.pause();
-    }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -197,7 +211,12 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     public void playPause(View view) {
-
+        if (siPlayer != null) {
+            if (siPlayer.isPlaying())
+                siPlayer.pause();
+            else
+                siPlayer.start();
+        }
     }
 
     public void next(View view) {
@@ -222,8 +241,17 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     public void repeat(View view) {
+        if (SiQueue.isOnRepeat && !SiQueue.isOnRepeatOne) {
+            SiQueue.isOnRepeatOne = true;
+        } else if (SiQueue.isOnRepeatOne) {
+            SiQueue.isOnRepeat = false;
+            SiQueue.isOnRepeatOne = false;
+        } else {
+            SiQueue.isOnRepeat = true;
+        }
     }
 
     public void favorite(View view) {
+        // database.
     }
 }
