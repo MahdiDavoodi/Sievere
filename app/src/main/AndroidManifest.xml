@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Sievere">
         <activity android:name=".activities.NowPlayingActivity" />
         <activity android:name=".activities.InfoActivity" />
-        <activity android:name=".activities.IntroActivity">
+        <activity android:name=".activities.IntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

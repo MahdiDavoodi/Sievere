@@ -7,8 +7,8 @@
     tools:context=".activities.IntroActivity">
 
     <TextView
-        android:id="@+id/ia_app_text"
-        style="@style/big_text"
+        android:id="@+id/ia_tv1"
+        style="@style/primary_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -19,13 +19,13 @@
         app:layout_constraintVertical_bias="0.25" />
 
     <TextView
-        android:id="@+id/ai_category_text"
-        style="@style/big_text"
+        android:id="@+id/ia_tv2"
+        style="@style/primary_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_category"
-        android:textSize="@dimen/big_text_min"
-        app:layout_constraintEnd_toEndOf="@+id/ia_app_text"
-        app:layout_constraintTop_toBottomOf="@+id/ia_app_text" />
+        android:text="@string/app_description"
+        android:textSize="@dimen/text"
+        app:layout_constraintEnd_toEndOf="@+id/ia_tv1"
+        app:layout_constraintTop_toBottomOf="@+id/ia_tv1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

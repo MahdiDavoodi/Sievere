@@ -15,7 +15,7 @@
         <item name="android:navigationBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
         <item name="android:windowLightNavigationBar">true</item>
         <!-- Default widgets styles and ... -->
-        <item name="android:textViewStyle">@style/common_text</item>
+        <item name="android:textViewStyle">@style/text</item>
         <item name="android:popupMenuStyle">@style/popup_menu_main_style</item>
     </style>
 </resources>

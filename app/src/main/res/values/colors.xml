@@ -14,7 +14,7 @@
     <color name="divider">#FF6200EE</color>
 
     // Text Views.
-    <color name="primary_text">#0C0C0C</color>
+    <color name="text">#0C0C0C</color>
     <color name="secondary_text">#817A7A</color>
 
     ------------------------ Dark Theme ------------------------

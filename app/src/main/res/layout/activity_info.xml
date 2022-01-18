@@ -26,7 +26,7 @@
         app:srcCompat="@drawable/ic_arrow_back_solid" />
 
     <TextView
-        style="@style/big_text_style_1"
+        style="@style/primary_text_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -51,12 +51,12 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/big_text"
+                style="@style/primary_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/ia_title_text"
-                android:textSize="@dimen/big_text_min" />
+                android:textSize="@dimen/primary_text_min" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -149,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/app_lastUpdate"
+                    android:text="@string/app_last_update"
                     app:layout_constraintBottom_toTopOf="@+id/ia_version_text"
                     app:layout_constraintEnd_toEndOf="@+id/ia_version_text"
                     app:layout_constraintStart_toStartOf="@+id/ia_version_text" />
