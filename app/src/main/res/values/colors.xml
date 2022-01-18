@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    ------------------------ Light Theme ------------------------
-    // Theme.
+    <!-- Default Theme -->
     <color name="primary">#FF6200EE</color>
     <color name="primary_dark">#FF3700B3</color>
     <color name="primary_light">#8DFBFBFB</color>
     <color name="accent">#7C4DFF</color>
     <color name="icons">#9F9E9E</color>
     <color name="divider">#FF6200EE</color>
-
-    // Text Views.
     <color name="text">#0C0C0C</color>
     <color name="secondary_text">#817A7A</color>
-
-    ------------------------ Dark Theme ------------------------
-    // Theme.
+    <!-- Dark Theme -->
     <color name="dark_primary">#2F6C95</color>
     <color name="dark_primary_dark">#000000</color>
     <color name="dark_primary_light">#252525</color>
     <color name="dark_accent">#5C5B60</color>
     <color name="dark_icons">#9F9E9E</color>
     <color name="dark_divider">#989595</color>
-
-    // Text Views.
     <color name="dark_primary_text">#2F6C95</color>
     <color name="dark_secondary_text">#8C8888</color>
 </resources>

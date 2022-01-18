@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/layout_common_bg"
+    style="@style/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.NowPlayingActivity">
 
     <ImageButton
         android:id="@+id/npa_exit"
-        style="@style/common_icon_style_2"
+        style="@style/icon_v3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/icons_page_sides"
@@ -26,7 +26,7 @@
 
     <ImageButton
         android:id="@+id/npa_options"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -42,7 +42,7 @@
 
     <ImageButton
         android:id="@+id/npa_volume"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -60,7 +60,7 @@
 
     <ImageButton
         android:id="@+id/npa_queue"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -119,7 +119,7 @@
 
     <ImageButton
         android:id="@+id/npa_add"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -166,7 +166,7 @@
 
     <ImageButton
         android:id="@+id/npa_prev"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image"
@@ -184,7 +184,7 @@
 
     <ImageButton
         android:id="@+id/npa_play"
-        style="@style/common_icon_style_2"
+        style="@style/icon_v3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -202,7 +202,7 @@
 
     <ImageButton
         android:id="@+id/npa_next"
-        style="@style/common_icon"
+        style="@style/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image"

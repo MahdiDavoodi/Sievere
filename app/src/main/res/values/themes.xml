@@ -43,16 +43,15 @@
     </style>
 
     <!--icon-->
-    <style name="common_icon" parent="images">
-        <item name="android:background">?attr/actionBarItemBackground</item>
+    <style name="icon" parent="icons">
         <item name="android:tint">@color/icons</item>
     </style>
 
-    <style name="common_icon_style_1" parent="common_icon">
+    <style name="icon_v2" parent="icons">
         <item name="android:tint">@color/white</item>
     </style>
 
-    <style name="common_icon_style_2" parent="common_icon">
+    <style name="icon_v3" parent="icons">
         <item name="android:tint">@color/primary</item>
     </style>
 
@@ -63,34 +62,34 @@
     </style>
 
     <!--Views-->
-    <style name="main_nav_view_style">
-        <item name="itemIconTint">@color/main_nav_view_light</item>
-        <item name="itemTextColor">@color/main_nav_view_light</item>
+    <style name="navigation_view">
+        <item name="itemIconTint">@color/navigation_view</item>
+        <item name="itemTextColor">@color/navigation_view</item>
     </style>
 
     <!--Layouts-->
 
-    <style name="layout_common_bg">
+    <style name="background">
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="layout_primary_bg">
+    <style name="primary_background">
         <item name="android:background">@color/primary</item>
     </style>
 
-    <style name="up_rounded_layout_bg">
+    <style name="up_rounded_background">
         <item name="android:background">@drawable/bg_up_rounded_light</item>
     </style>
 
-    <style name="rounded_layout_bg">
+    <style name="rounded_background">
         <item name="android:background">@drawable/bg_rounded_light</item>
     </style>
 
-    <style name="down_rounded_layout_bg">
+    <style name="down_rounded_background">
         <item name="android:background">@drawable/bg_down_rounded_light</item>
     </style>
 
-    <style name="layout_np_card_bg">
+    <style name="np_card_background">
         <item name="android:background">@color/primary</item>
     </style>
 
@@ -141,14 +140,14 @@
     <!--Images and Icons-->
     <style name="images">
         <item name="android:scaleType">fitCenter</item>
-        <item name="android:contentDescription">@string/image</item>
     </style>
 
-    <style name="common_icon_transparent" parent="common_icon">
+    <style name="common_icon_transparent" parent="icon">
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="icons" parent="images">
+    <style name="icons">
+        <item name="android:scaleType">fitCenter</item>
         <item name="android:background">?attr/actionBarItemBackground</item>
     </style>
 

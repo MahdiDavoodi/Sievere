@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    // Text Views.
+    <!-- Text -->
     <dimen name="primary_text">70sp</dimen>
     <dimen name="primary_text_min">30sp</dimen>
     <dimen name="primary_text_max">90sp</dimen>
     <dimen name="primary_text_padding">1dp</dimen>
-
+    <dimen name="text_big">24sp</dimen>
     <dimen name="text">15sp</dimen>
     <dimen name="text_min">10sp</dimen>
     <dimen name="text_max">24sp</dimen>
     <dimen name="text_padding">10dp</dimen>
-
     <dimen name="small_text">12sp</dimen>
     <dimen name="small_text_min">8sp</dimen>
     <dimen name="small_text_max">18sp</dimen>
     <dimen name="small_text_padding">2dp</dimen>
-
-    // Icons
+    <!-- Icons -->
     <dimen name="common_icons">20dp</dimen>
     <dimen name="common_icons_size_1">30dp</dimen>
     <dimen name="common_icons_size_2">40dp</dimen>
-
     <dimen name="icons_page_sides">15dp</dimen>
 </resources>

@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/layout_primary_bg"
+    style="@style/primary_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.InfoActivity">
@@ -10,7 +10,7 @@
 
     <ImageButton
         android:id="@+id/ia_exit"
-        style="@style/common_icon_style_1"
+        style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/icons_page_sides"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        style="@style/up_rounded_layout_bg"
+        style="@style/up_rounded_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="130dp"
@@ -96,7 +96,7 @@
 
                 <ImageButton
                     android:id="@+id/ia_telegram_button"
-                    style="@style/common_icon_style_2"
+                    style="@style/icon_v3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/image"
@@ -115,7 +115,7 @@
 
                 <ImageButton
                     android:id="@+id/ia_github_button"
-                    style="@style/common_icon_style_2"
+                    style="@style/icon_v3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/image"
