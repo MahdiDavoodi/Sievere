@@ -10,14 +10,6 @@
         android:title="@string/ma_toolbar_settings" />
 
     <item
-        android:id="@+id/ma_toolbar_rate"
-        android:title="@string/ma_toolbar_rate" />
-
-    <item
         android:id="@+id/ma_toolbar_scan"
         android:title="@string/ma_toolbar_scan" />
-
-    <item
-        android:id="@+id/ma_toolbar_now_playing"
-        android:title="@string/ma_toolbar_now_playing" />
 </menu>

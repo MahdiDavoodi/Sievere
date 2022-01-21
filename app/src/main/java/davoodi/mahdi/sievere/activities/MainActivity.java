@@ -49,14 +49,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.ma_toolbar_settings) {
                 /*Setting*/
                 return true;
-            } else if (item.getItemId() == R.id.ma_toolbar_rate) {
-                /*Rate*/
-                return true;
             } else if (item.getItemId() == R.id.ma_toolbar_scan) {
                 /*Scan*/
-                return true;
-            } else if (item.getItemId() == R.id.ma_toolbar_now_playing) {
-                openNPActivity();
                 return true;
             } else return false;
         });
