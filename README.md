@@ -6,8 +6,10 @@
 This is a pretty solid music player. This is gonna be my first official Play Store application.
 
 ### Working on (version - 0.5):
-	-   Play music!
-	-   Support dark mode in Android 9+. 
+	-   Play music in the simplest way!
+	-   Show all tracks in the main activiy.
+    -   Finish Info Activity.
+    -   Set up all activities from now.
 
 ### TODO Tasks:
     -   Support notification panel for the player.
