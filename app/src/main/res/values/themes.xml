@@ -107,7 +107,7 @@
     </style>
 
     <style name="text" parent="Widget.MaterialComponents.TextView">
-        <item name="fontFamily">@font/way_regular</item>
+        <item name="fontFamily">@font/samsung_one_400</item>
         <item name="android:padding">@dimen/text_padding</item>
         <item name="android:textAlignment">center</item>
         <item name="autoSizeTextType">uniform</item>
@@ -116,15 +116,10 @@
         <item name="android:textSize">@dimen/text</item>
     </style>
 
-    <style name="small_text" parent="Widget.MaterialComponents.TextView">
-        <item name="fontFamily">@font/way_regular</item>
+    <style name="small_text" parent="text">
         <item name="android:padding">@dimen/small_text_padding</item>
-        <item name="android:textAlignment">center</item>
-        <item name="autoSizeTextType">uniform</item>
         <item name="android:textColor">@color/secondary_text</item>
         <item name="android:textSize">@dimen/small_text</item>
-        <item name="autoSizeMaxTextSize">@dimen/small_text_max</item>
-        <item name="autoSizeMinTextSize">@dimen/small_text_min</item>
     </style>
 
     <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">

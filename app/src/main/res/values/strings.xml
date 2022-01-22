@@ -16,19 +16,15 @@
     <string name="ma_toolbar_scan">Scan the library\u0020</string>
 
     <!--Info Activity-->
-    <string name="ia_title_text">Hello, Friend!\u0020</string>
-    <string name="ia_main_text_1">It\'s me, the developer. I\'m so glad that you are reading this now. Currently, I am learning Android development and I am getting better day by day. I will try to implement every new and useful thing that I learn. If I want to make this short, Sievere is an app for you, by you! It means you can say what you want to see in future updates so I will start working on it. \u0020</string>
-    <string name="ia_main_text_2">It\'s open-source and you can see how it works. Also, It has a channel on Telegram which posts and suggests some good music for you.\u0020</string>
-    <string name="ia_main_text_3">Don\'t forget to be happy!\u0020</string>
-    <string name="ia_main_text_4">- Mahdi Davoodi\u0020</string>
+    <string name="info_tv1">Hello, Friend!\u0020</string>
+    <string name="info_tv2">"Glad to see you here. This music player is an open-source project that I\'m still working on. The whole purpose of this project is to create a solid and easy-to-use music player for everybody.\u0020</string>
+    <string name="info_tv3">If you are facing any problem, create a new issue in our GitHub repository."\u0020</string>
+    <string name="info_tv4">Thank you.\u0020</string>
+    <string name="info_tv5">- Mahdi Davoodi\u0020</string>
 
-    <!--Now Playing-->%1$d
+    <!--Now Playing-->
     <string name="track_time_hour">%1$02d:%2$02d:%3$02d\u0020</string>
     <string name="track_time_minutes">%1$02d:%2$02d\u0020</string>
-
-
-    <!--Widgets Descriptions-->
-    <string name="image">Image</string>
 
     <!--Toasts-->
     <string name="denied_read_data_permission_toast">We need your permission to find your audio files.\u0020</string>
@@ -43,7 +39,10 @@
     <string name="blank">\u0020</string>
 
     <!-- Content Description -->
-    <string name="cd_search_button">Search Button</string>
-    <string name="cd_options_button">Options Button</string>
+    <string name="cd_back_button">Back</string>
+    <string name="cd_telegram_button">Open Telegram</string>
+    <string name="cd_github_button">Open GitHub</string>
+    <string name="cd_search_button">Search</string>
+    <string name="cd_options_button">Options</string>
 
 </resources>

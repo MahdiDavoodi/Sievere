@@ -15,8 +15,8 @@
     <dimen name="small_text_max">18sp</dimen>
     <dimen name="small_text_padding">2dp</dimen>
     <!-- Icons -->
-    <dimen name="common_icons">20dp</dimen>
-    <dimen name="common_icons_size_1">30dp</dimen>
-    <dimen name="common_icons_size_2">40dp</dimen>
-    <dimen name="icons_page_sides">15dp</dimen>
+    <dimen name="icons">20dp</dimen>
+    <dimen name="icons_s1">30dp</dimen>
+    <dimen name="icons_s2">40dp</dimen>
+    <dimen name="icons_side_margin">15dp</dimen>
 </resources>

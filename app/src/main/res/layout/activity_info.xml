@@ -9,17 +9,17 @@
 
 
     <ImageButton
-        android:id="@+id/ia_exit"
+        android:id="@+id/info_ib1"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/icons_page_sides"
-        android:layout_marginTop="@dimen/icons_page_sides"
-        android:contentDescription="@string/image"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:minWidth="@dimen/common_icons"
-        android:minHeight="@dimen/common_icons"
+        android:layout_marginStart="@dimen/icons_side_margin"
+        android:layout_marginTop="@dimen/icons_side_margin"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="@dimen/icons_s2"
+        android:maxHeight="@dimen/icons_s2"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
         android:onClick="exit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
         style="@style/primary_text_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="80dp"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,85 +55,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/ia_title_text"
+                android:text="@string/info_tv1"
                 android:textSize="@dimen/primary_text_min" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/ia_main_text_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/info_tv2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/info_tv3" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/info_tv4"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/ia_main_text_2"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/ia_main_text_3"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:text="@string/ia_main_text_4"
+                android:layout_marginEnd="10dp"
+                android:text="@string/info_tv5"
                 android:textAlignment="textEnd" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:minHeight="100dp">
 
-                <ImageButton
-                    android:id="@+id/ia_telegram_button"
-                    style="@style/icon_v3"
+                <TextView
+                    android:id="@+id/info_tv1"
+                    style="@style/small_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/image"
-                    android:maxWidth="60dp"
-                    android:maxHeight="60dp"
-                    android:minWidth="30dp"
-                    android:minHeight="30dp"
-                    android:onClick="infoTelegram"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.57"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ia_version_text"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/ic_telegram_solid" />
-
-                <ImageButton
-                    android:id="@+id/ia_github_button"
-                    style="@style/icon_v3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/image"
-                    android:maxWidth="60dp"
-                    android:maxHeight="60dp"
-                    android:minWidth="30dp"
-                    android:minHeight="30dp"
-                    android:onClick="infoGithub"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.43"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ia_version_text"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/ic_github_solid" />
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/app_last_update"
+                    app:layout_constraintBottom_toTopOf="@+id/info_tv2"
+                    app:layout_constraintEnd_toEndOf="@+id/info_tv2"
+                    app:layout_constraintStart_toStartOf="@+id/info_tv2" />
 
                 <TextView
-                    android:id="@+id/ia_version_text"
+                    android:id="@+id/info_tv2"
                     style="@style/small_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,16 +113,44 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/ia_update_text"
-                    style="@style/small_text"
+                <ImageButton
+                    android:id="@+id/info_ib2"
+                    style="@style/icon_v3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/app_last_update"
-                    app:layout_constraintBottom_toTopOf="@+id/ia_version_text"
-                    app:layout_constraintEnd_toEndOf="@+id/ia_version_text"
-                    app:layout_constraintStart_toStartOf="@+id/ia_version_text" />
+                    android:contentDescription="@string/cd_telegram_button"
+                    android:maxWidth="@dimen/icons_s2"
+                    android:maxHeight="@dimen/icons_s2"
+                    android:minWidth="@dimen/icons"
+                    android:minHeight="@dimen/icons"
+                    android:onClick="infoTelegram"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.57"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_tv2"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_telegram_solid" />
+
+                <ImageButton
+                    android:id="@+id/info_ib3"
+                    style="@style/icon_v3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/cd_github_button"
+                    android:maxWidth="@dimen/icons_s2"
+                    android:maxHeight="@dimen/icons_s2"
+                    android:minWidth="@dimen/icons"
+                    android:minHeight="@dimen/icons"
+                    android:onClick="infoGithub"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.43"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_tv2"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_github_solid" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
