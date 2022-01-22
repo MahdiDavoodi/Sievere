@@ -11,7 +11,7 @@ import davoodi.mahdi.sievere.R;
 
 public class InfoActivity extends AppCompatActivity {
 
-    public static final String TELEGRAM = "https://t.me/MusicSievere";
+    public static final String TELEGRAM = "https://t.me/Sievere";
     public static final String REPOSITORY = "https://github.com/MahdiDavoodi/Sievere";
 
     @Override
