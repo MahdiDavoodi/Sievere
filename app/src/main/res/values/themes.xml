@@ -21,7 +21,7 @@
 
     ------------------------ Light styles ------------------------
     <!--Seekbars-->
-    <style name="seekbar_style_1">
+    <style name="seekbar">
         <item name="wave_progress_color">@color/primary</item>
         <item name="wave_width">3dp</item>
         <item name="wave_min_height">4dp</item>

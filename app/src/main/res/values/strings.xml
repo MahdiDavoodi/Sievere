@@ -47,5 +47,7 @@
     <string name="cd_volume_button">System volume</string>
     <string name="cd_queue_button">Queue</string>
     <string name="cd_addToPlaylist_button">Add to playlist</string>
+    <string name="cd_albumArt">Album art</string>
+    <string name="cd_like_button">Like</string>
 
 </resources>

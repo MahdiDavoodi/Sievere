@@ -121,58 +121,63 @@
             app:layout_constraintTop_toBottomOf="@+id/npa_tv1" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:id="@+id/npa_cv"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:layout_marginTop="20dp"
-            android:elevation="8dp"
-            app:cardCornerRadius="25dp"
-            app:cardElevation="50dp"
-            app:cardMaxElevation="70dp"
+            android:elevation="2dp"
+            android:maxWidth="200dp"
+            android:maxHeight="200dp"
+            android:minWidth="200dp"
+            android:minHeight="200dp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="20dp"
             app:cardPreventCornerOverlap="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/npa_tv2">
 
             <ImageView
-                android:id="@+id/npa_album_art"
-                style="@style/images"
+                android:id="@+id/npa_iv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/cd_back_button"
+                android:contentDescription="@string/cd_albumArt"
+                android:scaleType="fitCenter"
                 app:srcCompat="@drawable/pic_sample_music_art" />
         </androidx.cardview.widget.CardView>
 
         <ImageButton
-            android:id="@+id/npa_favorite"
+            android:id="@+id/npa_ib6"
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="60dp"
-            android:maxHeight="60dp"
+            android:contentDescription="@string/cd_like_button"
+            android:maxWidth="@dimen/icons_s2"
+            android:maxHeight="@dimen/icons_s2"
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="favorite"
-            app:layout_constraintBottom_toTopOf="@+id/npa_seekbar"
+            app:layout_constraintBottom_toTopOf="@+id/npa_sb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/npa_cv"
             app:layout_constraintVertical_bias="0.9"
             app:srcCompat="@drawable/ic_favorite_outline" />
 
+        <!-- Refactoring -->
+
         <com.masoudss.lib.WaveformSeekBar
-            android:id="@+id/npa_seekbar"
-            style="@style/seekbar_style_1"
+            android:id="@+id/npa_sb"
+            style="@style/seekbar"
             android:layout_width="350dp"
             android:layout_height="60dp"
             app:layout_constraintBottom_toTopOf="@+id/npa_play"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/npa_cv"
             app:layout_constraintVertical_bias="0.8"
             app:wave_max_progress="100"
             app:wave_progress="0" />
@@ -274,8 +279,8 @@
             android:layout_height="wrap_content"
             android:text="@string/blank"
             android:textSize="@dimen/text_min"
-            app:layout_constraintEnd_toEndOf="@+id/npa_seekbar"
-            app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+            app:layout_constraintEnd_toEndOf="@+id/npa_sb"
+            app:layout_constraintTop_toBottomOf="@+id/npa_sb" />
 
         <TextView
             android:id="@+id/npa_current_position"
@@ -284,8 +289,8 @@
             android:layout_height="wrap_content"
             android:text="@string/blank"
             android:textSize="@dimen/text_min"
-            app:layout_constraintStart_toStartOf="@+id/npa_seekbar"
-            app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+            app:layout_constraintStart_toStartOf="@+id/npa_sb"
+            app:layout_constraintTop_toBottomOf="@+id/npa_sb" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

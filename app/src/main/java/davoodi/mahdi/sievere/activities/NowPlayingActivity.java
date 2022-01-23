@@ -87,8 +87,8 @@ public class NowPlayingActivity extends AppCompatActivity {
         title = findViewById(R.id.npa_tv1);
         seekbar_duration = findViewById(R.id.npa_total_duration);
         seekbar_position = findViewById(R.id.npa_current_position);
-        album_art = findViewById(R.id.npa_album_art);
-        seekBar = findViewById(R.id.npa_seekbar);
+        album_art = findViewById(R.id.npa_iv);
+        seekBar = findViewById(R.id.npa_sb);
         play_pause = findViewById(R.id.npa_play);
         shuffle = findViewById(R.id.npa_shuffle);
         repeat = findViewById(R.id.npa_repeat);
