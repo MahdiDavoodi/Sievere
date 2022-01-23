@@ -10,7 +10,7 @@
     <dimen name="text_min">10sp</dimen>
     <dimen name="text_max">24sp</dimen>
     <dimen name="text_padding">10dp</dimen>
-    <dimen name="small_text">12sp</dimen>
+    <dimen name="text_small">12sp</dimen>
     <dimen name="small_text_min">8sp</dimen>
     <dimen name="small_text_max">18sp</dimen>
     <dimen name="small_text_padding">2dp</dimen>

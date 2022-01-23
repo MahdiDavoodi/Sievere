@@ -83,8 +83,8 @@ public class NowPlayingActivity extends AppCompatActivity {
         ic_repeat_solid = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat_solid, getTheme());
 
 
-        artist = findViewById(R.id.npa_artist);
-        title = findViewById(R.id.npa_title);
+        artist = findViewById(R.id.npa_tv2);
+        title = findViewById(R.id.npa_tv1);
         seekbar_duration = findViewById(R.id.npa_total_duration);
         seekbar_position = findViewById(R.id.npa_current_position);
         album_art = findViewById(R.id.npa_album_art);

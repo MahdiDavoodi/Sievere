@@ -123,7 +123,7 @@
     <style name="small_text" parent="text">
         <item name="android:padding">@dimen/small_text_padding</item>
         <item name="android:textColor">@color/secondary_text</item>
-        <item name="android:textSize">@dimen/small_text</item>
+        <item name="android:textSize">@dimen/text_small</item>
     </style>
 
     <style name="main_toolbar_text" parent="Widget.MaterialComponents.TextView">

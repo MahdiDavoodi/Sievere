@@ -44,5 +44,8 @@
     <string name="cd_github_button">Open GitHub</string>
     <string name="cd_search_button">Search</string>
     <string name="cd_options_button">Options</string>
+    <string name="cd_volume_button">System volume</string>
+    <string name="cd_queue_button">Queue</string>
+    <string name="cd_addToPlaylist_button">Add to playlist</string>
 
 </resources>
