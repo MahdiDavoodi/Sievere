@@ -2,107 +2,110 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/background"
+    style="@style/primary_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.NowPlayingActivity">
 
+    <ImageButton
+        android:id="@+id/npa_exit"
+        style="@style/icon_v3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/icons_side_margin"
+        android:layout_marginTop="@dimen/icons_side_margin"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
+        android:onClick="exit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_solid" />
+
+    <ImageButton
+        android:id="@+id/npa_options"
+        style="@style/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_solid" />
+
+    <ImageButton
+        android:id="@+id/npa_volume"
+        style="@style/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
+        android:onClick="showSystemVolume"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_options"
+        app:layout_constraintEnd_toStartOf="@+id/npa_options"
+        app:layout_constraintTop_toTopOf="@+id/npa_options"
+        app:srcCompat="@drawable/ic_volume_solid" />
+
+    <ImageButton
+        android:id="@+id/npa_add"
+        style="@style/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_queue"
+        app:layout_constraintEnd_toStartOf="@+id/npa_queue"
+        app:layout_constraintTop_toTopOf="@+id/npa_queue"
+        app:srcCompat="@drawable/ic_add_solid" />
+
+    <ImageButton
+        android:id="@+id/npa_queue"
+        style="@style/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:contentDescription="@string/cd_back_button"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:minWidth="@dimen/icons"
+        android:minHeight="@dimen/icons"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_volume"
+        app:layout_constraintEnd_toStartOf="@+id/npa_volume"
+        app:layout_constraintTop_toTopOf="@+id/npa_volume"
+        app:srcCompat="@drawable/ic_queue_solid" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/npa_song"
-        style="@style/primary_down_rounded_background"
+        style="@style/up_rounded_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:foregroundGravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageButton
-            android:id="@+id/npa_exit"
-            style="@style/icon_v3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/icons_side_margin"
-            android:layout_marginTop="@dimen/icons_side_margin"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:minWidth="@dimen/icons"
-            android:minHeight="@dimen/icons"
-            android:onClick="exit"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_arrow_back_solid" />
-
-        <ImageButton
-            android:id="@+id/npa_options"
-            style="@style/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="60dp"
-            android:maxHeight="60dp"
-            android:minWidth="@dimen/icons"
-            android:minHeight="@dimen/icons"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_more_solid" />
-
-        <ImageButton
-            android:id="@+id/npa_volume"
-            style="@style/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="60dp"
-            android:maxHeight="60dp"
-            android:minWidth="@dimen/icons"
-            android:minHeight="@dimen/icons"
-            android:onClick="showSystemVolume"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_options"
-            app:layout_constraintEnd_toStartOf="@+id/npa_options"
-            app:layout_constraintTop_toTopOf="@+id/npa_options"
-            app:srcCompat="@drawable/ic_volume_solid" />
-
-        <ImageButton
-            android:id="@+id/npa_add"
-            style="@style/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="60dp"
-            android:maxHeight="60dp"
-            android:minWidth="@dimen/icons"
-            android:minHeight="@dimen/icons"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_queue"
-            app:layout_constraintEnd_toStartOf="@+id/npa_queue"
-            app:layout_constraintTop_toTopOf="@+id/npa_queue"
-            app:srcCompat="@drawable/ic_add_solid" />
-
-        <ImageButton
-            android:id="@+id/npa_queue"
-            style="@style/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:contentDescription="@string/cd_back_button"
-            android:maxWidth="60dp"
-            android:maxHeight="60dp"
-            android:minWidth="@dimen/icons"
-            android:minHeight="@dimen/icons"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_volume"
-            app:layout_constraintEnd_toStartOf="@+id/npa_volume"
-            app:layout_constraintTop_toTopOf="@+id/npa_volume"
-            app:srcCompat="@drawable/ic_queue_solid" />
+        app:layout_constraintTop_toBottomOf="@id/npa_exit">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="20dp"
             android:elevation="8dp"
             app:cardCornerRadius="25dp"
             app:cardElevation="50dp"
@@ -110,7 +113,7 @@
             app:cardPreventCornerOverlap="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/npa_artist">
 
             <ImageView
                 android:id="@+id/npa_album_art"
@@ -125,12 +128,11 @@
             android:id="@+id/npa_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/blank"
             android:textSize="@dimen/text_max"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/npa_artist"
@@ -143,150 +145,152 @@
             app:layout_constraintStart_toStartOf="@+id/npa_title"
             app:layout_constraintTop_toBottomOf="@+id/npa_title" />
 
+
+        <ImageButton
+            android:id="@+id/npa_favorite"
+            style="@style/icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="@dimen/icons_s1"
+            android:minHeight="@dimen/icons_s1"
+            android:onClick="favorite"
+            app:layout_constraintBottom_toTopOf="@+id/npa_seekbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintVertical_bias="0.9"
+            app:srcCompat="@drawable/ic_favorite_outline" />
+
+        <com.masoudss.lib.WaveformSeekBar
+            android:id="@+id/npa_seekbar"
+            style="@style/seekbar_style_1"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            app:layout_constraintBottom_toTopOf="@+id/npa_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            app:layout_constraintVertical_bias="0.8"
+            app:wave_max_progress="100"
+            app:wave_progress="0" />
+
+        <ImageButton
+            android:id="@+id/npa_shuffle"
+            style="@style/icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="@dimen/icons_s1"
+            android:minHeight="@dimen/icons_s1"
+            android:onClick="shuffle"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_prev"
+            app:layout_constraintEnd_toStartOf="@+id/npa_prev"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/npa_prev"
+            app:srcCompat="@drawable/ic_shuffle_solid" />
+
+        <ImageButton
+            android:id="@+id/npa_prev"
+            style="@style/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="@dimen/icons_s2"
+            android:minHeight="@dimen/icons_s2"
+            android:onClick="previous"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_play"
+            app:layout_constraintEnd_toStartOf="@+id/npa_play"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/npa_play"
+            app:srcCompat="@drawable/ic_prev_solid" />
+
+        <ImageButton
+            android:id="@+id/npa_play"
+            style="@style/icon_v3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="100dp"
+            android:maxHeight="100dp"
+            android:minWidth="80dp"
+            android:minHeight="80dp"
+            android:onClick="playPause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_pause_solid" />
+
+        <ImageButton
+            android:id="@+id/npa_next"
+            style="@style/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="@dimen/icons_s2"
+            android:minHeight="@dimen/icons_s2"
+            android:onClick="next"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/npa_play"
+            app:layout_constraintTop_toTopOf="@+id/npa_play"
+            app:srcCompat="@drawable/ic_next_solid" />
+
+        <ImageButton
+            android:id="@+id/npa_repeat"
+            style="@style/icons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_back_button"
+            android:maxWidth="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="@dimen/icons_s1"
+            android:minHeight="@dimen/icons_s1"
+            android:onClick="repeat"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/npa_next"
+            app:layout_constraintTop_toTopOf="@+id/npa_next"
+            app:srcCompat="@drawable/ic_repeat_solid" />
+
+        <TextView
+            android:id="@+id/npa_total_duration"
+            style="@style/small_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blank"
+            android:textSize="@dimen/text_min"
+            app:layout_constraintEnd_toEndOf="@+id/npa_seekbar"
+            app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+
+        <TextView
+            android:id="@+id/npa_current_position"
+            style="@style/small_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blank"
+            android:textSize="@dimen/text_min"
+            app:layout_constraintStart_toStartOf="@+id/npa_seekbar"
+            app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageButton
-        android:id="@+id/npa_favorite"
-        style="@style/icons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:minWidth="@dimen/icons_s1"
-        android:minHeight="@dimen/icons_s1"
-        android:onClick="favorite"
-        app:layout_constraintBottom_toTopOf="@+id/npa_seekbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/npa_song"
-        app:layout_constraintVertical_bias="0.8"
-        app:srcCompat="@drawable/ic_favorite_outline" />
-
-    <com.masoudss.lib.WaveformSeekBar
-        android:id="@+id/npa_seekbar"
-        style="@style/seekbar_style_1"
-        android:layout_width="350dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/npa_play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/npa_song"
-        app:layout_constraintVertical_bias="0.8"
-        app:wave_max_progress="100"
-        app:wave_progress="0" />
-
-    <ImageButton
-        android:id="@+id/npa_shuffle"
-        style="@style/icons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:minWidth="@dimen/icons_s1"
-        android:minHeight="@dimen/icons_s1"
-        android:onClick="shuffle"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_prev"
-        app:layout_constraintEnd_toStartOf="@+id/npa_prev"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/npa_prev"
-        app:srcCompat="@drawable/ic_shuffle_solid" />
-
-    <ImageButton
-        android:id="@+id/npa_prev"
-        style="@style/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:minWidth="@dimen/icons_s2"
-        android:minHeight="@dimen/icons_s2"
-        android:onClick="previous"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_play"
-        app:layout_constraintEnd_toStartOf="@+id/npa_play"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/npa_play"
-        app:srcCompat="@drawable/ic_prev_solid" />
-
-    <ImageButton
-        android:id="@+id/npa_play"
-        style="@style/icon_v3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:minWidth="80dp"
-        android:minHeight="80dp"
-        android:onClick="playPause"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_pause_solid" />
-
-    <ImageButton
-        android:id="@+id/npa_next"
-        style="@style/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:minWidth="@dimen/icons_s2"
-        android:minHeight="@dimen/icons_s2"
-        android:onClick="next"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_play"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toEndOf="@+id/npa_play"
-        app:layout_constraintTop_toTopOf="@+id/npa_play"
-        app:srcCompat="@drawable/ic_next_solid" />
-
-    <ImageButton
-        android:id="@+id/npa_repeat"
-        style="@style/icons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cd_back_button"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:minWidth="@dimen/icons_s1"
-        android:minHeight="@dimen/icons_s1"
-        android:onClick="repeat"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/npa_next"
-        app:layout_constraintTop_toTopOf="@+id/npa_next"
-        app:srcCompat="@drawable/ic_repeat_solid" />
-
-    <TextView
-        android:id="@+id/npa_total_duration"
-        style="@style/small_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/blank"
-        android:textSize="@dimen/text_min"
-        app:layout_constraintEnd_toEndOf="@+id/npa_seekbar"
-        app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
-
-    <TextView
-        android:id="@+id/npa_current_position"
-        style="@style/small_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/blank"
-        android:textSize="@dimen/text_min"
-        app:layout_constraintStart_toStartOf="@+id/npa_seekbar"
-        app:layout_constraintTop_toBottomOf="@+id/npa_seekbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
