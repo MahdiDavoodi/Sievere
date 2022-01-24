@@ -11,6 +11,7 @@ public class Track {
 
     public static final String KEY_ID = "id";
     public static final String KEY_URI = "uri";
+    public static final String KEY_PATH = "path";
     public static final String KEY_TITLE = "title";
     public static final String KEY_ALBUM_ID = "albumId";
     public static final String KEY_ALBUM = "albumName";
@@ -37,12 +38,14 @@ public class Track {
             title,
             albumName,
             artistName,
-            genre;
+            genre,
+            path;
 
     private Uri uri;
 
     public Track(long id,
                  Uri uri,
+                 String path,
                  String fileName,
                  String title,
                  String artistName,
@@ -53,6 +56,7 @@ public class Track {
                  String genre
             , long dateAdded) {
         this.id = id;
+        this.path = path;
         this.bitrate = bitrate;
         this.year = year;
         this.fileName = fileName;
@@ -189,6 +193,14 @@ public class Track {
         else return title;
     }
 
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public String getAlbumName(Context context) {
         if (albumName == null)
             return context.getResources().getString(R.string.single);
@@ -207,3 +219,4 @@ public class Track {
         else return genre;
     }
 }
+

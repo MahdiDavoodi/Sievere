@@ -92,7 +92,6 @@ public class NowPlayingActivity extends AppCompatActivity {
         play_pause = findViewById(R.id.npa_ib9);
         shuffle = findViewById(R.id.npa_ib7);
         repeat = findViewById(R.id.npa_ib11);
-        new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
     }
 
     private void setUpActivity(boolean play) {
@@ -174,6 +173,7 @@ public class NowPlayingActivity extends AppCompatActivity {
             seekbar_duration.setText(getTimes((long) total_duration));
             seekbar_position.setText(getTimes((long) current_position));
             seekBar.setMaxProgress((int) total_duration);
+            new Thread(() -> seekBar.setSampleFrom(track.getPath())).start();
 
             Handler handler = new Handler();
             NowPlayingActivity.this.runOnUiThread(new Runnable() {
@@ -209,12 +209,6 @@ public class NowPlayingActivity extends AppCompatActivity {
         byte[] data = retriever.getEmbeddedPicture();
         if (data != null) return BitmapFactory.decodeByteArray(data, 0, data.length);
         return null;
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
     public void exit(View view) {
@@ -272,6 +266,6 @@ public class NowPlayingActivity extends AppCompatActivity {
     }
 
     public void favorite(View view) {
-        // database.
+        // TODO: Implement the database.
     }
 }
