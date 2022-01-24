@@ -49,5 +49,10 @@
     <string name="cd_addToPlaylist_button">Add to playlist</string>
     <string name="cd_albumArt">Album art</string>
     <string name="cd_like_button">Like</string>
+    <string name="cd_shuffle_button">Shuffle</string>
+    <string name="cd_previous_button">Previous</string>
+    <string name="cd_next_button">Next</string>
+    <string name="cd_repeat_button">Repeat</string>
+    <string name="cd_pause_button">Pause</string>
 
 </resources>

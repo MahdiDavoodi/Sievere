@@ -21,7 +21,7 @@
     ------------------------ Dark styles ------------------------
     <!--Seekbars-->
     <style name="seekbar">
-        <item name="wave_progress_color">@color/dark_primary</item>
+        <item name="wave_progress_color">@android:color/transparent</item>
         <item name="wave_width">3dp</item>
         <item name="wave_min_height">4dp</item>
         <item name="wave_background_color">@color/dark_accent</item>

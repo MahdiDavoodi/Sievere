@@ -85,13 +85,13 @@ public class NowPlayingActivity extends AppCompatActivity {
 
         artist = findViewById(R.id.npa_tv2);
         title = findViewById(R.id.npa_tv1);
-        seekbar_duration = findViewById(R.id.npa_total_duration);
-        seekbar_position = findViewById(R.id.npa_current_position);
+        seekbar_duration = findViewById(R.id.npa_tv4);
+        seekbar_position = findViewById(R.id.npa_tv3);
         album_art = findViewById(R.id.npa_iv);
         seekBar = findViewById(R.id.npa_sb);
-        play_pause = findViewById(R.id.npa_play);
-        shuffle = findViewById(R.id.npa_shuffle);
-        repeat = findViewById(R.id.npa_repeat);
+        play_pause = findViewById(R.id.npa_ib9);
+        shuffle = findViewById(R.id.npa_ib7);
+        repeat = findViewById(R.id.npa_ib11);
         new Thread(() -> seekBar.setSampleFrom(WAVE_PATTERN)).start();
     }
 
