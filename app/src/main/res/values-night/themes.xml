@@ -22,8 +22,8 @@
     <!--Seekbars-->
     <style name="seekbar">
         <item name="wave_progress_color">@android:color/transparent</item>
-        <item name="wave_width">3dp</item>
-        <item name="wave_min_height">4dp</item>
+        <item name="wave_width">2dp</item>
+        <item name="wave_min_height">2dp</item>
         <item name="wave_background_color">@color/dark_accent</item>
         <item name="wave_corner_radius">10dp</item>
         <item name="wave_gap">2dp</item>
@@ -104,6 +104,10 @@
     </style>
 
     <style name="primary_text_v2" parent="primary_text" />
+
+    <style name="primary_text_v3" parent="primary_text_v2">
+        <item name="android:textColor">@color/dark_primary_light</item>
+    </style>
 
     <style name="text" parent="Widget.MaterialComponents.TextView">
         <item name="fontFamily">@font/samsung_one_400</item>
