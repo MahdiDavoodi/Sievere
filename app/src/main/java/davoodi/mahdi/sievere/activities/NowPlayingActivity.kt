@@ -169,7 +169,7 @@ class NowPlayingActivity : AppCompatActivity() {
             if (play) {
                 configMusic()
             } else {
-                buildUI()
+                buildUI(track!!)
                 configIcons()
             }
         }
@@ -198,7 +198,7 @@ class NowPlayingActivity : AppCompatActivity() {
     private fun configMusic() {
         setTrack()
         siPlayer!!.playTrack(this, track)
-        buildUI()
+        buildUI(track!!)
         configIcons()
     }
 
@@ -220,36 +220,34 @@ class NowPlayingActivity : AppCompatActivity() {
         }
     }
 
-    private fun buildUI() {
-        if (track != null) {
-            npa_song_tv!!.text = resources.getString(R.string.italicText, track!!.title)
-            npa_artist_tv!!.text =
-                resources.getString(R.string.italicText, track!!.getArtistName(this))
-            if (getAlbumArt(track!!.uri) != null) npa_cover_iv!!.setImageBitmap(getAlbumArt(track!!.uri)) else npa_cover_iv!!.setImageDrawable(
-                ResourcesCompat.getDrawable(
-                    resources, R.drawable.pic_sample_music_art, theme
-                )
+    private fun buildUI(track: Track) {
+        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
+        npa_artist_tv.text =
+            resources.getString(R.string.italicText, track.getArtistName(this))
+        if (getAlbumArt(track.uri) != null) npa_cover_iv.setImageBitmap(getAlbumArt(track.uri)) else npa_cover_iv!!.setImageDrawable(
+            ResourcesCompat.getDrawable(
+                resources, R.drawable.pic_sample_music_art, theme
             )
-            current_position = siPlayer!!.currentPosition.toDouble()
-            total_duration = siPlayer!!.duration.toDouble()
-            npa_total_tv!!.text = getTimes(total_duration.toLong())
-            npa_current_tv!!.text = getTimes(current_position.toLong())
-            npa_sb!!.maxProgress = total_duration.toFloat()
-            Thread { npa_sb!!.setSampleFrom(track!!.path) }.start()
-            val handler = Handler()
-            runOnUiThread(object : Runnable {
-                override fun run() {
-                    try {
-                        current_position = siPlayer!!.currentPosition.toDouble()
-                        npa_current_tv!!.text = getTimes(current_position.toLong())
-                        npa_sb!!.progress = current_position.toFloat()
-                        handler.postDelayed(this, 500)
-                    } catch (ed: IllegalStateException) {
-                        ed.printStackTrace()
-                    }
+        )
+        current_position = siPlayer!!.currentPosition.toDouble()
+        total_duration = siPlayer!!.duration.toDouble()
+        npa_total_tv.text = getTimes(total_duration.toLong())
+        npa_current_tv.text = getTimes(current_position.toLong())
+        npa_sb.maxProgress = total_duration.toFloat()
+        Thread { npa_sb.setSampleFrom(track.path) }.start()
+        val handler = Handler()
+        runOnUiThread(object : Runnable {
+            override fun run() {
+                try {
+                    current_position = siPlayer!!.currentPosition.toDouble()
+                    npa_current_tv.text = getTimes(current_position.toLong())
+                    npa_sb.progress = current_position.toFloat()
+                    handler.postDelayed(this, 500)
+                } catch (ed: IllegalStateException) {
+                    ed.printStackTrace()
                 }
-            })
-        }
+            }
+        })
     }
 
     private fun getTimes(value: Long): String {
