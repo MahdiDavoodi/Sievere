@@ -24,6 +24,7 @@ import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.SiQueue;
 import davoodi.mahdi.sievere.players.SiPlayer;
 import davoodi.mahdi.sievere.preferences.Finals;
+import linc.com.amplituda.Amplituda;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
