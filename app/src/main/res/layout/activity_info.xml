@@ -114,25 +114,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/info_ib2"
-                    style="@style/icon_v3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/cd_telegram_button"
-                    android:maxWidth="@dimen/icons_s2"
-                    android:maxHeight="@dimen/icons_s2"
-                    android:minWidth="@dimen/icons"
-                    android:minHeight="@dimen/icons"
-                    android:onClick="infoTelegram"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.57"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/info_tv2"
-                    app:layout_constraintVertical_bias="1.0"
-                    app:srcCompat="@drawable/ic_telegram_solid" />
-
-                <ImageButton
                     android:id="@+id/info_ib3"
                     style="@style/icon_v3"
                     android:layout_width="wrap_content"
@@ -140,12 +121,12 @@
                     android:contentDescription="@string/cd_github_button"
                     android:maxWidth="@dimen/icons_s2"
                     android:maxHeight="@dimen/icons_s2"
-                    android:minWidth="@dimen/icons"
-                    android:minHeight="@dimen/icons"
+                    android:minWidth="@dimen/icons_s1"
+                    android:minHeight="@dimen/icons_s1"
                     android:onClick="infoGithub"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.43"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/info_tv2"
                     app:layout_constraintVertical_bias="1.0"
