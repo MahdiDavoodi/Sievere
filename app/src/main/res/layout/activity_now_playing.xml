@@ -8,7 +8,7 @@
     tools:context=".activities.NowPlayingActivity">
 
     <ImageButton
-        android:id="@+id/npa_ib1"
+        android:id="@+id/npa_back_ib"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,13 +19,13 @@
         android:maxHeight="@dimen/icons_s2"
         android:minWidth="@dimen/icons"
         android:minHeight="@dimen/icons"
-        android:onClick="exit"
+        android:onClick="back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_solid" />
 
     <ImageButton
-        android:id="@+id/npa_ib2"
+        android:id="@+id/npa_options_ib"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/ic_more_solid" />
 
     <ImageButton
-        android:id="@+id/npa_ib3"
+        android:id="@+id/npa_volume_ib"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,13 +52,13 @@
         android:minWidth="@dimen/icons"
         android:minHeight="@dimen/icons"
         android:onClick="showSystemVolume"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_ib2"
-        app:layout_constraintEnd_toStartOf="@+id/npa_ib2"
-        app:layout_constraintTop_toTopOf="@+id/npa_ib2"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_options_ib"
+        app:layout_constraintEnd_toStartOf="@+id/npa_options_ib"
+        app:layout_constraintTop_toTopOf="@+id/npa_options_ib"
         app:srcCompat="@drawable/ic_volume_solid" />
 
     <ImageButton
-        android:id="@+id/npa_ib4"
+        android:id="@+id/npa_queue_ib"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,13 +68,13 @@
         android:maxHeight="@dimen/icons_s2"
         android:minWidth="@dimen/icons"
         android:minHeight="@dimen/icons"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_ib3"
-        app:layout_constraintEnd_toStartOf="@+id/npa_ib3"
-        app:layout_constraintTop_toTopOf="@+id/npa_ib3"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_volume_ib"
+        app:layout_constraintEnd_toStartOf="@+id/npa_volume_ib"
+        app:layout_constraintTop_toTopOf="@+id/npa_volume_ib"
         app:srcCompat="@drawable/ic_queue_solid" />
 
     <ImageButton
-        android:id="@+id/npa_ib5"
+        android:id="@+id/npa_add_ib"
         style="@style/icon_v2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,9 +84,9 @@
         android:maxHeight="@dimen/icons_s2"
         android:minWidth="@dimen/icons"
         android:minHeight="@dimen/icons"
-        app:layout_constraintBottom_toBottomOf="@+id/npa_ib4"
-        app:layout_constraintEnd_toStartOf="@+id/npa_ib4"
-        app:layout_constraintTop_toTopOf="@+id/npa_ib4"
+        app:layout_constraintBottom_toBottomOf="@+id/npa_queue_ib"
+        app:layout_constraintEnd_toStartOf="@+id/npa_queue_ib"
+        app:layout_constraintTop_toTopOf="@+id/npa_queue_ib"
         app:srcCompat="@drawable/ic_add_solid" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,10 +97,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/npa_ib1">
+        app:layout_constraintTop_toBottomOf="@id/npa_back_ib">
 
         <TextView
-            android:id="@+id/npa_tv1"
+            android:id="@+id/npa_song_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/blank"
@@ -110,15 +110,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/npa_tv2"
+            android:id="@+id/npa_artist_tv"
             style="@style/small_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/blank"
             android:textSize="@dimen/text_small"
-            app:layout_constraintEnd_toEndOf="@+id/npa_tv1"
-            app:layout_constraintStart_toStartOf="@+id/npa_tv1"
-            app:layout_constraintTop_toBottomOf="@+id/npa_tv1" />
+            app:layout_constraintEnd_toEndOf="@+id/npa_song_tv"
+            app:layout_constraintStart_toStartOf="@+id/npa_song_tv"
+            app:layout_constraintTop_toBottomOf="@+id/npa_song_tv" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/npa_cv"
@@ -136,10 +136,10 @@
             app:cardPreventCornerOverlap="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/npa_tv2">
+            app:layout_constraintTop_toBottomOf="@id/npa_artist_tv">
 
             <ImageView
-                android:id="@+id/npa_iv"
+                android:id="@+id/npa_cover_tv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/cd_albumArt"
@@ -148,7 +148,7 @@
         </androidx.cardview.widget.CardView>
 
         <ImageButton
-            android:id="@+id/npa_ib6"
+            android:id="@+id/npa_like_ib"
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,7 +173,7 @@
             android:layout_height="60dp"
             android:minWidth="200dp"
             android:minHeight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/npa_ib9"
+            app:layout_constraintBottom_toTopOf="@+id/npa_pause_ib"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +183,7 @@
             app:wave_progress="0" />
 
         <ImageButton
-            android:id="@+id/npa_ib7"
+            android:id="@+id/npa_shuffle_ib"
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,15 +193,15 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="shuffle"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_ib8"
-            app:layout_constraintEnd_toStartOf="@+id/npa_ib8"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_previous_ib"
+            app:layout_constraintEnd_toStartOf="@+id/npa_previous_ib"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/npa_ib8"
+            app:layout_constraintTop_toTopOf="@+id/npa_previous_ib"
             app:srcCompat="@drawable/ic_shuffle_solid" />
 
         <ImageButton
-            android:id="@+id/npa_ib8"
+            android:id="@+id/npa_previous_ib"
             style="@style/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -211,15 +211,15 @@
             android:minWidth="@dimen/icons_s2"
             android:minHeight="@dimen/icons_s2"
             android:onClick="previous"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_ib9"
-            app:layout_constraintEnd_toStartOf="@+id/npa_ib9"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_pause_ib"
+            app:layout_constraintEnd_toStartOf="@+id/npa_pause_ib"
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/npa_ib9"
+            app:layout_constraintTop_toTopOf="@+id/npa_pause_ib"
             app:srcCompat="@drawable/ic_prev_solid" />
 
         <ImageButton
-            android:id="@+id/npa_ib9"
+            android:id="@+id/npa_pause_ib"
             style="@style/icon_v3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
             app:srcCompat="@drawable/ic_pause_solid" />
 
         <ImageButton
-            android:id="@+id/npa_ib10"
+            android:id="@+id/npa_next_ib"
             style="@style/icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -247,15 +247,15 @@
             android:minWidth="@dimen/icons_s2"
             android:minHeight="@dimen/icons_s2"
             android:onClick="next"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_ib9"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_pause_ib"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintStart_toEndOf="@+id/npa_ib9"
-            app:layout_constraintTop_toTopOf="@+id/npa_ib9"
+            app:layout_constraintStart_toEndOf="@+id/npa_pause_ib"
+            app:layout_constraintTop_toTopOf="@+id/npa_pause_ib"
             app:srcCompat="@drawable/ic_next_solid" />
 
         <ImageButton
-            android:id="@+id/npa_ib11"
+            android:id="@+id/npa_repeat_ib"
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -265,15 +265,15 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="repeat"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_ib10"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_next_ib"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/npa_ib10"
-            app:layout_constraintTop_toTopOf="@+id/npa_ib10"
+            app:layout_constraintStart_toEndOf="@+id/npa_next_ib"
+            app:layout_constraintTop_toTopOf="@+id/npa_next_ib"
             app:srcCompat="@drawable/ic_repeat_solid" />
 
         <TextView
-            android:id="@+id/npa_tv3"
+            android:id="@+id/npa_current_tv"
             style="@style/small_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -283,7 +283,7 @@
             app:layout_constraintTop_toBottomOf="@+id/npa_sb" />
 
         <TextView
-            android:id="@+id/npa_tv4"
+            android:id="@+id/npa_total_tv"
             style="@style/small_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

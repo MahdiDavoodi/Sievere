@@ -28,7 +28,6 @@ import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
     // Attributes
-    var artist: TextView? = null
     var title: TextView? = null
     var seekbar_duration: TextView? = null
     var seekbar_position: TextView? = null
@@ -165,15 +164,14 @@ class NowPlayingActivity : AppCompatActivity() {
         ic_repeat_primary_color =
             ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_primary_color, theme)
         ic_repeat_solid = ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
-        artist = findViewById(R.id.npa_tv2)
-        title = findViewById(R.id.npa_tv1)
-        seekbar_duration = findViewById(R.id.npa_tv4)
-        seekbar_position = findViewById(R.id.npa_tv3)
-        album_art = findViewById(R.id.npa_iv)
+        title = findViewById(R.id.npa_song_tv)
+        seekbar_duration = findViewById(R.id.npa_total_tv)
+        seekbar_position = findViewById(R.id.npa_current_tv)
+        album_art = findViewById(R.id.npa_cover_tv)
         seekBar = findViewById(R.id.npa_sb)
-        play_pause = findViewById(R.id.npa_ib9)
-        shuffle = findViewById(R.id.npa_ib7)
-        repeat = findViewById(R.id.npa_ib11)
+        play_pause = findViewById(R.id.npa_pause_ib)
+        shuffle = findViewById(R.id.npa_shuffle_ib)
+        repeat = findViewById(R.id.npa_repeat_ib)
     }
 
     private fun setUpActivity(play: Boolean) {
@@ -238,7 +236,7 @@ class NowPlayingActivity : AppCompatActivity() {
     private fun buildUI() {
         if (track != null) {
             title!!.text = resources.getString(R.string.italicText, track!!.title)
-            artist!!.text = resources.getString(R.string.italicText, track!!.getArtistName(this))
+            npa_artist_tv!!.text = resources.getString(R.string.italicText, track!!.getArtistName(this))
             if (getAlbumArt(track!!.uri) != null) album_art!!.setImageBitmap(getAlbumArt(track!!.uri)) else album_art!!.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources, R.drawable.pic_sample_music_art, theme
@@ -285,18 +283,16 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     // Buttons
-    fun exit(view: View?) {
+    fun back(view: View?) {
+        assert(view?.id == R.id.npa_back_ib)
         onBackPressed()
     }
 
     fun showSystemVolume(view: View?) {
+        assert(view?.id == R.id.npa_volume_ib)
         val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
-        audioManager.setStreamVolume(
-            AudioManager.STREAM_MUSIC,
-            currentVolume,
-            AudioManager.FLAG_SHOW_UI
-        )
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume, AudioManager.FLAG_SHOW_UI)
     }
 
     fun playPause(view: View?) {
