@@ -24,6 +24,7 @@ public class SiQueue {
     public static void unShuffle() {
         if (isQueueReady() && isOnShuffle)
             queue = new ArrayList<>(initialQueue);
+        isOnShuffle = false;
     }
 
     public static Track getTrackToPlay() {
