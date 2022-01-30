@@ -24,7 +24,6 @@ import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
     val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
-    var track: Track? = null
     var currentPosition = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,20 +34,17 @@ class NowPlayingActivity : AppCompatActivity() {
         else
             savedInstanceState.getSerializable(Finals.PLAY) as Boolean
 
-        if (SiQueue.isQueueReady()) setUpActivity(playSong)
+        if (SiQueue.isQueueReady()) setUpActivity(playSong, SiQueue.getTrackToPlay())
     }
 
-    private fun setUpActivity(play: Boolean) {
-        setTrack()
-        if (track != null) {
-            if (play) {
-                configMusic()
-            } else {
-                buildUI(track!!)
-                configIcons()
-            }
+    private fun setUpActivity(play: Boolean, track: Track) {
+        if (play) {
+            configMusic()
+        } else {
+            buildUI(track)
+            configIcons()
         }
-        npa_sb!!.onProgressChanged =
+        npa_sb.onProgressChanged =
             object : SeekBarOnProgressChanged {
                 override fun onProgressChanged(
                     waveformSeekBar: WaveformSeekBar,
@@ -56,10 +52,10 @@ class NowPlayingActivity : AppCompatActivity() {
                     fromUser: Boolean
                 ) {
                     currentPosition = waveformSeekBar.progress.toDouble()
-                    if (fromUser) player!!.seekTo(currentPosition.toInt())
+                    if (fromUser) player.seekTo(currentPosition.toInt())
                 }
             }
-        player!!.setOnCompletionListener { mediaPlayer: MediaPlayer ->
+        player.setOnCompletionListener { mediaPlayer: MediaPlayer ->
             if (SiQueue.position == SiQueue.queue.size - 1 && !SiQueue.isOnRepeat) {
                 // Queue finished.
                 mediaPlayer.pause()
@@ -71,14 +67,9 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun configMusic() {
-        setTrack()
-        player!!.playTrack(this, track)
-        buildUI(track!!)
+        player.playTrack(this, SiQueue.getTrackToPlay())
+        buildUI(SiQueue.getTrackToPlay())
         configIcons()
-    }
-
-    private fun setTrack() {
-        if (SiQueue.isQueueReady()) track = SiQueue.getTrackToPlay()
     }
 
     private fun buildUI(track: Track) {
@@ -189,7 +180,7 @@ class NowPlayingActivity : AppCompatActivity() {
     fun shuffle(view: View) {
         assert(view.id == npa_shuffle_ib.id)
         if (SiQueue.isOnShuffle) SiQueue.unShuffle() else SiQueue.shuffle()
-        SiQueue.position = SiQueue.findTrackPosition(track)
+        SiQueue.position = SiQueue.findTrackPosition(SiQueue.getTrackToPlay())
         configIcons()
     }
 

@@ -27,10 +27,11 @@ public class SiQueue {
         isOnShuffle = false;
     }
 
-    public static Track getTrackToPlay() {
+    public static Track getTrackToPlay() throws Exception {
         if (isQueueReady())
             return queue.get(position);
-        else return null;
+        else
+            throw new Exception("ERROR: Queue is not ready, but someone asked for a Track! - SiQueue.java");
     }
 
     public static boolean isQueueReady() {
