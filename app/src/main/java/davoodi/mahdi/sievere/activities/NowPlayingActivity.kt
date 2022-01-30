@@ -10,7 +10,6 @@ import davoodi.mahdi.sievere.preferences.Finals
 import davoodi.mahdi.sievere.data.SiQueue
 import androidx.core.content.res.ResourcesCompat
 import com.masoudss.lib.SeekBarOnProgressChanged
-import android.media.MediaPlayer
 import android.graphics.Bitmap
 import android.media.MediaMetadataRetriever
 import android.graphics.BitmapFactory
@@ -24,7 +23,6 @@ import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
     val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
-    var currentPosition = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,21 +42,19 @@ class NowPlayingActivity : AppCompatActivity() {
             buildUI(track)
             configIcons()
         }
-        npa_sb.onProgressChanged =
-            object : SeekBarOnProgressChanged {
-                override fun onProgressChanged(
-                    waveformSeekBar: WaveformSeekBar,
-                    progress: Float,
-                    fromUser: Boolean
-                ) {
-                    currentPosition = waveformSeekBar.progress.toDouble()
-                    if (fromUser) player.seekTo(currentPosition.toInt())
-                }
+        npa_sb.onProgressChanged = object : SeekBarOnProgressChanged {
+            override fun onProgressChanged(
+                waveformSeekBar: WaveformSeekBar,
+                progress: Float,
+                fromUser: Boolean
+            ) {
+                if (fromUser) player.seekTo(waveformSeekBar.progress.toInt())
             }
-        player.setOnCompletionListener { mediaPlayer: MediaPlayer ->
+        }
+        player.setOnCompletionListener {
             if (SiQueue.position == SiQueue.queue.size - 1 && !SiQueue.isOnRepeat) {
-                // Queue finished.
-                mediaPlayer.pause()
+                player.pause()
+                configIcons()
             } else if (!SiQueue.isOnRepeatOne) {
                 SiQueue.updatePosition(1)
                 configMusic()
@@ -73,36 +69,42 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun buildUI(track: Track) {
-        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
-        npa_artist_tv.text =
-            resources.getString(R.string.italicText, track.getArtistName(this))
-        if (getAlbumArt(track.uri) != null) npa_cover_iv.setImageBitmap(getAlbumArt(track.uri)) else npa_cover_iv!!.setImageDrawable(
+
+        if (getAlbumArt(track.uri) != null)
+            npa_cover_iv.setImageBitmap(getAlbumArt(track.uri))
+        else npa_cover_iv.setImageDrawable(
             ResourcesCompat.getDrawable(
-                resources, R.drawable.pic_sample_music_art, theme
+                resources,
+                R.drawable.pic_sample_music_art,
+                theme
             )
         )
-        currentPosition = player!!.currentPosition.toDouble()
-        val totalDuration = player!!.duration.toDouble()
+
+        var currentPosition = player.currentPosition.toDouble()
+        val totalDuration = player.duration.toDouble()
+
+        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
+        npa_artist_tv.text = resources.getString(R.string.italicText, track.getArtistName(this))
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
+
+        // TODO: FIX THIS WARNING - VERSION 0.8
         Thread { npa_sb.setSampleFrom(track.path) }.start()
         val handler = Handler()
         runOnUiThread(object : Runnable {
             override fun run() {
                 try {
-                    currentPosition = player!!.currentPosition.toDouble()
+                    currentPosition = player.currentPosition.toDouble()
                     npa_current_tv.text = getTimes(currentPosition.toLong())
                     npa_sb.progress = currentPosition.toFloat()
                     handler.postDelayed(this, 500)
-                } catch (ed: IllegalStateException) {
-                    ed.printStackTrace()
+                } catch (exception: IllegalStateException) {
+                    exception.printStackTrace()
                 }
             }
         })
     }
-
-    // REFACTORING
 
     private fun getTimes(value: Long): String {
         val times = player.convertTime(value)
