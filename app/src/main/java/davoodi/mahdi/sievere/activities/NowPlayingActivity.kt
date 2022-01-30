@@ -16,6 +16,7 @@ import android.graphics.BitmapFactory
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import davoodi.mahdi.sievere.components.Track
 import kotlinx.android.synthetic.main.activity_now_playing.*
@@ -89,9 +90,8 @@ class NowPlayingActivity : AppCompatActivity() {
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
 
-        // TODO: FIX THIS WARNING - VERSION 0.8
         Thread { npa_sb.setSampleFrom(track.path) }.start()
-        val handler = Handler()
+        val handler = Handler(Looper.getMainLooper())
         runOnUiThread(object : Runnable {
             override fun run() {
                 try {
