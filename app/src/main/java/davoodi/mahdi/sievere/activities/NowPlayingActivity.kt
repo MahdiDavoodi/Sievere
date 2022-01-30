@@ -25,10 +25,6 @@ import java.lang.IllegalStateException
 class NowPlayingActivity : AppCompatActivity() {
     val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
 
-    override fun onNightModeChanged(mode: Int) {
-        super.onNightModeChanged(mode)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_now_playing)
