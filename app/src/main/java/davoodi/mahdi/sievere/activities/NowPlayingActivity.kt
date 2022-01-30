@@ -23,20 +23,14 @@ import kotlinx.android.synthetic.main.activity_now_playing.*
 import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
-    var player: SiPlayer? = SiPlayer.getInstance()
+    val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
     var track: Track? = null
     var currentPosition = 0.0
-    var totalDuration = 0.0
-    var playSong = false
-
-    init {
-        if (player == null) player = SiPlayer()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_now_playing)
-        playSong = if (savedInstanceState == null)
+        val playSong = if (savedInstanceState == null)
             intent.extras?.getBoolean(Finals.PLAY) ?: false
         else
             savedInstanceState.getSerializable(Finals.PLAY) as Boolean
@@ -87,25 +81,6 @@ class NowPlayingActivity : AppCompatActivity() {
         if (SiQueue.isQueueReady()) track = SiQueue.getTrackToPlay()
     }
 
-    private fun configIcons() {
-        val icons = listOf(
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_play_solid, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_solid, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_solid, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_primary_color, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_primary_color, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_one_primary_color, theme),
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
-        )
-        npa_pause_ib.setImageDrawable(if (player!!.isPlaying) icons[1] else icons[0])
-        npa_shuffle_ib.setImageDrawable(if (SiQueue.isOnShuffle) icons[3] else icons[2])
-        npa_repeat_ib.setImageDrawable(
-            if (SiQueue.isOnRepeatOne) icons[5]
-            else if (SiQueue.isOnRepeat) icons[4]
-            else icons[6]
-        )
-    }
-
     private fun buildUI(track: Track) {
         npa_song_tv.text = resources.getString(R.string.italicText, track.title)
         npa_artist_tv.text =
@@ -116,7 +91,7 @@ class NowPlayingActivity : AppCompatActivity() {
             )
         )
         currentPosition = player!!.currentPosition.toDouble()
-        totalDuration = player!!.duration.toDouble()
+        val totalDuration = player!!.duration.toDouble()
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
@@ -136,18 +111,36 @@ class NowPlayingActivity : AppCompatActivity() {
         })
     }
 
+    // REFACTORING
+
     private fun getTimes(value: Long): String {
-        val times = player?.convertTime(value)
-        return when {
-            times == null -> resources.getString(R.string.track_time_minutes, 0, 0)
-            times[0] > 0 -> resources.getString(
-                R.string.track_time_hour,
-                times[0],
-                times[1],
-                times[2]
-            )
-            else -> resources.getString(R.string.track_time_minutes, times[1], times[2])
-        }
+        val times = player.convertTime(value)
+        return if (times[0] > 0) resources.getString(
+            R.string.track_time_hour,
+            times[0],
+            times[1],
+            times[2]
+        )
+        else resources.getString(R.string.track_time_minutes, times[1], times[2])
+    }
+
+    private fun configIcons() {
+        val icons = listOf(
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_play_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_one_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
+        )
+        npa_pause_ib.setImageDrawable(if (player.isPlaying) icons[1] else icons[0])
+        npa_shuffle_ib.setImageDrawable(if (SiQueue.isOnShuffle) icons[3] else icons[2])
+        npa_repeat_ib.setImageDrawable(
+            if (SiQueue.isOnRepeatOne) icons[5]
+            else if (SiQueue.isOnRepeat) icons[4]
+            else icons[6]
+        )
     }
 
     private fun getAlbumArt(uri: Uri): Bitmap? {
@@ -175,9 +168,9 @@ class NowPlayingActivity : AppCompatActivity() {
 
     fun pause(view: View) {
         assert(view.id == npa_pause_ib.id)
-        if (player?.isPlaying == true)
-            player?.pause()
-        else player?.start()
+        if (player.isPlaying)
+            player.pause()
+        else player.start()
         configIcons()
     }
 
