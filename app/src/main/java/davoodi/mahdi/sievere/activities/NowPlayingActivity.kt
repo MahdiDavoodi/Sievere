@@ -4,7 +4,6 @@ package davoodi.mahdi.sievere.activities
 import androidx.appcompat.app.AppCompatActivity
 import davoodi.mahdi.sievere.players.SiPlayer
 import com.masoudss.lib.WaveformSeekBar
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import davoodi.mahdi.sievere.R
 import davoodi.mahdi.sievere.preferences.Finals
@@ -24,146 +23,28 @@ import kotlinx.android.synthetic.main.activity_now_playing.*
 import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
-    // Attributes
-    var siPlayer: SiPlayer? = SiPlayer.getInstance()
+    var player: SiPlayer? = SiPlayer.getInstance()
     var track: Track? = null
-    var current_position = 0.0
-    var total_duration = 0.0
-    var play_song = false
-    private val WAVE_PATTERN = intArrayOf(
-        0,
-        1,
-        1,
-        0,
-        1,
-        1,
-        2,
-        3,
-        4,
-        2,
-        1,
-        0,
-        1,
-        5,
-        4,
-        6,
-        1,
-        2,
-        8,
-        6,
-        4,
-        3,
-        1,
-        1,
-        1,
-        1,
-        2,
-        3,
-        1,
-        5,
-        4,
-        5,
-        2,
-        8,
-        4,
-        1,
-        1,
-        2,
-        1,
-        5,
-        6,
-        4,
-        5,
-        6,
-        8,
-        9,
-        1,
-        2,
-        5,
-        4,
-        5,
-        6,
-        1,
-        2,
-        1,
-        4,
-        5,
-        5,
-        6,
-        5,
-        4,
-        6,
-        8,
-        9,
-        8,
-        7,
-        5,
-        9,
-        8,
-        7,
-        6,
-        4,
-        0,
-        5,
-        1,
-        9,
-        6,
-        4,
-        5,
-        9,
-        8,
-        4,
-        2,
-        3,
-        1,
-        1,
-        1,
-        0,
-        0
-    )
+    var currentPosition = 0.0
+    var totalDuration = 0.0
+    var playSong = false
 
     init {
-        if (siPlayer == null) siPlayer = SiPlayer()
+        if (player == null) player = SiPlayer()
     }
 
-    // Icons
-    var ic_repeat_one_primary_color: Drawable? = null
-    var ic_play_solid: Drawable? = null
-    var ic_pause_solid: Drawable? = null
-    var ic_shuffle_solid: Drawable? = null
-    var ic_shuffle_primary_color: Drawable? = null
-    var ic_repeat_primary_color: Drawable? = null
-    var ic_repeat_solid: Drawable? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_now_playing)
-        play_song = if (savedInstanceState == null) {
-            val extras = intent.extras
-            extras?.getBoolean(Finals.PLAY) ?: false
-        } else {
+        playSong = if (savedInstanceState == null)
+            intent.extras?.getBoolean(Finals.PLAY) ?: false
+        else
             savedInstanceState.getSerializable(Finals.PLAY) as Boolean
-        }
-        setUpUI()
-        if (SiQueue.isQueueReady()) setUpActivity(play_song)
-    }
 
-    private fun setUpUI() {
-        ic_repeat_one_primary_color =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_one_primary_color, theme)
-        ic_play_solid = ResourcesCompat.getDrawable(resources, R.drawable.ic_play_solid, theme)
-        ic_pause_solid = ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_solid, theme)
-        ic_shuffle_solid =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_solid, theme)
-        ic_shuffle_primary_color =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_primary_color, theme)
-        ic_repeat_primary_color =
-            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_primary_color, theme)
-        ic_repeat_solid = ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
+        if (SiQueue.isQueueReady()) setUpActivity(playSong)
     }
 
     private fun setUpActivity(play: Boolean) {
-        /*siPlayer = SiPlayer.getInstance()
-        if (siPlayer == null) siPlayer = SiPlayer()*/
         setTrack()
         if (track != null) {
             if (play) {
@@ -180,11 +61,11 @@ class NowPlayingActivity : AppCompatActivity() {
                     progress: Float,
                     fromUser: Boolean
                 ) {
-                    current_position = waveformSeekBar.progress.toDouble()
-                    if (fromUser) siPlayer!!.seekTo(current_position.toInt())
+                    currentPosition = waveformSeekBar.progress.toDouble()
+                    if (fromUser) player!!.seekTo(currentPosition.toInt())
                 }
             }
-        siPlayer!!.setOnCompletionListener { mediaPlayer: MediaPlayer ->
+        player!!.setOnCompletionListener { mediaPlayer: MediaPlayer ->
             if (SiQueue.position == SiQueue.queue.size - 1 && !SiQueue.isOnRepeat) {
                 // Queue finished.
                 mediaPlayer.pause()
@@ -197,7 +78,7 @@ class NowPlayingActivity : AppCompatActivity() {
 
     private fun configMusic() {
         setTrack()
-        siPlayer!!.playTrack(this, track)
+        player!!.playTrack(this, track)
         buildUI(track!!)
         configIcons()
     }
@@ -207,17 +88,22 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun configIcons() {
-        if (siPlayer != null) {
-            if (!siPlayer!!.isPlaying) npa_pause_ib!!.setImageDrawable(ic_play_solid) else npa_pause_ib!!.setImageDrawable(
-                ic_pause_solid
-            )
-            if (SiQueue.isOnShuffle) npa_shuffle_ib!!.setImageDrawable(ic_shuffle_primary_color) else npa_shuffle_ib!!.setImageDrawable(
-                ic_shuffle_solid
-            )
-            if (SiQueue.isOnRepeatOne) npa_repeat_ib!!.setImageDrawable(ic_repeat_one_primary_color) else if (SiQueue.isOnRepeat) npa_repeat_ib!!.setImageDrawable(
-                ic_repeat_primary_color
-            ) else npa_repeat_ib!!.setImageDrawable(ic_repeat_solid)
-        }
+        val icons = listOf(
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_play_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_pause_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_solid, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_shuffle_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_one_primary_color, theme),
+            ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
+        )
+        npa_pause_ib.setImageDrawable(if (player!!.isPlaying) icons[1] else icons[0])
+        npa_shuffle_ib.setImageDrawable(if (SiQueue.isOnShuffle) icons[3] else icons[2])
+        npa_repeat_ib.setImageDrawable(
+            if (SiQueue.isOnRepeatOne) icons[5]
+            else if (SiQueue.isOnRepeat) icons[4]
+            else icons[6]
+        )
     }
 
     private fun buildUI(track: Track) {
@@ -229,19 +115,19 @@ class NowPlayingActivity : AppCompatActivity() {
                 resources, R.drawable.pic_sample_music_art, theme
             )
         )
-        current_position = siPlayer!!.currentPosition.toDouble()
-        total_duration = siPlayer!!.duration.toDouble()
-        npa_total_tv.text = getTimes(total_duration.toLong())
-        npa_current_tv.text = getTimes(current_position.toLong())
-        npa_sb.maxProgress = total_duration.toFloat()
+        currentPosition = player!!.currentPosition.toDouble()
+        totalDuration = player!!.duration.toDouble()
+        npa_total_tv.text = getTimes(totalDuration.toLong())
+        npa_current_tv.text = getTimes(currentPosition.toLong())
+        npa_sb.maxProgress = totalDuration.toFloat()
         Thread { npa_sb.setSampleFrom(track.path) }.start()
         val handler = Handler()
         runOnUiThread(object : Runnable {
             override fun run() {
                 try {
-                    current_position = siPlayer!!.currentPosition.toDouble()
-                    npa_current_tv.text = getTimes(current_position.toLong())
-                    npa_sb.progress = current_position.toFloat()
+                    currentPosition = player!!.currentPosition.toDouble()
+                    npa_current_tv.text = getTimes(currentPosition.toLong())
+                    npa_sb.progress = currentPosition.toFloat()
                     handler.postDelayed(this, 500)
                 } catch (ed: IllegalStateException) {
                     ed.printStackTrace()
@@ -251,7 +137,7 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun getTimes(value: Long): String {
-        val times = siPlayer?.convertTime(value)
+        val times = player?.convertTime(value)
         return when {
             times == null -> resources.getString(R.string.track_time_minutes, 0, 0)
             times[0] > 0 -> resources.getString(
@@ -289,9 +175,9 @@ class NowPlayingActivity : AppCompatActivity() {
 
     fun pause(view: View) {
         assert(view.id == npa_pause_ib.id)
-        if (siPlayer?.isPlaying == true)
-            siPlayer?.pause()
-        else siPlayer?.start()
+        if (player?.isPlaying == true)
+            player?.pause()
+        else player?.start()
         configIcons()
     }
 
