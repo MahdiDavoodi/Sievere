@@ -83,13 +83,13 @@ class NowPlayingActivity : AppCompatActivity() {
         var currentPosition = player.currentPosition.toDouble()
         val totalDuration = player.duration.toDouble()
 
-        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
+        npa_song_tv.text = resources.getString(R.string.italicText, track.getTitle())
         npa_artist_tv.text = resources.getString(R.string.italicText, track.getArtistName(this))
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
+        npa_sb.setSampleFrom(track.samples)
 
-        Thread { npa_sb.setSampleFrom(track.path) }.start()
         val handler = Handler(Looper.getMainLooper())
         runOnUiThread(object : Runnable {
             override fun run() {

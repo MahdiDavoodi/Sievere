@@ -8,9 +8,12 @@ import android.os.Handler;
 import android.provider.MediaStore;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment;
+import linc.com.amplituda.Amplituda;
+import linc.com.amplituda.exceptions.AmplitudaException;
 
 public class DataLoader {
 
@@ -24,6 +27,7 @@ public class DataLoader {
         ArrayList<Track> all = new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
+        Amplituda amplituda = new Amplituda(context);
         Cursor cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
 
         if (cursor != null && cursor.moveToFirst()) {
@@ -41,6 +45,9 @@ public class DataLoader {
                 int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR));
                 String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
                 long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
+                List<Integer> temp = amplituda.processAudio(path).get().amplitudesAsList();
+                int[] samples = new int[temp.size()];
+                for (int i = 0; i < samples.length; i++) samples[i] = temp.get(i);
 
                 Track track = new Track(id,
                         songUri,
@@ -53,7 +60,8 @@ public class DataLoader {
                         bitrate,
                         year,
                         genre,
-                        added);
+                        added,
+                        samples);
                 all.add(track);
             } while (cursor.moveToNext());
         }

@@ -1,222 +1,86 @@
-package davoodi.mahdi.sievere.components;
+package davoodi.mahdi.sievere.components
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Context
+import android.net.Uri
+import davoodi.mahdi.sievere.R
+import java.util.*
 
-import java.util.Objects;
-
-import davoodi.mahdi.sievere.R;
-
-public class Track {
-
-    public static final String KEY_ID = "id";
-    public static final String KEY_URI = "uri";
-    public static final String KEY_PATH = "path";
-    public static final String KEY_TITLE = "title";
-    public static final String KEY_ALBUM_ID = "albumId";
-    public static final String KEY_ALBUM = "albumName";
-    public static final String KEY_ARTIST_ID = "artistId";
-    public static final String KEY_ARTIST = "artistName";
-    public static final String KEY_LENGTH = "length";
-    public static final String KEY_NUMBER = "trackNumber";
-    public static final String KEY_BITRATE = "bitrate";
-    public static final String KEY_YEAR = "year";
-    public static final String KEY_GENRE = "genre";
-    public static final String KEY_PLAYED = "playedCount";
-
-
-    private long id, dateAdded, length;
-
-    private int albumId,
-            artistId,
-            trackNumber,
-            bitrate,
-            year,
-            playedCount;
-
-    private String fileName,
-            title,
-            albumName,
-            artistName,
-            genre,
-            path;
-
-    private Uri uri;
-
-    public Track(long id,
-                 Uri uri,
-                 String path,
-                 String fileName,
-                 String title,
-                 String artistName,
-                 String albumName,
-                 long length,
-                 int bitrate,
-                 int year,
-                 String genre
-            , long dateAdded) {
-        this.id = id;
-        this.path = path;
-        this.bitrate = bitrate;
-        this.year = year;
-        this.fileName = fileName;
-        this.title = title;
-        this.albumName = albumName;
-        this.artistName = artistName;
-        this.length = length;
-        this.genre = genre;
-        this.uri = uri;
-        this.dateAdded = dateAdded;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Track track = (Track) o;
+class Track(
+    var id: Long,
+    var uri: Uri,
+    var path: String,
+    var fileName: String,
+    private var title: String?,
+    private var artistName: String?,
+    private var albumName: String?,
+    var length: Long,
+    var bitrate: Int,
+    var year: Int,
+    private var genre: String?, var dateAdded: Long,
+    val samples:IntArray
+) {
+    var albumId = 0
+    var artistId = 0
+    var trackNumber = 0
+    var playedCount = 0
+    override fun equals(o: Any?): Boolean {
+        if (this === o) return true
+        if (o == null || javaClass != o.javaClass) return false
+        val track = o as Track
         return id == track.id &&
-                Objects.equals(uri, track.uri);
+                uri == track.uri
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, uri);
+    override fun hashCode(): Int {
+        return Objects.hash(id, uri)
     }
 
-    public String getFileName() {
-        return fileName;
+    fun setTitle(title: String?) {
+        this.title = title
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    fun setAlbumName(albumName: String?) {
+        this.albumName = albumName
     }
 
-    public long getDateAdded() {
-        return dateAdded;
+    fun setArtistName(artistName: String?) {
+        this.artistName = artistName
     }
 
-    public void setDateAdded(long dateAdded) {
-        this.dateAdded = dateAdded;
+    fun setGenre(genre: String?) {
+        this.genre = genre
     }
 
-    public void setId(long id) {
-        this.id = id;
+    fun getTitle(): String {
+        return title ?: fileName
     }
 
-    public void setAlbumId(int albumId) {
-        this.albumId = albumId;
+    fun getAlbumName(context: Context): String {
+        return albumName ?: context.resources.getString(R.string.single)
     }
 
-    public void setArtistId(int artistId) {
-        this.artistId = artistId;
+    fun getArtistName(context: Context): String {
+        return artistName ?: context.resources.getString(R.string.unknown)
     }
 
-    public void setTrackNumber(int trackNumber) {
-        this.trackNumber = trackNumber;
+    fun getGenre(context: Context): String {
+        return genre ?: context.resources.getString(R.string.blank)
     }
 
-    public void setBitrate(int bitrate) {
-        this.bitrate = bitrate;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setPlayedCount(int playedCount) {
-        this.playedCount = playedCount;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
-    public void setArtistName(String artistName) {
-        this.artistName = artistName;
-    }
-
-    public void setLength(long length) {
-        this.length = length;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setUri(Uri uri) {
-        this.uri = uri;
-    }
-
-    public int getAlbumId() {
-        return albumId;
-    }
-
-    public int getArtistId() {
-        return artistId;
-    }
-
-    public Uri getUri() {
-        return uri;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public long getLength() {
-        return length;
-    }
-
-    public int getTrackNumber() {
-        return trackNumber;
-    }
-
-    public int getBitrate() {
-        return bitrate;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public int getPlayedCount() {
-        return playedCount;
-    }
-
-    public String getTitle() {
-        if (title == null)
-            return fileName;
-        else return title;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public String getAlbumName(Context context) {
-        if (albumName == null)
-            return context.getResources().getString(R.string.single);
-        else return albumName;
-    }
-
-    public String getArtistName(Context context) {
-        if (artistName == null)
-            return context.getResources().getString(R.string.unknown);
-        else return artistName;
-    }
-
-    public String getGenre(Context context) {
-        if (genre == null)
-            return context.getResources().getString(R.string.blank);
-        else return genre;
+    companion object {
+        const val KEY_ID = "id"
+        const val KEY_URI = "uri"
+        const val KEY_PATH = "path"
+        const val KEY_TITLE = "title"
+        const val KEY_ALBUM_ID = "albumId"
+        const val KEY_ALBUM = "albumName"
+        const val KEY_ARTIST_ID = "artistId"
+        const val KEY_ARTIST = "artistName"
+        const val KEY_LENGTH = "length"
+        const val KEY_NUMBER = "trackNumber"
+        const val KEY_BITRATE = "bitrate"
+        const val KEY_YEAR = "year"
+        const val KEY_GENRE = "genre"
+        const val KEY_PLAYED = "playedCount"
     }
 }
-
