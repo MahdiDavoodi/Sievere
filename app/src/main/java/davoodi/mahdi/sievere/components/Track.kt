@@ -22,10 +22,10 @@ class Track(
     var artistId = 0
     var trackNumber = 0
     var playedCount = 0
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o == null || javaClass != o.javaClass) return false
-        val track = o as Track
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        val track = other as Track
         return id == track.id &&
                 uri == track.uri
     }
