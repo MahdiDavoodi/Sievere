@@ -1,89 +1,95 @@
-package davoodi.mahdi.sievere.data;
+package davoodi.mahdi.sievere.data
 
-import android.content.ContentUris;
-import android.content.Context;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore;
+import android.provider.MediaStore
+import android.content.ContentUris
+import android.content.Context
+import android.os.Handler
+import davoodi.mahdi.sievere.components.Track
+import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment
+import java.util.ArrayList
 
-import java.util.ArrayList;
-import java.util.List;
+object DataLoader {
+    @JvmField
+    var isAllReady = false
 
-import davoodi.mahdi.sievere.components.Track;
-import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment;
-import linc.com.amplituda.Amplituda;
-import linc.com.amplituda.exceptions.AmplitudaException;
-
-public class DataLoader {
-
-    public static boolean isAllReady = false;
-    public static ArrayList<Track> tracks = new ArrayList<>();
-
-    public static ArrayList<Track> getTracks(Context context, String[] projection,
-                                             String selection,
-                                             String[] selectionArgs,
-                                             String sortOrder) {
-        ArrayList<Track> all = new ArrayList<>();
-        Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-
-        Amplituda amplituda = new Amplituda(context);
-        Cursor cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
-
+    @JvmField
+    var tracks: ArrayList<Track>? = ArrayList()
+    private fun getTracks(
+        context: Context, projection: Array<String?>?,
+        selection: String?,
+        selectionArgs: Array<String?>?,
+        sortOrder: String?
+    ): ArrayList<Track> {
+        val all = ArrayList<Track>()
+        val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+        val cursor =
+            context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                /*Track metadata*/
-                long id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns._ID));
-                Uri songUri = ContentUris.withAppendedId(android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
-                String path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATA));
-                String fileName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME)).split("\\.")[0];
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE));
-                String artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST));
-                String album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM));
-                long length = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION));
-                int bitrate = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.BITRATE));
-                int year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR));
-                String genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE));
-                long added = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED));
-                List<Integer> temp = amplituda.processAudio(path).get().amplitudesAsList();
-                int[] samples = new int[temp.size()];
-                for (int i = 0; i < samples.length; i++) samples[i] = temp.get(i);
+                val id =
+                    cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns._ID))
+                val songUri =
+                    ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
+                val path =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATA))
+                val fileName =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+                        .split("\\.").toTypedArray()[0]
+                val title =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE))
+                val artist =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST))
+                val album =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM))
+                val length =
+                    cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION))
+                val bitrate =
+                    cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.BITRATE))
+                val year =
+                    cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR))
+                val genre =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE))
+                val added =
+                    cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED))
 
-                Track track = new Track(id,
-                        songUri,
-                        path,
-                        fileName,
-                        title,
-                        artist,
-                        album,
-                        length,
-                        bitrate,
-                        year,
-                        genre,
-                        added,
-                        samples);
-                all.add(track);
-            } while (cursor.moveToNext());
+                val track = Track(
+                    id,
+                    songUri,
+                    path,
+                    fileName,
+                    title,
+                    artist,
+                    album,
+                    length,
+                    bitrate,
+                    year,
+                    genre,
+                    added
+                )
+                all.add(track)
+            } while (cursor.moveToNext())
         }
-        assert cursor != null;
-        cursor.close();
-        return all;
+        assert(cursor != null)
+        cursor!!.close()
+        return all
     }
 
-    public static void allTracksList(Context context, String[] projection,
-                                     String selection,
-                                     String[] selectionArgs,
-                                     String sortOrder) {
-        tracks = getTracks(context, projection, selection, selectionArgs, sortOrder);
+    @JvmStatic
+    fun allTracksList(
+        context: Context, projection: Array<String?>?,
+        selection: String?,
+        selectionArgs: Array<String?>?,
+        sortOrder: String?
+    ) {
+        tracks = getTracks(context, projection, selection, selectionArgs, sortOrder)
 
-        /*Must be in UI(Main) Thread*/
-        Handler handler = new Handler(context.getMainLooper());
-        Runnable runnable = () -> {
+        val handler = Handler(context.mainLooper)
+        val runnable = Runnable {
             if (tracks != null) {
-                isAllReady = true;
-                TracksAllFragment.getInstance().showTheList();
+                isAllReady = true
+                TracksAllFragment.getInstance().showTheList()
             }
-        };
-        handler.post(runnable);
+        }
+        handler.post(runnable)
     }
 }

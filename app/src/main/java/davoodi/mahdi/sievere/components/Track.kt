@@ -16,8 +16,7 @@ class Track(
     var length: Long,
     var bitrate: Int,
     var year: Int,
-    private var genre: String?, var dateAdded: Long,
-    val samples:IntArray
+    private var genre: String?, var dateAdded: Long
 ) {
     var albumId = 0
     var artistId = 0

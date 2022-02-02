@@ -88,7 +88,7 @@ class NowPlayingActivity : AppCompatActivity() {
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
-        npa_sb.setSampleFrom(track.samples)
+        npa_sb.setSampleFrom(intArrayOf(1))
 
         val handler = Handler(Looper.getMainLooper())
         runOnUiThread(object : Runnable {
