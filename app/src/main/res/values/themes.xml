@@ -28,7 +28,7 @@
         <item name="wave_background_color">@color/icons</item>
         <item name="wave_corner_radius">20dp</item>
         <item name="wave_gap">2dp</item>
-        <item name="wave_gravity">bottom</item>
+        <item name="wave_gravity">center</item>
     </style>
 
     <!--indicators-->

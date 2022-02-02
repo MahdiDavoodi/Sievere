@@ -20,7 +20,9 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import davoodi.mahdi.sievere.components.Track
+import davoodi.mahdi.sievere.data.DataLoader
 import kotlinx.android.synthetic.main.activity_now_playing.*
+import linc.com.amplituda.Amplituda
 import java.lang.IllegalStateException
 
 class NowPlayingActivity : AppCompatActivity() {
@@ -50,7 +52,10 @@ class NowPlayingActivity : AppCompatActivity() {
             configIcons()
         }
         npa_pause_ib.setOnLongClickListener {
-            npa_sb.setSampleFrom(SiQueue.getTrackToPlay().path)
+            SiQueue.defaultSamples =
+                Amplituda(this).processAudio(SiQueue.getTrackToPlay().path).get().amplitudesAsList()
+                    .toIntArray()
+            npa_sb.setSampleFrom(SiQueue.defaultSamples)
             true
         }
         npa_sb.onProgressChanged = object : SeekBarOnProgressChanged {
