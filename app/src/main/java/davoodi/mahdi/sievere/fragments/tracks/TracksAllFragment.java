@@ -60,8 +60,13 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
     @Override
     public void onTrackClick(int position) {
         if (DataLoader.tracks != null && DataLoader.tracks.size() > 0) {
-            SiQueue.position = position;
-            SiQueue.setQueue(DataLoader.tracks);
+
+            if (SiQueue.isOnShuffle)
+                SiQueue.position = SiQueue.findTrackPosition(SiQueue.initialQueue.get(position));
+            else {
+                SiQueue.position = position;
+                SiQueue.setQueue(DataLoader.tracks);
+            }
             startActivity(new Intent(getActivity(), NowPlayingActivity.class)
                     .putExtra(Finals.PLAY, true));
         }

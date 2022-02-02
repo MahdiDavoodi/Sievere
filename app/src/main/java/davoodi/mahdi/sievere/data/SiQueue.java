@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import davoodi.mahdi.sievere.components.Track;
+import davoodi.mahdi.sievere.players.SiPlayer;
 
 public class SiQueue {
     public static int position = 0;
@@ -16,16 +17,22 @@ public class SiQueue {
         initialQueue = new ArrayList<>(input);
     }
 
-    public static void shuffle() {
+    public static void shuffle() throws Exception {
         if (isQueueReady())
             Collections.shuffle(queue);
         isOnShuffle = true;
+        if (SiPlayer.playing != null)
+            position = findTrackPosition(SiPlayer.playing);
+        else position = findTrackPosition(SiQueue.getTrackToPlay());
     }
 
-    public static void unShuffle() {
+    public static void unShuffle() throws Exception {
         if (isQueueReady() && isOnShuffle)
             queue = new ArrayList<>(initialQueue);
         isOnShuffle = false;
+        if (SiPlayer.playing != null)
+            position = findTrackPosition(SiPlayer.playing);
+        else position = findTrackPosition(SiQueue.getTrackToPlay());
     }
 
     public static Track getTrackToPlay() throws Exception {

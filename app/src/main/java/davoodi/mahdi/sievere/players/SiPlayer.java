@@ -9,6 +9,7 @@ import davoodi.mahdi.sievere.components.Track;
 
 public class SiPlayer extends MediaPlayer {
     public static SiPlayer instance;
+    public static Track playing = null;
 
     public SiPlayer() {
         super();
@@ -26,6 +27,7 @@ public class SiPlayer extends MediaPlayer {
                 setDataSource(context, track.getUri());
                 prepare();
                 start();
+                playing = track;
             }
         } catch (IOException e) {
             e.printStackTrace();
