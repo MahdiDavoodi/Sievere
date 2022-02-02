@@ -18,7 +18,6 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import davoodi.mahdi.sievere.components.Track
 import kotlinx.android.synthetic.main.activity_now_playing.*
@@ -49,6 +48,10 @@ class NowPlayingActivity : AppCompatActivity() {
         } else {
             buildUI(track)
             configIcons()
+        }
+        npa_pause_ib.setOnLongClickListener {
+            npa_sb.setSampleFrom(SiQueue.getTrackToPlay().path)
+            true
         }
         npa_sb.onProgressChanged = object : SeekBarOnProgressChanged {
             override fun onProgressChanged(
@@ -96,7 +99,11 @@ class NowPlayingActivity : AppCompatActivity() {
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()
-        npa_sb.setSampleFrom(intArrayOf(1))
+
+        npa_sb.setSampleFrom(
+            if (SiQueue.defaultSamples != null) SiQueue.defaultSamples
+            else IntArray(60) { x -> if (x >= 30) 60 - x else x }
+        )
 
         val handler = Handler(Looper.getMainLooper())
         runOnUiThread(object : Runnable {

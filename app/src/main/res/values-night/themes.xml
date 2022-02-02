@@ -22,10 +22,10 @@
     <!--Seekbars-->
     <style name="seekbar">
         <item name="wave_progress_color">@color/dark_primary</item>
-        <item name="wave_width">2dp</item>
+        <item name="wave_width">3dp</item>
         <item name="wave_min_height">3dp</item>
         <item name="wave_background_color">@color/dark_accent</item>
-        <item name="wave_corner_radius">5dp</item>
+        <item name="wave_corner_radius">20dp</item>
         <item name="wave_gap">2dp</item>
         <item name="wave_gravity">center</item>
     </style>

@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Handler
 import davoodi.mahdi.sievere.components.Track
 import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment
+import linc.com.amplituda.Amplituda
 import java.util.ArrayList
 
 object DataLoader {
@@ -82,7 +83,10 @@ object DataLoader {
         sortOrder: String?
     ) {
         tracks = getTracks(context, projection, selection, selectionArgs, sortOrder)
-
+        if (!tracks.isNullOrEmpty())
+            SiQueue.defaultSamples =
+                Amplituda(context).processAudio(tracks!!.first().path).get().amplitudesAsList()
+                    .toIntArray()
         val handler = Handler(context.mainLooper)
         val runnable = Runnable {
             if (tracks != null) {

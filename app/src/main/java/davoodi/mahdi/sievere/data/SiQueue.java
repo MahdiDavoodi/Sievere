@@ -7,6 +7,7 @@ import davoodi.mahdi.sievere.components.Track;
 
 public class SiQueue {
     public static int position = 0;
+    public static int[] defaultSamples = null;
     public static ArrayList<Track> queue, initialQueue;
     public static boolean isOnRepeat = false, isOnRepeatOne = false, isOnShuffle = false;
 
