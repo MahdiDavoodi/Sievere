@@ -90,8 +90,8 @@ class NowPlayingActivity : AppCompatActivity() {
         var currentPosition = player.currentPosition.toDouble()
         val totalDuration = player.duration.toDouble()
 
-        npa_song_tv.text = resources.getString(R.string.italicText, track.getTitle())
-        npa_artist_tv.text = resources.getString(R.string.italicText, track.getArtistName(this))
+        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
+        npa_artist_tv.text = resources.getString(R.string.italicText, track.artist)
         npa_total_tv.text = getTimes(totalDuration.toLong())
         npa_current_tv.text = getTimes(currentPosition.toLong())
         npa_sb.maxProgress = totalDuration.toFloat()

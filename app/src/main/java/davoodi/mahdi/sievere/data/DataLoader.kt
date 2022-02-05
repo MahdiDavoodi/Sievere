@@ -54,6 +54,7 @@ object DataLoader {
                     cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED))
 
                 val track = Track(
+                    context,
                     id,
                     songUri,
                     path,

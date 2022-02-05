@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Track;
 
-/*Tracks All Fragment Linear recyclerview list adapter.*/
 public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdapter.ViewHolder> {
 
     Context context;
@@ -46,7 +45,7 @@ public class TAFLinearListAdapter extends RecyclerView.Adapter<TAFLinearListAdap
         Track track = tracks.get(position);
 
         holder.title.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
-        holder.artist.setText(context.getResources().getString(R.string.italicText, track.getArtistName(context)));
+        holder.artist.setText(context.getResources().getString(R.string.italicText, track.getArtist()));
     }
 
     @Override
