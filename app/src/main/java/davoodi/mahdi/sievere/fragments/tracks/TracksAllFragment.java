@@ -34,13 +34,12 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
         list = view.findViewById(R.id.tf_all_list);
         instance = this;
 
-        // Get the data ready for list and pass to it.
         if (DataLoader.isAllReady)
             showTheList();
         else
-            new Thread(() -> DataLoader.allTracksList(getActivity(),
+            new Thread(() -> DataLoader.allTracksList(requireActivity(),
                     null, null, null, null)).start();
-        //
+
         return view;
     }
 
@@ -49,7 +48,7 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
     }
 
     public void showTheList() {
-        if (getActivity() != null && DataLoader.tracks.size() != 0) {
+        if (getActivity() != null && DataLoader.tracks != null && DataLoader.tracks.size() != 0) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
             list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks, this));
