@@ -1,7 +1,5 @@
 package davoodi.mahdi.sievere.activities
 
-
-import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import davoodi.mahdi.sievere.players.SiPlayer
 import com.masoudss.lib.WaveformSeekBar
@@ -18,7 +16,6 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import davoodi.mahdi.sievere.components.Track
 import kotlinx.android.synthetic.main.activity_now_playing.*
@@ -35,14 +32,7 @@ class NowPlayingActivity : AppCompatActivity() {
             intent.extras?.getBoolean(Finals.PLAY) ?: false
         else false
 
-        Log.i("TEST: onCreate", "YES")
         if (SiQueue.isQueueReady()) setUpActivity(playSong, SiQueue.getTrackToPlay())
-    }
-
-    override fun onApplyThemeResource(theme: Resources.Theme?, resid: Int, first: Boolean) {
-        super.onApplyThemeResource(theme, resid, first)
-        Log.i("TEST: onApplyThemeResource", "YES")
-        /*if (SiQueue.isOnShuffle) SiQueue.unShuffle()*/
     }
 
     private fun setUpActivity(play: Boolean, track: Track) {
