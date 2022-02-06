@@ -34,7 +34,7 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
         list = view.findViewById(R.id.tf_all_list);
         instance = this;
 
-        if (DataLoader.isAllReady)
+        if (!DataLoader.tracks.isEmpty())
             showTheList();
         else
             new Thread(() -> DataLoader.allTracksList(requireActivity(),
@@ -48,7 +48,7 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
     }
 
     public void showTheList() {
-        if (getActivity() != null && DataLoader.tracks != null && DataLoader.tracks.size() != 0) {
+        if (getActivity() != null && !DataLoader.tracks.isEmpty()) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
             list.setAdapter(new TAFLinearListAdapter(getActivity(), tracks, this));
@@ -58,7 +58,7 @@ public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.
 
     @Override
     public void onTrackClick(int position) {
-        if (DataLoader.tracks != null && DataLoader.tracks.size() > 0) {
+        if (!DataLoader.tracks.isEmpty()) {
 
             if (SiQueue.isOnShuffle)
                 SiQueue.position = SiQueue.findTrackPosition(SiQueue.initialQueue.get(position));

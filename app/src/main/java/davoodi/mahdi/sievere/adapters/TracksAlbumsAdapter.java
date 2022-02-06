@@ -1,10 +1,10 @@
 package davoodi.mahdi.sievere.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Album;
-import davoodi.mahdi.sievere.components.Track;
 
 public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapter.ViewHolder> {
 
@@ -46,6 +45,9 @@ public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapte
         Album album = albums.get(position);
 
         holder.name.setText(context.getResources().getString(R.string.italicText, album.getName()));
+        Bitmap cover = album.getCover();
+        if (cover != null)
+            holder.albumCover.setImageBitmap(cover);
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.provider.MediaStore
 import android.content.ContentUris
 import android.content.Context
 import android.os.Handler
+import davoodi.mahdi.sievere.components.Album
 import davoodi.mahdi.sievere.components.Track
 import davoodi.mahdi.sievere.fragments.tracks.TracksAllFragment
 import linc.com.amplituda.Amplituda
@@ -14,7 +15,11 @@ object DataLoader {
     var isAllReady = false
 
     @JvmField
-    var tracks: ArrayList<Track>? = ArrayList()
+    var tracks: ArrayList<Track> = ArrayList()
+
+    @JvmField
+    var albums: ArrayList<Album> = ArrayList()
+
     private fun getTracks(
         context: Context, projection: Array<String?>?,
         selection: String?,
@@ -76,6 +81,21 @@ object DataLoader {
         return all
     }
 
+    fun updateAlbums(context: Context): ArrayList<Album> {
+        if (tracks.isNotEmpty()) {
+            val map = mutableMapOf<String, ArrayList<Track>>()
+            for (track in tracks) {
+                if (track.album in map)
+                    map[track.album]?.add(track)
+                else map += track.album to arrayListOf(track)
+            }
+            val updatedAlbums = arrayListOf<Album>()
+            for ((name, tracks) in map) updatedAlbums.add(Album(context, name, tracks))
+            albums = updatedAlbums
+        }
+        return albums
+    }
+
     @JvmStatic
     fun allTracksList(
         context: Context, projection: Array<String?>?,
@@ -90,10 +110,8 @@ object DataLoader {
                     .toIntArray()
         val handler = Handler(context.mainLooper)
         val runnable = Runnable {
-            if (tracks != null) {
-                isAllReady = true
-                TracksAllFragment.getInstance().showTheList()
-            }
+            isAllReady = true
+            TracksAllFragment.getInstance().showTheList()
         }
         handler.post(runnable)
     }

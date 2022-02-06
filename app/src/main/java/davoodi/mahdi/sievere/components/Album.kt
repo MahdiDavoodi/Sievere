@@ -1,4 +1,13 @@
 package davoodi.mahdi.sievere.components
 
-class Album(val name: String, val tracks: List<Track>){
+import android.content.Context
+import android.graphics.Bitmap
+import davoodi.mahdi.sievere.tools.Utilities
+
+class Album(context: Context, val name: String, val tracks: List<Track>) {
+    var cover: Bitmap? = null
+
+    init {
+        cover = Utilities.getAlbumArt(context, tracks.first().uri)
+    }
 }

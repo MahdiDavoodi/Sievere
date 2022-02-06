@@ -5,8 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".fragments.tracks.TracksAlbumsFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tf_albums_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
 </FrameLayout>
