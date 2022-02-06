@@ -10,14 +10,12 @@ import davoodi.mahdi.sievere.data.SiQueue
 import androidx.core.content.res.ResourcesCompat
 import com.masoudss.lib.SeekBarOnProgressChanged
 import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
-import android.graphics.BitmapFactory
 import android.media.AudioManager
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import davoodi.mahdi.sievere.components.Track
+import davoodi.mahdi.sievere.tools.Utilities
 import kotlinx.android.synthetic.main.activity_now_playing.*
 import linc.com.amplituda.Amplituda
 import java.lang.IllegalStateException
@@ -77,8 +75,9 @@ class NowPlayingActivity : AppCompatActivity() {
 
     private fun buildUI(track: Track) {
 
-        if (getAlbumArt(track.uri) != null)
-            npa_cover_iv.setImageBitmap(getAlbumArt(track.uri))
+        val cover: Bitmap? = Utilities.getAlbumArt(this, track.uri)
+        if (cover != null)
+            npa_cover_iv.setImageBitmap(cover)
         else npa_cover_iv.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
@@ -144,13 +143,6 @@ class NowPlayingActivity : AppCompatActivity() {
             else if (SiQueue.isOnRepeat) icons[4]
             else icons[6]
         )
-    }
-
-    private fun getAlbumArt(uri: Uri): Bitmap? {
-        val retriever = MediaMetadataRetriever()
-        retriever.setDataSource(this, uri)
-        val data = retriever.embeddedPicture
-        return if (data != null) BitmapFactory.decodeByteArray(data, 0, data.size) else null
     }
 
     fun back(view: View) {
