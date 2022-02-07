@@ -56,14 +56,15 @@ object DataLoader {
 
     private fun updateAlbums(context: Context): ArrayList<Album> {
         if (tracks.isNotEmpty()) {
-            val map = mutableMapOf<String, ArrayList<Track>>()
-            for (track in tracks) {
+            val map = mutableMapOf<String, ArrayList<Int>>()
+            for (i in tracks.indices) {
+                val track = tracks[i]
                 if (track.album in map)
-                    map[track.album]?.add(track)
-                else map += track.album to arrayListOf(track)
+                    map[track.album]?.add(i)
+                else map += track.album to arrayListOf(i)
             }
             val updatedAlbums = arrayListOf<Album>()
-            for ((name, tracks) in map) updatedAlbums.add(Album(context, name, tracks))
+            for ((name, tracks) in map) updatedAlbums.add(Album(context, name, tracks.toIntArray()))
             albums = updatedAlbums
         }
         return albums
