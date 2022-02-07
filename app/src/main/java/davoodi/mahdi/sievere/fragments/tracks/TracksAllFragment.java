@@ -25,26 +25,14 @@ import davoodi.mahdi.sievere.preferences.Finals;
 public class TracksAllFragment extends Fragment implements TAFLinearListAdapter.OnTrackListener {
 
     static RecyclerView list;
-    private static TracksAllFragment instance;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tracks_all, container, false);
         list = view.findViewById(R.id.tf_all_list);
-        instance = this;
-
-        if (!DataLoader.tracks.isEmpty())
-            showTheList();
-        else
-            new Thread(() -> DataLoader.allTracksList(requireActivity(),
-                    null, null, null, null)).start();
-
+        showTheList();
         return view;
-    }
-
-    public static TracksAllFragment getInstance() {
-        return instance;
     }
 
     public void showTheList() {

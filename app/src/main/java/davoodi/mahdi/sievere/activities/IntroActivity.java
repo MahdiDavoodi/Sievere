@@ -9,34 +9,44 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.data.DataLoader;
 
 public class IntroActivity extends AppCompatActivity {
 
-    protected static final int DELAY = 500;
     public static final int PERMISSION_STORAGE = 0;
+    public static final String TAG = "IntroActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
         if (checkReadStoragePermission())
-            new Thread(this::startTheApp).start();
+            new Thread(this::loadData).start();
     }
 
-    private void startTheApp() {
+    public void loadData() {
+        Thread loadData = new Thread(() -> DataLoader.loadData(this,
+                null, null, null, null));
+        Thread start = new Thread(this::startApp);
         try {
-            Thread.sleep(DELAY);
+            loadData.start();
+            loadData.join();
+            start.start();
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            startActivity(new Intent(IntroActivity.this, MainActivity.class));
-            finish();
+            Log.e(TAG, e.getMessage());
         }
+    }
+
+    public void startApp() {
+        startActivity(new Intent(IntroActivity.this, MainActivity.class));
+        finish();
     }
 
     public boolean checkReadStoragePermission() {
@@ -59,7 +69,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     toast = getResources().getString(R.string.denied_read_data_permission_toast);
                 } else {
-                    new Thread(this::startTheApp).start();
+                    new Thread(this::startApp).start();
                     toast = getResources().getString(R.string.accepted_read_data_permission_toast);
                 }
                 Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
