@@ -34,11 +34,10 @@ public class IntroActivity extends AppCompatActivity {
     public void loadData() {
         Thread loadData = new Thread(() -> DataLoader.loadData(this,
                 null, null, null, null));
-        Thread start = new Thread(this::startApp);
+        loadData.start();
         try {
-            loadData.start();
             loadData.join();
-            start.start();
+            startApp();
         } catch (InterruptedException e) {
             Log.e(TAG, e.getMessage());
         }
