@@ -74,7 +74,6 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     private fun buildUI(track: Track) {
-
         val cover: Bitmap? = Utilities.getAlbumArt(this, track.uri)
         if (cover != null)
             npa_cover_iv.setImageBitmap(cover)

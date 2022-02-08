@@ -4,15 +4,16 @@ import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 
-open class Holder(val name: String?, val tracks: IntArray?) : Parcelable {
+open class Holder(
+    val name: String?,
+    val tracks: IntArray?,
     var cover: Bitmap? = null
-
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.createIntArray()
-    ) {
-        cover = parcel.readParcelable(Bitmap::class.java.classLoader)
-    }
+        parcel.createIntArray(),
+        parcel.readParcelable(Bitmap::class.java.classLoader)
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
