@@ -3,12 +3,14 @@ package davoodi.mahdi.sievere.data;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import davoodi.mahdi.sievere.components.Holder;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.players.SiPlayer;
 
 public class SiQueue {
     public static int position = 0;
     public static int[] defaultSamples = null;
+    public static Holder holder = null;
     public static ArrayList<Track> queue, initialQueue;
     public static boolean isOnRepeat = false, isOnRepeatOne = false, isOnShuffle = false;
 

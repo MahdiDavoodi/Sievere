@@ -1,5 +1,6 @@
 package davoodi.mahdi.sievere.fragments.tracks;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,10 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import davoodi.mahdi.sievere.R;
+import davoodi.mahdi.sievere.activities.HolderActivity;
 import davoodi.mahdi.sievere.adapters.TracksAlbumsAdapter;
 import davoodi.mahdi.sievere.data.DataLoader;
+import davoodi.mahdi.sievere.data.SiQueue;
 
 public class TracksAlbumsFragment extends Fragment implements TracksAlbumsAdapter.OnAlbumListener {
 
@@ -38,6 +40,8 @@ public class TracksAlbumsFragment extends Fragment implements TracksAlbumsAdapte
 
     @Override
     public void OnAlbumClick(int position) {
-        // TODO
+        SiQueue.holder = DataLoader.albums.get(position);
+        startActivity(new Intent(getActivity(), HolderActivity.class));
+        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }
