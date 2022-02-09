@@ -47,7 +47,13 @@ public class TracksArtistsAdapter extends RecyclerView.Adapter<TracksArtistsAdap
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Artist artist = artists.get(position);
         holder.name.setText(context.getResources().getString(R.string.italicText, artist.getName()));
-        holder.tracks.setText(context.getResources().getString(R.string.italicText, String.valueOf(Objects.requireNonNull(artist.getTracks()).length)));
+
+        int size = Objects.requireNonNull(artist.getTracks()).length;
+        if (size <= 1)
+            holder.tracks.setText(context.getResources().getString(R.string.tf_artists_track, String.valueOf(size)));
+        else
+            holder.tracks.setText(context.getResources().getString(R.string.tf_artists_tracks, String.valueOf(size)));
+
         Bitmap cover = artist.getCover();
         if (cover != null)
             holder.image.setImageBitmap(cover);

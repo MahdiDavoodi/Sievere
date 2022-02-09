@@ -26,6 +26,10 @@
     <string name="track_time_hour">%1$02d:%2$02d:%3$02d\u0020</string>
     <string name="track_time_minutes">%1$02d:%2$02d\u0020</string>
 
+    <!--Artists Fragment-->
+    <string name="tf_artists_track">%1$s track\u0020</string>
+    <string name="tf_artists_tracks">%1$s tracks\u0020</string>
+
     <!--Toasts-->
     <string name="denied_read_data_permission_toast">We need your permission to find your audio files.\u0020</string>
     <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤\u0020</string>
