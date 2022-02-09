@@ -12,11 +12,13 @@ public class SiQueue {
     public static int[] defaultSamples = null;
     public static Holder holder = null;
     public static ArrayList<Track> queue, initialQueue;
-    public static boolean isOnRepeat = false, isOnRepeatOne = false, isOnShuffle = false;
+    public static boolean isOnRepeat = false, isOnRepeatOne = false, isOnShuffle = false, isOnHolder = false;
 
     public static void setQueue(ArrayList<Track> input) {
         queue = new ArrayList<>(input);
         initialQueue = new ArrayList<>(input);
+        isOnShuffle = false;
+        isOnHolder = false;
     }
 
     public static void shuffle() throws Exception {

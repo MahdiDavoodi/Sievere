@@ -48,7 +48,7 @@ public class TracksAllFragment extends Fragment implements TracksAllAdapter.OnTr
     public void onTrackClick(int position) {
         if (!DataLoader.tracks.isEmpty()) {
 
-            if (SiQueue.isOnShuffle)
+            if (SiQueue.isOnShuffle && !SiQueue.isOnHolder)
                 SiQueue.position = SiQueue.findTrackPosition(SiQueue.initialQueue.get(position));
             else {
                 SiQueue.position = position;
