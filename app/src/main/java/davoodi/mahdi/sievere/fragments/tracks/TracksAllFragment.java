@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.activities.NowPlayingActivity;
-import davoodi.mahdi.sievere.adapters.TracksLinearListAdapter;
+import davoodi.mahdi.sievere.adapters.TracksAllAdapter;
 import davoodi.mahdi.sievere.components.Track;
 import davoodi.mahdi.sievere.data.DataLoader;
 import davoodi.mahdi.sievere.data.SiQueue;
 import davoodi.mahdi.sievere.preferences.Finals;
 
 
-public class TracksAllFragment extends Fragment implements TracksLinearListAdapter.OnTrackListener {
+public class TracksAllFragment extends Fragment implements TracksAllAdapter.OnTrackListener {
 
     static RecyclerView list;
 
@@ -39,7 +39,7 @@ public class TracksAllFragment extends Fragment implements TracksLinearListAdapt
         if (getActivity() != null && !DataLoader.tracks.isEmpty()) {
             ArrayList<Track> tracks = DataLoader.tracks;
             list.setLayoutManager(new LinearLayoutManager(getActivity()));
-            list.setAdapter(new TracksLinearListAdapter(getActivity(), tracks, this));
+            list.setAdapter(new TracksAllAdapter(getActivity(), tracks, this));
             list.setHasFixedSize(true);
         }
     }

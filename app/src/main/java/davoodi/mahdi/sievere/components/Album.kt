@@ -9,5 +9,5 @@ class Album(
     context: Context,
     name: String,
     tracks: IntArray,
-    cover: Bitmap? = Utilities.getAlbumArt(context, DataLoader.tracks[tracks.first()].uri)
+    cover: Bitmap? = Utilities.getAlbumArt(context, DataLoader.tracks[tracks.first()].uri),
 ) : Holder(name, tracks, cover)

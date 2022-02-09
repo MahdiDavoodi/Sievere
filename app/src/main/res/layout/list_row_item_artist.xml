@@ -6,7 +6,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/tf_artist_icon"
+        android:id="@+id/tf_artist_cv"
         android:layout_width="@dimen/icons_s2"
         android:layout_height="@dimen/icons_s2"
         android:layout_marginStart="@dimen/icons_side_margin"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="@id/tf_artist_name">
 
         <ImageView
-            android:id="@+id/tf_album_cover"
+            android:id="@+id/tf_artist_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/cd_albumArt"
@@ -41,7 +41,7 @@
         android:text="@string/italicText"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tf_artist_icon"
+        app:layout_constraintStart_toEndOf="@+id/tf_artist_cv"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 

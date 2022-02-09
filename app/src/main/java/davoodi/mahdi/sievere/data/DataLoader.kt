@@ -4,6 +4,7 @@ import android.provider.MediaStore
 import android.content.ContentUris
 import android.content.Context
 import davoodi.mahdi.sievere.components.Album
+import davoodi.mahdi.sievere.components.Artist
 import davoodi.mahdi.sievere.components.Track
 import linc.com.amplituda.Amplituda
 import java.util.ArrayList
@@ -15,6 +16,9 @@ object DataLoader {
 
     @JvmField
     var albums: ArrayList<Album> = ArrayList()
+
+    @JvmField
+    var artists: ArrayList<Artist> = ArrayList()
 
     private fun updateTracks(
         context: Context, projection: Array<String?>?,
@@ -73,6 +77,28 @@ object DataLoader {
         return albums
     }
 
+    private fun updateArtists(context: Context): ArrayList<Artist> {
+        if (tracks.isNotEmpty()) {
+            val map = mutableMapOf<String, ArrayList<Int>>()
+            for (i in tracks.indices) {
+                val track = tracks[i]
+                if (track.artist in map)
+                    map[track.artist]?.add(i)
+                else map += track.artist to arrayListOf(i)
+            }
+            val updatedArtists = arrayListOf<Artist>()
+            for ((name, tracks) in map) updatedArtists.add(
+                Artist(
+                    context,
+                    name,
+                    tracks.toIntArray()
+                )
+            )
+            artists = updatedArtists
+        }
+        return artists
+    }
+
     @JvmStatic
     fun loadData(
         context: Context, projection: Array<String?>?,
@@ -82,6 +108,7 @@ object DataLoader {
     ) {
         updateTracks(context, projection, selection, selectionArgs, sortOrder)
         updateAlbums(context)
+        updateArtists(context)
 
         if (!tracks.isNullOrEmpty())
             SiQueue.defaultSamples =

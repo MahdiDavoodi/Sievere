@@ -18,14 +18,14 @@ import java.util.ArrayList;
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Track;
 
-public class TracksLinearListAdapter extends RecyclerView.Adapter<TracksLinearListAdapter.ViewHolder> {
+public class TracksAllAdapter extends RecyclerView.Adapter<TracksAllAdapter.ViewHolder> {
 
     Context context;
     LayoutInflater inflater;
     ArrayList<Track> tracks;
     OnTrackListener listener;
 
-    public TracksLinearListAdapter(Context context, ArrayList<Track> tracks, OnTrackListener listener) {
+    public TracksAllAdapter(Context context, ArrayList<Track> tracks, OnTrackListener listener) {
         this.context = context;
         this.tracks = tracks;
         this.listener = listener;
