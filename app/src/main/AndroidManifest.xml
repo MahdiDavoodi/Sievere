@@ -15,7 +15,9 @@
         <activity
             android:name=".activities.HolderActivity"
             android:exported="false" />
-        <activity android:name=".activities.NowPlayingActivity" />
+        <activity
+            android:name=".activities.NowPlayingActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.InfoActivity" />
         <activity
             android:name=".activities.IntroActivity"
