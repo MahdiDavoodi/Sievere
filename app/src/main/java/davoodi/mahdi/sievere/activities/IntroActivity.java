@@ -68,7 +68,7 @@ public class IntroActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     toast = getResources().getString(R.string.denied_read_data_permission_toast);
                 } else {
-                    new Thread(this::startApp).start();
+                    new Thread(this::loadData).start();
                     toast = getResources().getString(R.string.accepted_read_data_permission_toast);
                 }
                 Toast.makeText(this, toast, Toast.LENGTH_LONG).show();
