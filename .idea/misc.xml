@@ -11,11 +11,13 @@
         <entry key="app/src/main/res/drawable/bg_down_rounded_primary.xml" value="0.22592592592592592" />
         <entry key="app/src/main/res/drawable/bg_rounded_dark.xml" value="0.2777777777777778" />
         <entry key="app/src/main/res/drawable/bg_rounded_light.xml" value="0.2777777777777778" />
+        <entry key="app/src/main/res/drawable/ic_pause_solid.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_telegram_solid.xml" value="0.25833333333333336" />
+        <entry key="app/src/main/res/drawable/pic_sample_music_art.xml" value="0.117" />
         <entry key="app/src/main/res/layout/activity_holder.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.27708333333333335" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.32564102564102565" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_now_playing.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_tracks.xml" value="0.3307291666666667" />
         <entry key="app/src/main/res/layout/fragment_tracks_albums.xml" value="0.3307291666666667" />

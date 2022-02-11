@@ -5,7 +5,8 @@
     style="@style/primary_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="davoodi.mahdi.sievere.activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -94,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="18"
+            android:layout_weight="10"
             app:defaultNavHost="true"
             app:navGraph="@navigation/ma_navigation" />
 
@@ -104,9 +105,10 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:elevation="5dp"
-            android:visibility="visible"
+            android:onClick="npCard"
+            android:visibility="gone"
             app:cardCornerRadius="20dp"
             app:cardElevation="5dp"
             app:cardMaxElevation="10dp"
@@ -124,10 +126,24 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/icons_side_margin"
                     android:contentDescription="@string/cd_next_button"
+                    android:onClick="npCardNext"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_next_solid" />
+
+                <ImageButton
+                    android:id="@+id/ma_np_card_pause"
+                    style="@style/icons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/icons_side_margin"
+                    android:contentDescription="@string/cd_pause_button"
+                    android:onClick="npCardPause"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ma_np_card_next"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_pause_solid" />
 
                 <TextView
                     android:id="@+id/ma_np_card_title"

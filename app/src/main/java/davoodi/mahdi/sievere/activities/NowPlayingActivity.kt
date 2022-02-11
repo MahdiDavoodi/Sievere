@@ -147,6 +147,7 @@ class NowPlayingActivity : AppCompatActivity() {
     fun back(view: View) {
         assert(view.id == npa_back_ib.id)
         onBackPressed()
+        finish()
     }
 
     fun volume(view: View) {
