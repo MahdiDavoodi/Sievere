@@ -32,7 +32,7 @@
 
     <!--Toasts-->
     <string name="denied_read_data_permission_toast">We need your permission to find your audio files.\u0020</string>
-    <string name="accepted_read_data_permission_toast">Thank you for your trust. ❤\u0020</string>
+    <string name="accepted_read_data_permission_toast">Thank you\u0020</string>
 
     <!--Italic Text-->
     <string name="italicText">%1$s\u0020</string>
