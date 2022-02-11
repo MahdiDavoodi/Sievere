@@ -80,16 +80,6 @@
         app:itemTextAppearanceInactive="@style/main_nav_view_text"
         app:menu="@menu/main_nav_view" />
     -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/ma_bnv"
-        style="@style/navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp"
-        app:itemRippleColor="@android:color/transparent"
-        app:itemTextAppearanceActive="@style/main_nav_view_text"
-        app:itemTextAppearanceInactive="@style/main_nav_view_text" />
 
     <LinearLayout
         style="@style/up_rounded_background"
