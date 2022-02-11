@@ -24,21 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // TODO: Version 0.8 -> SET UP THE MENU.
-        /*
-        BottomNavigationView bottomNavigationView = findViewById(R.id.ma_bnv);
+        /*BottomNavigationView bottomNavigationView = findViewById(R.id.ma_bnv);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.ma_fcv);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
-        *//*
-        ****** In case we decide to show action bar in later versions. ******
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.tracksFragment, R.id.playlistsFragment, R.id.forYouFragment)
-                .build();
 
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*//*
-        NavigationUI.setupWithNavController(bottomNavigationView, navController);
-        */
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);*/
     }
 
 
