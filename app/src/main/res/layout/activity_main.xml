@@ -67,6 +67,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- TODO: Version 0.8 -> SET UP THE MENU.
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/ma_bnv"
         style="@style/navigation_view"
@@ -75,14 +76,20 @@
         android:background="@android:color/transparent"
         app:elevation="0dp"
         app:itemRippleColor="@android:color/transparent"
-        app:menu="@menu/main_nav_view" />
-
-    <!-- Little animation for bottom navigation!
-
-    app:itemTextAppearanceActive="@style/main_nav_view_text"
+        app:itemTextAppearanceActive="@style/main_nav_view_text"
         app:itemTextAppearanceInactive="@style/main_nav_view_text"
-
+        app:menu="@menu/main_nav_view" />
     -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/ma_bnv"
+        style="@style/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextAppearanceActive="@style/main_nav_view_text"
+        app:itemTextAppearanceInactive="@style/main_nav_view_text" />
 
     <LinearLayout
         style="@style/up_rounded_background"
@@ -90,6 +97,16 @@
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:orientation="vertical">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/ma_fcv"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="16"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/ma_navigation" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/ma_np_card"
@@ -154,16 +171,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/ma_fcv"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="16"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/ma_navigation" />
     </LinearLayout>
 
 </LinearLayout>
