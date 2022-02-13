@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -55,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                 openInfoActivity();
                 return true;
             } else if (item.getItemId() == R.id.ma_toolbar_settings) {
-                /*Setting*/
+                Toast.makeText(this, "Demo, v0.6.0", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (item.getItemId() == R.id.ma_toolbar_scan) {
-                /*Scan*/
+                Toast.makeText(this, "Demo, v0.2.1", Toast.LENGTH_SHORT).show();
                 return true;
             } else return false;
         });
