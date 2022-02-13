@@ -9,10 +9,10 @@ version `Demo v0.2.0`:
     - Control the playback (next, prev, shuffle, repeat).
     - Process the audio and change the waveform seekbar (By holding the pause button).
     - Show tracks in 3 different lists:
-    - All Tracks.
-    - Albums.
-    - Artists.
-        - Support Dark theme. Matched with system defaults.
+        - All Tracks.
+        - Albums.
+        - Artists.
+    - Support Dark theme. Matched with system defaults.
 
 ### Next Version:
 
