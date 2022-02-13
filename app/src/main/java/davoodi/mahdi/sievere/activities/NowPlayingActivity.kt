@@ -14,6 +14,7 @@ import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.widget.Toast
 import davoodi.mahdi.sievere.components.Track
 import davoodi.mahdi.sievere.tools.Utilities
 import kotlinx.android.synthetic.main.activity_now_playing.*
@@ -201,4 +202,6 @@ class NowPlayingActivity : AppCompatActivity() {
         assert(view.id == npa_like_ib.id)
         // TODO: Implement the database. Version 0.8
     }
+
+    fun options(view: View) = Toast.makeText(this, "Demo v0.4.0", Toast.LENGTH_SHORT).show()
 }
