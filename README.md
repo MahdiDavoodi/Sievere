@@ -1,35 +1,35 @@
-
 # Sievere | Music player
+
 ![header](media/Sievere.jpg)
-## Hello, friend!
 
-This is a pretty solid music player. This is gonna be my first official Play Store application.
+This is a solid music player, helping me to learn android development. Currently working on
+version `Demo v0.2.0`:
 
-### Working on (version - 0.5):
-	-   Play music in the simplest way!
-	-   Show all tracks in the main activiy.
-    -   Finish Info Activity.
-    -   Set up all activities from now.
+- Play music.
+- Control the playback (next, prev, shuffle, repeat).
+    - Process the audio and change the waveform seekbar (By holding the pause button).
+    - Show tracks in 3 different lists:
+    - All Tracks.
+    - Albums.
+    - Artists.
+        - Support Dark theme. Matched with system defaults.
 
-### TODO Tasks:
-    -   Support notification panel for the player.
-	-   Support Spotify API and show playlists in a new tab.
-	-   Support multiple layouts for the Now Playing page.
-	-   Make themes better.
-	-   Support changing the themes in-app settings.
-	-   Support multiple languages.
-	-   Support controlling the audio from the lock screen.
-	-   Add auto edit tags option.
-	-   Give the user the choice to select and deselect some folders for scanning the music library.
-	-   Create some good widgets for the app.
+### Next Version:
 
-#### Extras
+> Demo v0.3.0
 
-I've used [Amplituda](https://github.com/lincollincol/Amplituda), [WaveformSeekBar](https://github.com/massoudss/waveformSeekBar), [Dots Indicator](https://github.com/tommybuonomo/dotsindicator).
+    -   Implement the search feature.
+    -   Fix bugs of v0.2.0.
+
+#### Thanks to
+
+[lincollincol](https://github.com/lincollincol/Amplituda) for Amplituda,
+[massoudss](https://github.com/massoudss/waveformSeekBar) for Waveform SeekBar,
+[tommybuonomo](https://github.com/tommybuonomo/dotsindicator) for Dots Indicator.
 
 ```bash
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
-    implementation 'com.github.massoudss:waveformSeekBar:3.0.0'
-    implementation 'com.github.lincollincol:Amplituda:1.7'
+    implementation 'com.github.massoudss:waveformSeekBar:4.1.0'
+    implementation 'com.github.lincollincol:amplituda:2.1.0'
 ```
