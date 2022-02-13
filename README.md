@@ -5,8 +5,8 @@
 This is a solid music player, helping me to learn android development. Currently working on
 version `Demo v0.2.0`:
 
-- Play music.
-- Control the playback (next, prev, shuffle, repeat).
+    - Play music.
+    - Control the playback (next, prev, shuffle, repeat).
     - Process the audio and change the waveform seekbar (By holding the pause button).
     - Show tracks in 3 different lists:
     - All Tracks.
