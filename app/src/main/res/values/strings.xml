@@ -2,7 +2,7 @@
     <!--App-->
     <string name="app_name">Sievere\u0020</string>
     <string name="app_description">Music Player\u0020</string>
-    <string name="app_version">Version 0.5\u0020</string>
+    <string name="app_version">Version 0.2.0\u0020</string>
     <string name="app_last_update">Feb, 2022\u0020</string>
 
     <!--Main Activity-->
