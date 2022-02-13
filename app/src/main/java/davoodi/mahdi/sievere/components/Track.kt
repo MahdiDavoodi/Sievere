@@ -14,11 +14,6 @@ class Track(
     setTitle: String?,
     setArtist: String?,
     setAlbum: String?,
-    val length: Long,
-    val bitrate: Int,
-    val year: Int,
-    val genre: String?,
-    val dateAdded: Long,
 ) {
     val title = setTitle ?: fileName
     val artist = setArtist ?: context.resources.getString(R.string.unknown)
