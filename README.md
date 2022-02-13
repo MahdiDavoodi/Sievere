@@ -3,23 +3,16 @@
 ![header](media/Sievere.jpg)
 
 This is a solid music player, helping me to learn android development. Currently working on
-version `Demo v0.2.0`:
+version `alpha v0.3.0`:
 
-    - Play music.
-    - Control the playback (next, prev, shuffle, repeat).
-    - Process the audio and change the waveform seekbar (By holding the pause button).
-    - Show tracks in 3 different lists:
-        - All Tracks.
-        - Albums.
-        - Artists.
-    - Support Dark theme. Matched with system defaults.
+    -   Implement the search feature.
+    -   Fix bugs of v0.2.0-alpha.
 
 ### Next Version:
 
-> Demo v0.3.0
+> Demo v0.4.0
 
-    -   Implement the search feature.
-    -   Fix bugs of v0.2.0.
+    -   Add playlists feature.
 
 #### Thanks to
 
