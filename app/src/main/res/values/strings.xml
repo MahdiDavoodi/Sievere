@@ -13,7 +13,7 @@
     <string name="ma_toolbar_settings">Settings\u0020</string>
     <string name="ma_toolbar_now_playing">Now Playing\u0020</string>
     <string name="ma_toolbar_info">Info\u0020</string>
-    <string name="ma_toolbar_scan">Scan the library\u0020</string>
+    <string name="ma_toolbar_scan">Refresh\u0020</string>
 
     <!--Info Activity-->
     <string name="info_tv1">Hello, Friend!\u0020</string>
@@ -41,6 +41,7 @@
     <string name="unknown">Unknown</string>
     <string name="single">Single</string>
     <string name="blank">\u0020</string>
+    <string name="loading">Loading…\u0020</string>
 
     <!-- Content Description -->
     <string name="cd_back_button">Back</string>
