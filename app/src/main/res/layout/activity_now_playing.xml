@@ -174,7 +174,7 @@
             android:id="@+id/npa_sb"
             style="@style/seekbar"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:layout_marginStart="@dimen/icons_side_margin"
             android:layout_marginEnd="@dimen/icons_side_margin"
             android:minHeight="15dp"
