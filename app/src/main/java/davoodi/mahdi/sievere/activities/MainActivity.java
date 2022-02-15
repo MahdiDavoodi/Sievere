@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateTheCard();
+        if (DataLoader.tracks.isEmpty())
+            refresh();
+        else updateTheCard();
     }
 
     public void toolbarMenu(View view) {
@@ -60,19 +62,23 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Demo, v0.6.0", Toast.LENGTH_SHORT).show();
                 return true;
             } else if (item.getItemId() == R.id.ma_toolbar_scan) {
-                try {
-                    Thread loader = new Thread(() -> DataLoader.loadData(this, null, null, null, null));
-                    loader.start();
-                    Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_LONG).show();
-                    loader.join();
-                    recreate();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                refresh();
                 return true;
             } else return false;
         });
         menu.show();
+    }
+
+    private void refresh() {
+        try {
+            Thread loader = new Thread(() -> DataLoader.loadData(this, null, null, null, null));
+            loader.start();
+            Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_LONG).show();
+            loader.join();
+            recreate();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void openInfoActivity() {

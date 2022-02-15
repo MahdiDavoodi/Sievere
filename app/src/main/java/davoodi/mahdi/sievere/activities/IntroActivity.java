@@ -27,6 +27,7 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
+        Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_LONG).show();
         if (checkReadStoragePermission())
             new Thread(this::loadData).start();
     }
