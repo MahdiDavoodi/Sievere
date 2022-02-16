@@ -15,17 +15,17 @@
         <activity
             android:name=".activities.HolderActivity"
             android:exported="false"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activities.NowPlayingActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".activities.InfoActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name=".activities.IntroActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

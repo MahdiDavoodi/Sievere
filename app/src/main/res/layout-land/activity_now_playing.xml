@@ -109,8 +109,8 @@
             android:text="@string/blank"
             android:textSize="@dimen/text_big"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/npa_cv"
+            app:layout_constraintTop_toTopOf="@+id/npa_cv" />
 
         <TextView
             android:id="@+id/npa_artist_tv"
@@ -125,21 +125,23 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/npa_cv"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="270dp"
+            android:layout_height="270dp"
             android:elevation="2dp"
-            android:maxWidth="350dp"
-            android:maxHeight="350dp"
+            android:maxWidth="300dp"
+            android:maxHeight="300dp"
             android:minWidth="200dp"
             android:minHeight="200dp"
             app:cardCornerRadius="50dp"
             app:cardElevation="5dp"
             app:cardMaxElevation="20dp"
             app:cardPreventCornerOverlap="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/npa_artist_tv">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3">
 
             <ImageView
                 android:id="@+id/npa_cover_iv"
@@ -161,29 +163,26 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="like"
-            android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/npa_sb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/npa_cv"
-            app:layout_constraintVertical_bias="0.9"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_repeat_ib"
+            app:layout_constraintStart_toEndOf="@+id/npa_repeat_ib"
+            app:layout_constraintTop_toTopOf="@+id/npa_repeat_ib"
             app:srcCompat="@drawable/ic_favorite_outline" />
 
         <com.masoudss.lib.WaveformSeekBar
             android:id="@+id/npa_sb"
             style="@style/seekbar"
-            android:layout_width="match_parent"
+            android:layout_width="400dp"
             android:layout_height="50dp"
-            android:layout_marginStart="@dimen/icons_side_margin"
-            android:layout_marginEnd="@dimen/icons_side_margin"
-            android:minHeight="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/npa_pause_ib"
+            android:layout_marginTop="20dp"
+            android:maxWidth="600dp"
+            android:maxHeight="100dp"
+            android:minWidth="200dp"
+            android:minHeight="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/npa_cv"
-            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintHorizontal_bias="0.586"
+            app:layout_constraintStart_toEndOf="@+id/npa_cv"
+            app:layout_constraintTop_toBottomOf="@+id/npa_artist_tv"
             app:wave_max_progress="100"
             app:wave_progress="0" />
 
@@ -198,11 +197,9 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="shuffle"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_previous_ib"
-            app:layout_constraintEnd_toStartOf="@+id/npa_previous_ib"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/npa_previous_ib"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_repeat_ib"
+            app:layout_constraintEnd_toStartOf="@+id/npa_repeat_ib"
+            app:layout_constraintTop_toTopOf="@+id/npa_repeat_ib"
             app:srcCompat="@drawable/ic_shuffle_solid" />
 
         <ImageButton
@@ -218,8 +215,7 @@
             android:onClick="previous"
             app:layout_constraintBottom_toBottomOf="@+id/npa_pause_ib"
             app:layout_constraintEnd_toStartOf="@+id/npa_pause_ib"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/npa_cv"
             app:layout_constraintTop_toTopOf="@+id/npa_pause_ib"
             app:srcCompat="@drawable/ic_prev_solid" />
 
@@ -228,17 +224,16 @@
             style="@style/icon_v3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/icons_side_margin"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/cd_pause_button"
             android:maxWidth="120dp"
             android:maxHeight="120dp"
             android:minWidth="80dp"
             android:minHeight="80dp"
             android:onClick="pause"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/npa_sb"
+            app:layout_constraintStart_toStartOf="@+id/npa_sb"
+            app:layout_constraintTop_toBottomOf="@+id/npa_sb"
             app:srcCompat="@drawable/ic_pause_solid" />
 
         <ImageButton
@@ -254,7 +249,6 @@
             android:onClick="next"
             app:layout_constraintBottom_toBottomOf="@+id/npa_pause_ib"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
             app:layout_constraintStart_toEndOf="@+id/npa_pause_ib"
             app:layout_constraintTop_toTopOf="@+id/npa_pause_ib"
             app:srcCompat="@drawable/ic_next_solid" />
@@ -270,11 +264,10 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="repeat"
-            app:layout_constraintBottom_toBottomOf="@+id/npa_next_ib"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/npa_next_ib"
-            app:layout_constraintTop_toTopOf="@+id/npa_next_ib"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/npa_pause_ib"
+            app:layout_constraintStart_toStartOf="@+id/npa_pause_ib"
+            app:layout_constraintTop_toBottomOf="@+id/npa_pause_ib"
             app:srcCompat="@drawable/ic_repeat_solid" />
 
         <TextView
