@@ -119,6 +119,8 @@
         <item name="android:textStyle">bold|italic</item>
     </style>
 
+    <style name="text_v2" parent="text" />
+
     <style name="small_text" parent="text">
         <item name="android:padding">@dimen/small_text_padding</item>
         <item name="android:textSize">@dimen/text_small</item>

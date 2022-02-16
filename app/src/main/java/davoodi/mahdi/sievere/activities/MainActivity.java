@@ -140,4 +140,13 @@ public class MainActivity extends AppCompatActivity {
             else siPlayer.start();
         updateTheCard();
     }
+
+    public void npCardPrev(View view) throws Exception {
+        SiPlayer siPlayer = SiPlayer.getInstance();
+        if (siPlayer != null) {
+            SiQueue.updatePosition(-1);
+            siPlayer.playTrack(this, SiQueue.getTrackToPlay());
+            updateTheCard();
+        }
+    }
 }
