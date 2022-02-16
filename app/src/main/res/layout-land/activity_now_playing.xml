@@ -95,12 +95,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/up_rounded_background"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/npa_back_ib">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/npa_song_tv"
@@ -108,8 +108,8 @@
             android:layout_height="wrap_content"
             android:text="@string/blank"
             android:textSize="@dimen/text_big"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/npa_cv"
+            app:layout_constraintEnd_toEndOf="@+id/npa_sb"
+            app:layout_constraintStart_toStartOf="@+id/npa_sb"
             app:layout_constraintTop_toTopOf="@+id/npa_cv" />
 
         <TextView
@@ -140,8 +140,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/npa_cover_iv"
@@ -157,6 +156,7 @@
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_side_margin"
             android:contentDescription="@string/cd_like_button"
             android:maxWidth="@dimen/icons_s2"
             android:maxHeight="@dimen/icons_s2"
@@ -174,15 +174,15 @@
             style="@style/seekbar"
             android:layout_width="400dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
             android:maxWidth="600dp"
             android:maxHeight="100dp"
             android:minWidth="200dp"
             android:minHeight="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/npa_cv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.586"
             app:layout_constraintStart_toEndOf="@+id/npa_cv"
-            app:layout_constraintTop_toBottomOf="@+id/npa_artist_tv"
+            app:layout_constraintTop_toTopOf="@+id/npa_cv"
+            app:layout_constraintVertical_bias="0.4"
             app:wave_max_progress="100"
             app:wave_progress="0" />
 
@@ -191,6 +191,7 @@
             style="@style/icons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/icons_side_margin"
             android:contentDescription="@string/cd_shuffle_button"
             android:maxWidth="@dimen/icons_s2"
             android:maxHeight="@dimen/icons_s2"

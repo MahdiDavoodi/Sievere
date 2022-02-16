@@ -161,7 +161,7 @@
             android:minWidth="@dimen/icons_s1"
             android:minHeight="@dimen/icons_s1"
             android:onClick="like"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/npa_sb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
