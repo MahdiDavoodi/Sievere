@@ -47,11 +47,6 @@ object DataLoader {
                     setTitle = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE)),
                     setArtist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST)),
                     setAlbum = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM)),
-                    /*length = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DURATION)),
-                    bitrate = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.BITRATE)),
-                    year = cursor.getInt(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.YEAR)),
-                    genre = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.GENRE)),
-                    dateAdded = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATE_ADDED)),*/
                 )
                 all.add(track)
             } while (cursor.moveToNext())
@@ -111,8 +106,6 @@ object DataLoader {
         updateArtists(context)
 
         if (!tracks.isNullOrEmpty())
-            SiQueue.defaultSamples =
-                Amplituda(context).processAudio(tracks.first().path).get().amplitudesAsList()
-                    .toIntArray()
+            SiQueue.defaultSamples = IntArray(100) { (0..20).random() }
     }
 }
