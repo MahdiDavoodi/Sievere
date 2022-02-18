@@ -6,7 +6,6 @@ import android.content.Context
 import davoodi.mahdi.sievere.components.Album
 import davoodi.mahdi.sievere.components.Artist
 import davoodi.mahdi.sievere.components.Track
-import linc.com.amplituda.Amplituda
 import java.util.ArrayList
 
 object DataLoader {
@@ -106,6 +105,6 @@ object DataLoader {
         updateArtists(context)
 
         if (!tracks.isNullOrEmpty())
-            SiQueue.defaultSamples = IntArray(100) { (0..20).random() }
+            SiQueue.defaultSamples = IntArray(200) { (0..20).random() }
     }
 }

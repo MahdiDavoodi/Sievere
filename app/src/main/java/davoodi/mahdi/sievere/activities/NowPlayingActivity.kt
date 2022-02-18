@@ -13,6 +13,7 @@ import android.graphics.Bitmap
 import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import davoodi.mahdi.sievere.components.Track
@@ -20,6 +21,8 @@ import davoodi.mahdi.sievere.tools.Utilities
 import kotlinx.android.synthetic.main.activity_now_playing.*
 import linc.com.amplituda.Amplituda
 import java.lang.IllegalStateException
+
+const val TAG = "NowPlayingActivity"
 
 class NowPlayingActivity : AppCompatActivity() {
     val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
@@ -42,10 +45,17 @@ class NowPlayingActivity : AppCompatActivity() {
             configIcons()
         }
         npa_pause_ib.setOnLongClickListener {
-            SiQueue.defaultSamples =
+            val newWaveForm =
                 Amplituda(this).processAudio(SiQueue.getTrackToPlay().path).get().amplitudesAsList()
                     .toIntArray()
-            npa_sb.setSampleFrom(SiQueue.defaultSamples)
+            if (newWaveForm.isNotEmpty()) {
+                SiQueue.defaultSamples = newWaveForm
+                npa_sb.setSampleFrom(SiQueue.defaultSamples)
+            } else {
+                Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
+                Log.e(TAG, "The result of Amplituda is empty.")
+                Log.d(TAG, SiQueue.getTrackToPlay().toString())
+            }
             true
         }
         npa_sb.onProgressChanged = object : SeekBarOnProgressChanged {
