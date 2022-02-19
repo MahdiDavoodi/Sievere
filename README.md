@@ -24,5 +24,5 @@ version `alpha v0.3.0`:
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
     implementation 'com.github.massoudss:waveformSeekBar:4.1.0'
-    implementation 'com.github.lincollincol:amplituda:2.1.0'
+    implementation 'com.github.lincollincol:amplituda:2.1.4'
 ```
