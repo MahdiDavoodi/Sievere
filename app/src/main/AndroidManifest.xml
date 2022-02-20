@@ -14,27 +14,19 @@
         android:theme="@style/Theme.Sievere">
         <activity
             android:name=".activities.HolderActivity"
-            android:exported="false"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".activities.NowPlayingActivity"
-            android:screenOrientation="fullSensor" />
-        <activity
-            android:name=".activities.InfoActivity"
-            android:screenOrientation="fullSensor" />
+            android:exported="false" />
+        <activity android:name=".activities.NowPlayingActivity" />
+        <activity android:name=".activities.InfoActivity" />
         <activity
             android:name=".activities.IntroActivity"
-            android:exported="true"
-            android:screenOrientation="fullSensor">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            android:screenOrientation="fullSensor" />
+        <activity android:name=".activities.MainActivity" />
     </application>
 
 </manifest>
