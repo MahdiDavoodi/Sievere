@@ -46,7 +46,10 @@ class NowPlayingActivity : AppCompatActivity() {
         }
         npa_pause_ib.setOnLongClickListener {
             val newWaveForm =
-                Amplituda(this).processAudio(SiQueue.getTrackToPlay().path).get().amplitudesAsList()
+                Amplituda(this)
+                    .processAudio(contentResolver.openInputStream(SiQueue.getTrackToPlay().uri))
+                    .get()
+                    .amplitudesAsList()
                     .toIntArray()
             if (newWaveForm.isNotEmpty()) {
                 SiQueue.defaultSamples = newWaveForm
