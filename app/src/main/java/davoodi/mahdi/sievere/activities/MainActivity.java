@@ -76,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_LONG).show();
             loader.join();
             recreate();
+            if (DataLoader.tracks.isEmpty()) {
+                Toast.makeText(this, "There is no audio file in this phone", Toast.LENGTH_LONG).show();
+                finish();
+                // TODO: Improve this behavior.
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
