@@ -3,6 +3,7 @@ package davoodi.mahdi.sievere.data
 import android.provider.MediaStore
 import android.content.ContentUris
 import android.content.Context
+import davoodi.mahdi.sievere.R
 import davoodi.mahdi.sievere.components.Album
 import davoodi.mahdi.sievere.components.Artist
 import davoodi.mahdi.sievere.components.Track
@@ -33,19 +34,27 @@ object DataLoader {
             do {
                 val id =
                     cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns._ID))
+                val fileName =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
+                        .split("\\.").first()
                 val track = Track(
-                    context,
                     id,
                     uri = ContentUris.withAppendedId(
                         MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                         id
                     ),
                     path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATA)),
-                    fileName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
-                        .split("\\.").first(),
-                    setTitle = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE)),
-                    setArtist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST)),
-                    setAlbum = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM)),
+                    fileName = fileName,
+                    title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE))
+                        ?: fileName,
+                    artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST))
+                        ?: context.getString(
+                            R.string.unknown
+                        ),
+                    album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM))
+                        ?: context.getString(
+                            R.string.single
+                        ),
                 )
                 all.add(track)
             } while (cursor.moveToNext())
