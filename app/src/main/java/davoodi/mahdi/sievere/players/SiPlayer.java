@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import java.io.IOException;
 
 import davoodi.mahdi.sievere.components.Track;
+import davoodi.mahdi.sievere.data.SiQueue;
 
 public class SiPlayer extends MediaPlayer {
     public static SiPlayer instance;
@@ -32,6 +33,10 @@ public class SiPlayer extends MediaPlayer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void playAgain(Context context) throws Exception {
+        playTrack(context, SiQueue.getTrackToPlay());
     }
 
     public int[] convertTime(long value) {

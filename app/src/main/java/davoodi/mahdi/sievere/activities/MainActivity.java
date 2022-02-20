@@ -115,7 +115,10 @@ public class MainActivity extends AppCompatActivity {
                         npCardPause(findViewById(R.id.ma_np_card_pause).getRootView());
                     } else if (!SiQueue.isOnRepeatOne) {
                         npCardNext(findViewById(R.id.ma_np_card_next).getRootView());
-                    } else updateTheCard();
+                    } else {
+                        siPlayer.playAgain(this);
+                        updateTheCard();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
