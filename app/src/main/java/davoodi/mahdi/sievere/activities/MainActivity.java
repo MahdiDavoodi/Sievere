@@ -2,36 +2,30 @@ package davoodi.mahdi.sievere.activities;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.data.DataLoader;
 import davoodi.mahdi.sievere.data.SiQueue;
+import davoodi.mahdi.sievere.databinding.ActivityMainBinding;
 import davoodi.mahdi.sievere.players.SiPlayer;
 import davoodi.mahdi.sievere.preferences.Finals;
 import davoodi.mahdi.sievere.tools.Utilities;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding ui = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ui = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(ui.getRoot());
 
         // TODO: Version 0.8 -> SET UP THE MENU.
         /*BottomNavigationView bottomNavigationView = findViewById(R.id.ma_bnv);
@@ -97,22 +91,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateTheCard() {
-        CardView cardView = findViewById(R.id.ma_np_card);
-        ImageButton pause = findViewById(R.id.ma_np_card_pause);
-        ImageView albumArt = findViewById(R.id.ma_np_card_art);
-        TextView title = findViewById(R.id.ma_np_card_title);
         SiPlayer siPlayer = SiPlayer.getInstance();
         if (siPlayer != null && SiPlayer.playing != null) {
-            cardView.setVisibility(View.VISIBLE);
-            title.setText(getString(R.string.italicText, SiPlayer.playing.getTitle()));
+            ui.maNpCard.setVisibility(View.VISIBLE);
+            ui.maNpCardTitle.setText(getString(R.string.italicText, SiPlayer.playing.getTitle()));
             Bitmap newArt = Utilities.Companion.getAlbumArt(this, SiPlayer.playing.getUri());
             if (newArt != null)
-                albumArt.setImageBitmap(newArt);
-            else albumArt.setImageResource(R.drawable.pic_sample_music_art);
+                ui.maNpCardArt.setImageBitmap(newArt);
+            else ui.maNpCardArt.setImageResource(R.drawable.pic_sample_music_art);
 
             if (siPlayer.isPlaying())
-                pause.setImageResource(R.drawable.ic_pause_solid);
-            else pause.setImageResource(R.drawable.ic_play_solid);
+                ui.maNpCardPause.setImageResource(R.drawable.ic_pause_solid);
+            else ui.maNpCardPause.setImageResource(R.drawable.ic_play_solid);
 
             siPlayer.setOnCompletionListener(listener -> {
                 try {
