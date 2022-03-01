@@ -17,8 +17,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import davoodi.mahdi.sievere.components.Track
+import davoodi.mahdi.sievere.databinding.ActivityNowPlayingBinding
 import davoodi.mahdi.sievere.tools.Utilities
-import kotlinx.android.synthetic.main.activity_now_playing.*
 import linc.com.amplituda.Amplituda
 import java.lang.IllegalStateException
 
@@ -26,10 +26,13 @@ const val TAG = "NowPlayingActivity"
 
 class NowPlayingActivity : AppCompatActivity() {
     val player: SiPlayer = SiPlayer.getInstance() ?: SiPlayer()
+    private lateinit var ui: ActivityNowPlayingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_now_playing)
+        ui = ActivityNowPlayingBinding.inflate(layoutInflater)
+        setContentView(ui.root)
+
         val playSong = if (savedInstanceState == null)
             intent.extras?.getBoolean(Finals.PLAY) ?: false
         else false
@@ -44,7 +47,7 @@ class NowPlayingActivity : AppCompatActivity() {
             buildUI(track)
             configIcons()
         }
-        npa_pause_ib.setOnLongClickListener {
+        ui.npaPauseIb.setOnLongClickListener {
             val newWaveForm =
                 Amplituda(this)
                     .processAudio(contentResolver.openInputStream(SiQueue.getTrackToPlay().uri))
@@ -53,7 +56,7 @@ class NowPlayingActivity : AppCompatActivity() {
                     .toIntArray()
             if (newWaveForm.isNotEmpty()) {
                 SiQueue.defaultSamples = newWaveForm
-                npa_sb.setSampleFrom(SiQueue.defaultSamples)
+                ui.npaSb.setSampleFrom(SiQueue.defaultSamples)
             } else {
                 Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show()
                 Log.e(TAG, "The result of Amplituda is empty.")
@@ -61,7 +64,7 @@ class NowPlayingActivity : AppCompatActivity() {
             }
             true
         }
-        npa_sb.onProgressChanged = object : SeekBarOnProgressChanged {
+        ui.npaSb.onProgressChanged = object : SeekBarOnProgressChanged {
             override fun onProgressChanged(
                 waveformSeekBar: WaveformSeekBar,
                 progress: Float,
@@ -90,8 +93,8 @@ class NowPlayingActivity : AppCompatActivity() {
     private fun buildUI(track: Track) {
         val cover: Bitmap? = Utilities.getAlbumArt(this, track.uri)
         if (cover != null)
-            npa_cover_iv.setImageBitmap(cover)
-        else npa_cover_iv.setImageDrawable(
+            ui.npaCoverIv.setImageBitmap(cover)
+        else ui.npaCoverIv.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.pic_sample_music_art,
@@ -102,13 +105,13 @@ class NowPlayingActivity : AppCompatActivity() {
         var currentPosition = player.currentPosition.toDouble()
         val totalDuration = player.duration.toDouble()
 
-        npa_song_tv.text = resources.getString(R.string.italicText, track.title)
-        npa_artist_tv.text = resources.getString(R.string.italicText, track.artist)
-        npa_total_tv.text = getTimes(totalDuration.toLong())
-        npa_current_tv.text = getTimes(currentPosition.toLong())
-        npa_sb.maxProgress = totalDuration.toFloat()
+        ui.npaSongTv.text = resources.getString(R.string.italicText, track.title)
+        ui.npaArtistTv.text = resources.getString(R.string.italicText, track.artist)
+        ui.npaTotalTv.text = getTimes(totalDuration.toLong())
+        ui.npaCurrentTv.text = getTimes(currentPosition.toLong())
+        ui.npaSb.maxProgress = totalDuration.toFloat()
 
-        npa_sb.setSampleFrom(
+        ui.npaSb.setSampleFrom(
             if (SiQueue.defaultSamples != null) SiQueue.defaultSamples
             else IntArray(60) { x -> if (x >= 30) 60 - x else x }
         )
@@ -118,8 +121,8 @@ class NowPlayingActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     currentPosition = player.currentPosition.toDouble()
-                    npa_current_tv.text = getTimes(currentPosition.toLong())
-                    npa_sb.progress = currentPosition.toFloat()
+                    ui.npaCurrentTv.text = getTimes(currentPosition.toLong())
+                    ui.npaSb.progress = currentPosition.toFloat()
                     handler.postDelayed(this, 500)
                 } catch (exception: IllegalStateException) {
                     exception.printStackTrace()
@@ -149,9 +152,9 @@ class NowPlayingActivity : AppCompatActivity() {
             ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_one_primary_color, theme),
             ResourcesCompat.getDrawable(resources, R.drawable.ic_repeat_solid, theme)
         )
-        npa_pause_ib.setImageDrawable(if (player.isPlaying) icons[1] else icons[0])
-        npa_shuffle_ib.setImageDrawable(if (SiQueue.isOnShuffle) icons[3] else icons[2])
-        npa_repeat_ib.setImageDrawable(
+        ui.npaPauseIb.setImageDrawable(if (player.isPlaying) icons[1] else icons[0])
+        ui.npaShuffleIb.setImageDrawable(if (SiQueue.isOnShuffle) icons[3] else icons[2])
+        ui.npaRepeatIb.setImageDrawable(
             if (SiQueue.isOnRepeatOne) icons[5]
             else if (SiQueue.isOnRepeat) icons[4]
             else icons[6]
@@ -159,13 +162,13 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     fun back(view: View) {
-        assert(view.id == npa_back_ib.id)
+        assert(view.id == ui.npaBackIb.id)
         onBackPressed()
         finish()
     }
 
     fun volume(view: View) {
-        assert(view.id == npa_volume_ib.id)
+        assert(view.id == ui.npaVolumeIb.id)
         val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         val currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC)
         audioManager.setStreamVolume(
@@ -176,7 +179,7 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     fun pause(view: View) {
-        assert(view.id == npa_pause_ib.id)
+        assert(view.id == ui.npaPauseIb.id)
         if (player.isPlaying)
             player.pause()
         else player.start()
@@ -184,25 +187,25 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     fun next(view: View) {
-        assert(view.id == npa_next_ib.id)
+        assert(view.id == ui.npaNextIb.id)
         SiQueue.updatePosition(1)
         configMusic()
     }
 
     fun previous(view: View) {
-        assert(view.id == npa_previous_ib.id)
+        assert(view.id == ui.npaPreviousIb.id)
         SiQueue.updatePosition(-1)
         configMusic()
     }
 
     fun shuffle(view: View) {
-        assert(view.id == npa_shuffle_ib.id)
+        assert(view.id == ui.npaShuffleIb.id)
         if (SiQueue.isOnShuffle) SiQueue.unShuffle() else SiQueue.shuffle()
         configIcons()
     }
 
     fun repeat(view: View) {
-        assert(view.id == npa_repeat_ib.id)
+        assert(view.id == ui.npaRepeatIb.id)
         if (SiQueue.isOnRepeat && !SiQueue.isOnRepeatOne) SiQueue.isOnRepeatOne = true
         else if (SiQueue.isOnRepeatOne) {
             SiQueue.isOnRepeat = false
@@ -212,7 +215,7 @@ class NowPlayingActivity : AppCompatActivity() {
     }
 
     fun like(view: View) {
-        assert(view.id == npa_like_ib.id)
+        assert(view.id == ui.npaLikeIb.id)
         // TODO: Implement the database. Version 0.8
     }
 

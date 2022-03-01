@@ -11,15 +11,17 @@ import davoodi.mahdi.sievere.components.Holder
 import davoodi.mahdi.sievere.components.Track
 import davoodi.mahdi.sievere.data.DataLoader
 import davoodi.mahdi.sievere.data.SiQueue
+import davoodi.mahdi.sievere.databinding.ActivityHolderBinding
 import davoodi.mahdi.sievere.preferences.Finals
-import kotlinx.android.synthetic.main.activity_holder.*
 
 class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
     private var tracks = ArrayList<Track>()
+    private lateinit var ui: ActivityHolderBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_holder)
+        ui = ActivityHolderBinding.inflate(layoutInflater)
+        setContentView(ui.root)
         if (SiQueue.holder != null)
             setUpUI(SiQueue.holder)
 
@@ -34,19 +36,19 @@ class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
 
     private fun setUpUI(holder: Holder) {
         if (holder.cover != null)
-            ha_image.setImageBitmap(holder.cover)
+            ui.haImage.setImageBitmap(holder.cover)
 
-        ha_name_tv.text = getString(R.string.italicText, holder.name ?: " ")
+        ui.haNameTv.text = getString(R.string.italicText, holder.name ?: " ")
 
         if (holder.tracks != null && DataLoader.tracks.isNotEmpty()) {
             tracks = findTracks(holder.tracks)
-            ha_tracks_number_tv.text = if (tracks.size <= 1)
+            ui.haTracksNumberTv.text = if (tracks.size <= 1)
                 getString(R.string.tf_artists_track, tracks.size.toString())
             else
                 getString(R.string.tf_artists_tracks, tracks.size.toString())
-            ha_tracks_list.layoutManager = LinearLayoutManager(this)
-            ha_tracks_list.adapter = TracksAllAdapter(this, tracks, this)
-            ha_tracks_list.setHasFixedSize(true)
+            ui.haTracksList.layoutManager = LinearLayoutManager(this)
+            ui.haTracksList.adapter = TracksAllAdapter(this, tracks, this)
+            ui.haTracksList.setHasFixedSize(true)
         }
     }
 
@@ -56,7 +58,7 @@ class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
     }
 
     fun back(view: View) {
-        assert(view.id == ha_back_button.id)
+        assert(view.id == R.id.ha_back_button)
         onBackPressed()
     }
 
