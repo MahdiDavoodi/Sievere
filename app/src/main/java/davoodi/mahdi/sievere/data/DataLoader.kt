@@ -20,16 +20,24 @@ object DataLoader {
     @JvmField
     var artists: ArrayList<Artist> = ArrayList()
 
-    private fun updateTracks(
-        context: Context, projection: Array<String?>?,
-        selection: String?,
-        selectionArgs: Array<String?>?,
-        sortOrder: String?
-    ): ArrayList<Track> {
+    private fun updateTracks(context: Context): ArrayList<Track> {
         val all = ArrayList<Track>()
         val uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
         val cursor =
-            context.contentResolver.query(uri, projection, selection, selectionArgs, sortOrder)
+            context.contentResolver.query(
+                uri,
+                arrayOf(
+                    MediaStore.Audio.AudioColumns._ID,
+                    MediaStore.Audio.AudioColumns.DISPLAY_NAME,
+                    MediaStore.Audio.AudioColumns.DATA,
+                    MediaStore.Audio.AudioColumns.TITLE,
+                    MediaStore.Audio.AudioColumns.ARTIST,
+                    MediaStore.Audio.AudioColumns.ALBUM,
+                ),
+                null,
+                null,
+                MediaStore.Audio.Media.DATE_ADDED + " DESC"
+            )
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 val id =
@@ -64,48 +72,35 @@ object DataLoader {
         return all
     }
 
-    private fun updateAlbums(): ArrayList<Album> {
+    private fun updateAlbumsAndArtists() {
         if (tracks.isNotEmpty()) {
-            val map = mutableMapOf<String, ArrayList<Int>>()
-            for (i in tracks.indices) {
-                val track = tracks[i]
-                if (track.album in map) map[track.album]?.add(i)
-                else map += track.album to arrayListOf(i)
+            val alb = mutableMapOf<String, ArrayList<Int>>()
+            val art = mutableMapOf<String, ArrayList<Int>>()
+            for (i in tracks.indices) with(tracks[i]) {
+                when (album) {
+                    in alb -> alb[album]?.add(i)
+                    else -> alb += album to arrayListOf(i)
+                }
+                when (artist) {
+                    in art -> art[artist]?.add(i)
+                    else -> art += artist to arrayListOf(i)
+                }
             }
-            val updatedAlbums = arrayListOf<Album>()
-            for ((name, tracks) in map) updatedAlbums.add(Album(name, tracks.toIntArray()))
-            albums = updatedAlbums
+            albums.clear()
+            artists.clear()
+            for ((name, tracks) in alb) albums.add(Album(name, tracks.toIntArray()))
+            for ((name, tracks) in art) artists.add(Artist(name, tracks.toIntArray()))
         }
-        return albums
-    }
-
-    private fun updateArtists(): ArrayList<Artist> {
-        if (tracks.isNotEmpty()) {
-            val map = mutableMapOf<String, ArrayList<Int>>()
-            for (i in tracks.indices) {
-                val track = tracks[i]
-                if (track.artist in map) map[track.artist]?.add(i)
-                else map += track.artist to arrayListOf(i)
-            }
-            val updatedArtists = arrayListOf<Artist>()
-            for ((name, tracks) in map) updatedArtists.add(Artist(name, tracks.toIntArray()))
-            artists = updatedArtists
-        }
-        return artists
     }
 
     @JvmStatic
     fun loadData(
-        context: Context, projection: Array<String?>?,
-        selection: String?,
-        selectionArgs: Array<String?>?,
-        sortOrder: String?
+        context: Context
     ) {
-        updateTracks(context, projection, selection, selectionArgs, sortOrder)
-        updateAlbums()
-        updateArtists()
+        updateTracks(context)
+        updateAlbumsAndArtists()
 
         if (!tracks.isNullOrEmpty())
-            SiQueue.defaultSamples = IntArray(200) { (0..20).random() }
+            SiQueue.defaultSamples = IntArray(300) { (1..20).random() }
     }
 }

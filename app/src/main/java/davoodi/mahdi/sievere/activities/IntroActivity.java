@@ -33,8 +33,7 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     public void loadData() {
-        Thread loadData = new Thread(() -> DataLoader.loadData(this,
-                null, null, null, null));
+        Thread loadData = new Thread(() -> DataLoader.loadData(this));
         loadData.start();
         try {
             loadData.join();

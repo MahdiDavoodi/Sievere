@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void refresh() {
         try {
-            Thread loader = new Thread(() -> DataLoader.loadData(this, null, null, null, null));
+            Thread loader = new Thread(() -> DataLoader.loadData(this));
             loader.start();
             Toast.makeText(this, getString(R.string.loading), Toast.LENGTH_LONG).show();
             loader.join();
