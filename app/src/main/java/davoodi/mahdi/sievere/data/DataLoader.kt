@@ -64,39 +64,31 @@ object DataLoader {
         return all
     }
 
-    private fun updateAlbums(context: Context): ArrayList<Album> {
+    private fun updateAlbums(): ArrayList<Album> {
         if (tracks.isNotEmpty()) {
             val map = mutableMapOf<String, ArrayList<Int>>()
             for (i in tracks.indices) {
                 val track = tracks[i]
-                if (track.album in map)
-                    map[track.album]?.add(i)
+                if (track.album in map) map[track.album]?.add(i)
                 else map += track.album to arrayListOf(i)
             }
             val updatedAlbums = arrayListOf<Album>()
-            for ((name, tracks) in map) updatedAlbums.add(Album(context, name, tracks.toIntArray()))
+            for ((name, tracks) in map) updatedAlbums.add(Album(name, tracks.toIntArray()))
             albums = updatedAlbums
         }
         return albums
     }
 
-    private fun updateArtists(context: Context): ArrayList<Artist> {
+    private fun updateArtists(): ArrayList<Artist> {
         if (tracks.isNotEmpty()) {
             val map = mutableMapOf<String, ArrayList<Int>>()
             for (i in tracks.indices) {
                 val track = tracks[i]
-                if (track.artist in map)
-                    map[track.artist]?.add(i)
+                if (track.artist in map) map[track.artist]?.add(i)
                 else map += track.artist to arrayListOf(i)
             }
             val updatedArtists = arrayListOf<Artist>()
-            for ((name, tracks) in map) updatedArtists.add(
-                Artist(
-                    context,
-                    name,
-                    tracks.toIntArray()
-                )
-            )
+            for ((name, tracks) in map) updatedArtists.add(Artist(name, tracks.toIntArray()))
             artists = updatedArtists
         }
         return artists
@@ -110,8 +102,8 @@ object DataLoader {
         sortOrder: String?
     ) {
         updateTracks(context, projection, selection, selectionArgs, sortOrder)
-        updateAlbums(context)
-        updateArtists(context)
+        updateAlbums()
+        updateArtists()
 
         if (!tracks.isNullOrEmpty())
             SiQueue.defaultSamples = IntArray(200) { (0..20).random() }
