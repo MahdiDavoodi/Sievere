@@ -2,17 +2,14 @@
 
 ![header](media/Sievere.jpg)
 
-This is a solid music player, helping me to learn android development. Currently working on
-version `alpha v0.3.0`:
+This is a solid and simple music player, helping me to learn android development. Currently working on
+version `beta v0.2.1`:
 
-    -   Implement the search feature.
-    -   Fix bugs of v0.2.0-alpha.
-
-### Next Version:
-
-> Demo v0.4.0
-
-    -   Add playlists feature.
+    -   Re-design UI and improvements in UX.
+    -   Enable refresh option in the options menu. ✅
+    -   Support for horizontal layouts. ✅
+    -   Performance improvements.
+    -   Bug fixes.
 
 #### Thanks to
 
