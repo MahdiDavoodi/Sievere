@@ -52,4 +52,7 @@ dependencies {
 
     implementation 'com.github.massoudss:waveformSeekBar:4.1.0'
     implementation 'com.github.lincollincol:amplituda:2.1.4'
+
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 }

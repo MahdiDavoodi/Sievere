@@ -1,7 +1,11 @@
 package davoodi.mahdi.sievere.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,14 +13,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Album;
+import davoodi.mahdi.sievere.components.Track;
+import davoodi.mahdi.sievere.data.DataLoader;
+import davoodi.mahdi.sievere.tools.Utilities;
 
 public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapter.ViewHolder> {
 
@@ -43,11 +56,23 @@ public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Album album = albums.get(position);
-
         holder.name.setText(context.getResources().getString(R.string.italicText, album.getName()));
-        Bitmap cover = album.getCover();
-        if (cover != null)
-            holder.albumCover.setImageBitmap(cover);
+        Track track = DataLoader.tracks.get(Objects.requireNonNull(album.getTracks())[0]);
+
+        if (album.getCover() == null) {
+            android.media.MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+            mmr.setDataSource(track.getPath());
+            byte[] data = mmr.getEmbeddedPicture();
+            Glide.with(context).load(data)
+                    .placeholder(R.drawable.pic_sample_music_art)
+                    .centerCrop()
+                    .into(holder.albumCover);
+
+            if (data != null) album.setCover(BitmapFactory.decodeByteArray(data, 0, data.length));
+            Log.d("TESTING", track.getFileName() + " Glided!");
+        } else holder.albumCover.setImageBitmap(album.getCover());
+        Log.d("TESTING", track.getFileName());
+
     }
 
     @Override
