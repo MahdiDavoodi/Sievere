@@ -60,19 +60,15 @@ public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapte
         Track track = DataLoader.tracks.get(Objects.requireNonNull(album.getTracks())[0]);
 
         if (album.getCover() == null) {
-            android.media.MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-            mmr.setDataSource(track.getPath());
-            byte[] data = mmr.getEmbeddedPicture();
-            Glide.with(context).load(data)
-                    .placeholder(R.drawable.pic_sample_music_art)
-                    .centerCrop()
-                    .into(holder.albumCover);
-
-            if (data != null) album.setCover(BitmapFactory.decodeByteArray(data, 0, data.length));
-            Log.d("TESTING", track.getFileName() + " Glided!");
+            byte[] data = Utilities.Companion.getAlbumArtByte(context, track.getUri());
+            if (data != null) {
+                Glide.with(context).load(data)
+                        .placeholder(R.drawable.pic_sample_music_art)
+                        .centerCrop()
+                        .into(holder.albumCover);
+                album.setCover(Utilities.Companion.getAlbumArt(data));
+            }
         } else holder.albumCover.setImageBitmap(album.getCover());
-        Log.d("TESTING", track.getFileName());
-
     }
 
     @Override
