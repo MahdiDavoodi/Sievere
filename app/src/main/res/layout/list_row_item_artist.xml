@@ -5,31 +5,21 @@
     android:layout_height="60dp"
     android:background="?android:attr/selectableItemBackground">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/tf_artist_cv"
-        android:layout_width="@dimen/icons_s2"
-        android:layout_height="@dimen/icons_s2"
+    <ImageView
+        android:id="@+id/tf_artist_icon"
+        style="@style/common_icon_transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/icons_side_margin"
-        android:elevation="10dp"
-        android:maxWidth="60dp"
-        android:maxHeight="60dp"
-        android:padding="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardMaxElevation="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:layout_constraintBottom_toBottomOf="@id/tf_artist_tracks"
+        android:importantForAccessibility="no"
+        android:maxWidth="@dimen/icons_s2"
+        android:maxHeight="@dimen/icons_s2"
+        android:minWidth="@dimen/icons_s1"
+        android:minHeight="@dimen/icons_s1"
+        app:layout_constraintBottom_toBottomOf="@+id/tf_artist_tracks"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tf_artist_name">
-
-        <ImageView
-            android:id="@+id/tf_artist_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/cd_albumArt"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/pic_sample_music_art" />
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="@+id/tf_artist_name"
+        app:srcCompat="@drawable/ic_snow_solid" />
 
     <TextView
         android:id="@+id/tf_artist_name"
@@ -41,7 +31,7 @@
         android:text="@string/italicText"
         android:textAlignment="textStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tf_artist_cv"
+        app:layout_constraintStart_toEndOf="@+id/tf_artist_icon"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 

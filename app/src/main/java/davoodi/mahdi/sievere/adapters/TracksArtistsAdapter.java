@@ -1,7 +1,6 @@
 package davoodi.mahdi.sievere.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ import java.util.Objects;
 
 import davoodi.mahdi.sievere.R;
 import davoodi.mahdi.sievere.components.Artist;
-import davoodi.mahdi.sievere.components.Track;
 
 public class TracksArtistsAdapter extends RecyclerView.Adapter<TracksArtistsAdapter.ViewHolder> {
 
@@ -53,10 +51,6 @@ public class TracksArtistsAdapter extends RecyclerView.Adapter<TracksArtistsAdap
             holder.tracks.setText(context.getResources().getString(R.string.tf_artists_track, String.valueOf(size)));
         else
             holder.tracks.setText(context.getResources().getString(R.string.tf_artists_tracks, String.valueOf(size)));
-
-        Bitmap cover = artist.getCover();
-        if (cover != null)
-            holder.image.setImageBitmap(cover);
     }
 
     @Override
