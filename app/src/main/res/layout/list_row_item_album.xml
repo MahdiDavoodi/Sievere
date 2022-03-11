@@ -3,28 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="150dp"
     android:background="?android:attr/selectableItemBackground">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/tf_album_cv"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:elevation="10dp"
-        android:maxWidth="200dp"
-        android:maxHeight="200dp"
-        android:minWidth="100dp"
-        android:minHeight="100dp"
-        android:padding="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:elevation="8dp"
+        android:padding="5dp"
         app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="20dp"
+        app:cardElevation="8dp"
         app:cardPreventCornerOverlap="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/tf_album_cover"
