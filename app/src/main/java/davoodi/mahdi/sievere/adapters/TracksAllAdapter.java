@@ -65,7 +65,7 @@ public class TracksAllAdapter extends RecyclerView.Adapter<TracksAllAdapter.View
             title = itemView.findViewById(R.id.tf_song_title);
             artist = itemView.findViewById(R.id.tf_song_artist);
             status = itemView.findViewById(R.id.tf_song_status_image);
-            options = itemView.findViewById(R.id.tf_song_more_option);
+            // options = itemView.findViewById(R.id.tf_song_more_option);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
