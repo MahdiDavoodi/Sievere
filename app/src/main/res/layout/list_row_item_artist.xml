@@ -8,14 +8,10 @@
     <ImageView
         android:id="@+id/tf_artist_icon"
         style="@style/common_icon_transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icons_s1"
+        android:layout_height="@dimen/icons_s1"
         android:layout_marginStart="@dimen/icons_side_margin"
         android:importantForAccessibility="no"
-        android:maxWidth="@dimen/icons_s2"
-        android:maxHeight="@dimen/icons_s2"
-        android:minWidth="@dimen/icons_s1"
-        android:minHeight="@dimen/icons_s1"
         app:layout_constraintBottom_toBottomOf="@+id/tf_artist_tracks"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tf_artist_name"
@@ -30,24 +26,20 @@
         android:padding="@dimen/small_text_padding"
         android:text="@string/italicText"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tf_artist_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tf_artist_tracks"
         style="@style/small_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:text="@string/italicText"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tf_artist_name"
         app:layout_constraintTop_toBottomOf="@+id/tf_artist_name" />
 
-    <ImageButton
+    <!--<ImageButton
         android:id="@+id/tf_artist_more_option"
         style="@style/common_icon_transparent"
         android:layout_width="wrap_content"
@@ -62,5 +54,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_more_solid" />
+        app:srcCompat="@drawable/ic_more_solid" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

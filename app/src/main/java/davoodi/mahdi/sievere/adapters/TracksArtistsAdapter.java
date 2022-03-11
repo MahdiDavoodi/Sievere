@@ -70,7 +70,7 @@ public class TracksArtistsAdapter extends RecyclerView.Adapter<TracksArtistsAdap
             name = itemView.findViewById(R.id.tf_artist_name);
             tracks = itemView.findViewById(R.id.tf_artist_tracks);
             image = itemView.findViewById(R.id.tf_artist_icon);
-            options = itemView.findViewById(R.id.tf_artist_more_option);
+            //options = itemView.findViewById(R.id.tf_artist_more_option);
             this.listener = listener;
             itemView.setOnClickListener(this);
         }
