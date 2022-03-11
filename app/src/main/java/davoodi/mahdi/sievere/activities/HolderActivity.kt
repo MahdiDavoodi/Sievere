@@ -3,8 +3,10 @@ package davoodi.mahdi.sievere.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import davoodi.mahdi.sievere.R
 import davoodi.mahdi.sievere.adapters.TracksAllAdapter
 import davoodi.mahdi.sievere.components.Holder
@@ -13,6 +15,7 @@ import davoodi.mahdi.sievere.data.DataLoader
 import davoodi.mahdi.sievere.data.SiQueue
 import davoodi.mahdi.sievere.databinding.ActivityHolderBinding
 import davoodi.mahdi.sievere.preferences.Finals
+import davoodi.mahdi.sievere.tools.Utilities
 
 class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
     private var tracks = ArrayList<Track>()
@@ -35,9 +38,6 @@ class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
     }
 
     private fun setUpUI(holder: Holder) {
-        if (holder.cover != null)
-            ui.haImage.setImageBitmap(holder.cover)
-
         ui.haNameTv.text = getString(R.string.italicText, holder.name ?: " ")
 
         if (holder.tracks != null && DataLoader.tracks.isNotEmpty()) {
@@ -49,7 +49,20 @@ class HolderActivity : AppCompatActivity(), TracksAllAdapter.OnTrackListener {
             ui.haTracksList.layoutManager = LinearLayoutManager(this)
             ui.haTracksList.adapter = TracksAllAdapter(this, tracks, this)
             ui.haTracksList.setHasFixedSize(true)
-        }
+
+            if (holder.cover != null)
+                ui.haImage.setImageBitmap(holder.cover)
+            else {
+                val image = Utilities.getAlbumArtByte(this, tracks[0].uri)
+                if (image != null) {
+                    Glide.with(this).load(image)
+                        .placeholder(R.drawable.pic_sample_music_art)
+                        .centerCrop()
+                        .into(ui.haImage)
+                    holder.cover = Utilities.getAlbumArt(image)
+                }
+            }
+        } else Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
     }
 
     override fun onBackPressed() {
