@@ -1,11 +1,6 @@
 package davoodi.mahdi.sievere.adapters;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaMetadataRetriever;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -64,10 +57,12 @@ public class TracksAlbumsAdapter extends RecyclerView.Adapter<TracksAlbumsAdapte
             if (data != null) {
                 Glide.with(context).load(data)
                         .placeholder(R.drawable.pic_sample_music_art)
-                        .centerCrop()
                         .into(holder.albumCover);
                 album.setCover(Utilities.Companion.getAlbumArt(data));
-            }
+            } else
+                holder.albumCover.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(),
+                        R.drawable.pic_sample_music_art, context.getTheme()));
+
         } else holder.albumCover.setImageBitmap(album.getCover());
     }
 
