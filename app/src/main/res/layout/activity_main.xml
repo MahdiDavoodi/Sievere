@@ -18,6 +18,70 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/ma_np_card_cv"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:onClick="npCard"
+                android:visibility="gone"
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ma_np_card_art"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/pic_sample_music_art" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/ma_np_card_title"
+                style="@style/primary_text_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:onClick="npCard"
+                android:textSize="12sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ma_np_card_cv"
+                app:layout_constraintStart_toEndOf="@+id/ma_np_card_cv"
+                app:layout_constraintTop_toTopOf="@+id/ma_np_card_cv"
+                tools:text="Currently Playing Song" />
+
+
+            <ImageButton
+                android:id="@+id/ma_np_card_pause"
+                style="@style/icon_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/cd_pause_button"
+                android:onClick="npCardPause"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ma_np_card_next"
+                app:layout_constraintEnd_toStartOf="@+id/ma_np_card_next"
+                app:layout_constraintTop_toTopOf="@+id/ma_np_card_next"
+                app:srcCompat="@drawable/ic_pause_solid" />
+
+            <ImageButton
+                android:id="@+id/ma_np_card_next"
+                style="@style/icon_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/cd_next_button"
+                android:onClick="npCardNext"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/ma_ib2"
+                app:layout_constraintEnd_toStartOf="@+id/ma_ib2"
+                app:layout_constraintTop_toTopOf="@+id/ma_ib2"
+                app:srcCompat="@drawable/ic_next_solid" />
+
             <TextView
                 android:id="@+id/ma_tv1"
                 style="@style/primary_text_v2"
@@ -40,28 +104,28 @@
                 app:layout_constraintBottom_toBottomOf="@+id/ma_tv1"
                 app:layout_constraintStart_toEndOf="@+id/ma_tv1" />
 
-            <ImageButton
-                android:id="@+id/ma_ib1"
-                style="@style/icon_v2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:contentDescription="@string/cd_search_button"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/ma_ib2"
-                app:layout_constraintEnd_toStartOf="@+id/ma_ib2"
-                app:layout_constraintTop_toTopOf="@+id/ma_ib2"
-                app:srcCompat="@drawable/ic_search_solid" />
+            <!-- <ImageButton
+                 android:id="@+id/ma_ib1"
+                 style="@style/icon_v2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginEnd="15dp"
+                 android:contentDescription="@string/cd_search_button"
+                 android:visibility="gone"
+                 app:layout_constraintBottom_toBottomOf="@+id/ma_ib2"
+                 app:layout_constraintEnd_toStartOf="@+id/ma_ib2"
+                 app:layout_constraintTop_toTopOf="@+id/ma_ib2"
+                 app:srcCompat="@drawable/ic_search_solid" />-->
 
             <ImageButton
                 android:id="@+id/ma_ib2"
                 style="@style/icon_v2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="15dp"
                 android:contentDescription="@string/cd_options_button"
                 android:onClick="toolbarMenu"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_more_solid" />
@@ -99,86 +163,6 @@
             android:layout_weight="10"
             app:defaultNavHost="true"
             app:navGraph="@navigation/ma_navigation" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/ma_np_card"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="1"
-            android:onClick="npCard"
-            android:visibility="gone"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="3dp"
-            app:cardMaxElevation="8dp"
-            app:cardPreventCornerOverlap="true">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                style="@style/background"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/ma_np_card_next"
-                    style="@style/icons"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/icons_side_margin"
-                    android:contentDescription="@string/cd_next_button"
-                    android:onClick="npCardNext"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_next_solid" />
-
-                <ImageButton
-                    android:id="@+id/ma_np_card_pause"
-                    style="@style/icons"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/icons_side_margin"
-                    android:contentDescription="@string/cd_pause_button"
-                    android:onClick="npCardPause"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/ma_np_card_next"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_pause_solid" />
-
-                <TextView
-                    android:id="@+id/ma_np_card_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/ma_np_card_cv"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Currently Playing Song" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/ma_np_card_cv"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    app:cardCornerRadius="15dp"
-                    app:cardPreventCornerOverlap="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/ma_np_card_art"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:importantForAccessibility="no"
-                        app:srcCompat="@drawable/pic_sample_music_art" />
-                </androidx.cardview.widget.CardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 </LinearLayout>

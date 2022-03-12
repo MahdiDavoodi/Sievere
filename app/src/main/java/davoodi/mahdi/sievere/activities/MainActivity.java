@@ -4,6 +4,7 @@ package davoodi.mahdi.sievere.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -93,7 +94,21 @@ public class MainActivity extends AppCompatActivity {
     private void updateTheCard() {
         SiPlayer siPlayer = SiPlayer.getInstance();
         if (siPlayer != null && SiPlayer.playing != null) {
-            ui.maNpCard.setVisibility(View.VISIBLE);
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                ui.maNpCardCv.setVisibility(View.VISIBLE);
+                ui.maNpCardArt.setVisibility(View.VISIBLE);
+                ui.maNpCardTitle.setVisibility(View.VISIBLE);
+                ui.maNpCardPause.setVisibility(View.VISIBLE);
+                ui.maNpCardNext.setVisibility(View.VISIBLE);
+                ui.maTv1.setVisibility(View.GONE);
+                ui.maTv2.setVisibility(View.GONE);
+            } else {
+                assert ui.maNpCard != null;
+                ui.maNpCard.setVisibility(View.VISIBLE);
+                ui.maTv1.setVisibility(View.VISIBLE);
+                ui.maTv2.setVisibility(View.VISIBLE);
+            }
+
             ui.maNpCardTitle.setText(getString(R.string.italicText, SiPlayer.playing.getShortTitle()));
             Bitmap newArt = Utilities.Companion.getAlbumArt(this, SiPlayer.playing.getUri());
             if (newArt != null)
@@ -107,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             siPlayer.setOnCompletionListener(listener -> {
                 try {
                     if (SiQueue.position == SiQueue.queue.size() - 1 && !SiQueue.isOnRepeat) {
-                        npCardPause(findViewById(R.id.ma_np_card_pause).getRootView());
+                        updateTheCard();
                     } else if (!SiQueue.isOnRepeatOne) {
                         npCardNext(findViewById(R.id.ma_np_card_next).getRootView());
                     } else {
