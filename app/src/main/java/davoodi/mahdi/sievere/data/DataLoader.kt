@@ -45,6 +45,9 @@ object DataLoader {
                 val fileName =
                     cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DISPLAY_NAME))
                         .split("\\.").first()
+                val title =
+                    cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE))
+                        ?: fileName
                 val track = Track(
                     id,
                     uri = ContentUris.withAppendedId(
@@ -53,16 +56,17 @@ object DataLoader {
                     ),
                     path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.DATA)),
                     fileName = fileName,
-                    title = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.TITLE))
-                        ?: fileName,
+                    title = title,
                     artist = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ARTIST))
                         ?: context.getString(
                             R.string.unknown
                         ),
                     album = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.AudioColumns.ALBUM))
+                        .shortTitle()
                         ?: context.getString(
                             R.string.single
                         ),
+                    shortTitle = title.shortTitle() ?: title
                 )
                 all.add(track)
             } while (cursor.moveToNext())
@@ -102,5 +106,14 @@ object DataLoader {
 
         if (!tracks.isNullOrEmpty())
             SiQueue.defaultSamples = IntArray(300) { (1..20).random() }
+    }
+}
+
+fun String?.shortTitle(): String? {
+    return if (this == null) null
+    else {
+        val index = this.indexOf('(')
+        if (index != -1) this.substring(0, index)
+        else this
     }
 }

@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         SiPlayer siPlayer = SiPlayer.getInstance();
         if (siPlayer != null && SiPlayer.playing != null) {
             ui.maNpCard.setVisibility(View.VISIBLE);
-            ui.maNpCardTitle.setText(getString(R.string.italicText, SiPlayer.playing.getTitle()));
+            ui.maNpCardTitle.setText(getString(R.string.italicText, SiPlayer.playing.getShortTitle()));
             Bitmap newArt = Utilities.Companion.getAlbumArt(this, SiPlayer.playing.getUri());
             if (newArt != null)
                 ui.maNpCardArt.setImageBitmap(newArt);

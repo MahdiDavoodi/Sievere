@@ -44,7 +44,7 @@ public class TracksAllAdapter extends RecyclerView.Adapter<TracksAllAdapter.View
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         Track track = tracks.get(position);
 
-        holder.title.setText(context.getResources().getString(R.string.italicText, track.getTitle()));
+        holder.title.setText(context.getResources().getString(R.string.italicText, track.getShortTitle()));
         holder.artist.setText(context.getResources().getString(R.string.italicText, track.getArtist()));
     }
 
